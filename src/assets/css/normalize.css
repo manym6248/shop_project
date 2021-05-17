@@ -1,0 +1,42 @@
+@import '../font/Yekan-Font-2/stylesheet.css';
+@import '../font/arial/style.css';
+  
+*{
+  font-family: "Yekan" !important;
+  font-family: "arial";
+  box-sizing: border-box;
+ 
+}
+
+ 
+  
+ 
+  input:focus {
+    outline: none;
+  }
+
+ul{
+    list-style: none;
+   
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  main{
+      padding: 0;
+  }
+
+  /*
+  @media (min-width:1246px){
+    .container{
+      max-width: 1110px ;
+     padding-left: 15px;
+     padding-right: 15px;
+    }
+
+    .container--fluid{
+      max-width: 100%;
+    }
+  }*/
