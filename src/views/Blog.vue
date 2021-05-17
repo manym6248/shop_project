@@ -12,11 +12,11 @@
   </v-container>
     
 </template>
-
 <script>
 export default {
   data() {
     return {
+        a ='hello',
       items: [
         {
           text: "صفحه اصلی",
