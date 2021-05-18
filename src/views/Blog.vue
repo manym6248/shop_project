@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-        a ='hello',
+       
       items: [
         {
           text: "صفحه اصلی",
