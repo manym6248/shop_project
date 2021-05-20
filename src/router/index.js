@@ -6,6 +6,7 @@ import Madia from '../views/Madia.vue'
 import Blog from '../views/Blog.vue'
 import ProductPage from '../views/ProductPage.vue'
 import Main from '../Main.vue'
+import NotFoundPage from '../components/NotFoundPage.vue'
 
 
 
@@ -71,6 +72,12 @@ const routes = [
     path: '/login',
     name: 'Login',
     component:Login,
+      
+  },
+  {
+    path: '*',
+    name: 'NotFoundPage',
+    component:NotFoundPage,
       
   },
  

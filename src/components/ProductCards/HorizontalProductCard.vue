@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="ma-0 pa-7" style="height: 100%">
+  <v-container fluid class="ma-0 pa-3" style="height: 100%">
     <div class="card">
       <v-row class="ma-0" style="height: 100%">
         <v-col cols="4" class="pa-0 py-4">

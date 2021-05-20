@@ -106,7 +106,7 @@
 export default {
   data() {
     return {
-      gaitem: false,
+   
       itemsGategory: [
         {
           to: "/",
@@ -211,7 +211,7 @@ export default {
         },
       ],
       w: 0,
-      displayN:true
+      displayN:false
     };
   },
   created() {
@@ -225,7 +225,7 @@ export default {
   },
   methods: {
     chan() {
-      this.gaitem = !this.gaitem;
+      this.displayN = !this.displayN;
     },
     handleResize() {
       this.w = window.innerWidth;

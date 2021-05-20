@@ -302,6 +302,7 @@ export default {
 @import "../src/assets/css/normalize.css";
 @import "../node_modules/flickity/css/flickity.css";
 
+
 %link {
   .link {
     color: $color-blue-gray;
