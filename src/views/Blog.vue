@@ -5,13 +5,102 @@
       <v-breadcrumbs large :items="items" divider="/"></v-breadcrumbs>
     </div>
 
-    <v-container class="pt-4 pb-3 px-0 mb-4"> </v-container>
+    <v-container class="pt-4 pb-3 px-0 mb-4">
+      <h1>Flickity - autoPlay</h1>
+
+<!-- Flickity HTML init -->
+<div class="carousel" data-flickity='{ "autoPlay": true }'>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+</div>
+      
+       </v-container>
+
+  
+  <v-card
+    class="mx-auto"
+    width="300"
+  >
+    <v-list>
+    
+
+      <v-list-group
+        :value="true"
+        prepend-icon="mdi-account-circle"
+      >
+        <template v-slot:activator>
+          <v-list-item-title>Users</v-list-item-title>
+        </template>
+
+        <v-list-group
+          :value="true"
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Admin</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in admins"
+            :key="i"
+            link
+          >
+            <v-list-item-title v-text="title"></v-list-item-title>
+
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+        </v-list-group>
+
+        <v-list-group
+          no-action
+          sub-group
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Actions</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="([title, icon], i) in cruds"
+            :key="i"
+            link
+          >
+            <v-list-item-title v-text="title"></v-list-item-title>
+
+            <v-list-item-icon>
+              <v-icon v-text="icon"></v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+        </v-list-group>
+      </v-list-group>
+    </v-list>
+  </v-card>
+
   </v-container>
 </template>
 <script>
 export default {
   data() {
     return {
+      admins: [
+        ['Management', 'mdi-account-multiple-outline'],
+        ['Settings', 'mdi-cog-outline'],
+      ],
+      cruds: [
+        ['Create', 'mdi-plus-outline'],
+        ['Read', 'mdi-file-outline'],
+        ['Update', 'mdi-update'],
+        ['Delete', 'mdi-delete'],
+      ],
       items: [
         {
           text: "صفحه اصلی",
@@ -47,4 +136,33 @@ export default {
     padding: 5px 0;
   }
 }
+
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.carousel {
+  background: #EEE;
+}
+
+.carousel-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8C8;
+  border-radius: 5px;
+  counter-increment: gallery-cell;
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(gallery-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
 </style>

@@ -302,6 +302,10 @@ export default {
 @import "../src/assets/css/normalize.css";
 @import "../node_modules/flickity/css/flickity.css";
 
+.gallery:after {
+  content: 'flickity';
+  display: none; /* hide :after */
+}
 
 %link {
   .link {

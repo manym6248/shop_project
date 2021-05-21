@@ -8,7 +8,7 @@
           <div class="subtitle-1 font-weight-light"></div>
         </template>
 
-<!--مسیر دهی  -->
+        <!--مسیر دهی  -->
         <v-form>
           <v-container class="py-0">
             <v-row>
@@ -38,10 +38,10 @@
 
     <div class="py-3" />
 
- <base-material-card
+    <base-material-card
       icon="mdi-clipboard-text"
       title=" لیست محصولات موجود در زیر مجموعه"
-      class="px-5 "
+      class="px-5"
     >
       <v-simple-table>
         <thead>
@@ -70,10 +70,14 @@
               ></v-img>
             </td>
             <td class="text-center">
-              <v-btn medium color="yellow">ویرایش</v-btn>
+              <v-btn class="ml-2" min-width="0" text large>
+                <v-icon large> mdi-clipboard-edit-outline</v-icon>
+              </v-btn>
             </td>
             <td class="text-center">
-              <v-btn medium color="red">حذف</v-btn>
+              <v-btn class="ml-2" min-width="0" text large>
+                <v-icon large> mdi-delete-empty</v-icon>
+              </v-btn>
             </td>
           </tr>
         </tbody>
@@ -189,23 +193,19 @@
         </base-material-card>
       </v-col>
     </v-row>
-   
-
   </v-container>
 </template>
 
 
 <script>
 export default {
-  components:{
- 
-  },
+  components: {},
   data() {
     return {
-      animals:[],
+      animals: [],
 
       categgory: ["Dog", "Cat", "Rabbit", "Turtle", "Snake"],
-      apidata:[],
+      apidata: [],
       product: {
         id: 1,
         imageUrl: null,
@@ -269,16 +269,11 @@ export default {
       this.product.image = files[0];
     },
   },
-  created(){
-       this.$http.get('/.json').then((res) => {
-       
-           console.log (res.data);
-        
-
-        
-       
-       })
-    },
+  created() {
+    this.$http.get("/.json").then((res) => {
+      console.log(res.data);
+    });
+  },
 
   comments: {},
 };

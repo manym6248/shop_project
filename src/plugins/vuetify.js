@@ -10,7 +10,7 @@ const theme = {
   secondary: '#9C27b0',
   accent: '#9C27b0',
   info: '#00CAE3',
-  success: '#b7dbce',
+  success: '#2196F3',
 }
 
 

@@ -4,7 +4,7 @@
       <v-col cols="12">
         <base-material-card>
           <template v-slot:heading>
-            <div class="display-2 font-weight-light">ایجاد  زیر دسته</div>
+            <div class="display-2 font-weight-light">ایجاد زیر دسته</div>
 
             <div class="subtitle-1 font-weight-light"></div>
           </template>
@@ -22,7 +22,7 @@
 
                 <v-col cols="12" md="4" class="my-7">
                   <v-btn large color="blue" @click="add()"
-                    >زیر دسته  جدید را اضافه کن</v-btn
+                    > ثبت</v-btn
                   >
                 </v-col>
               </v-row>
@@ -31,32 +31,31 @@
         </base-material-card>
       </v-col>
       <v-col cols="12">
-      <base-material-card>
-        <template v-slot:heading>
-          <div class="display-2 font-weight-light">انتخاب مسیر</div>
+        <base-material-card>
+          <template v-slot:heading>
+            <div class="display-2 font-weight-light">انتخاب مسیر</div>
 
-          <div class="subtitle-1 font-weight-light"></div>
-        </template>
+            <div class="subtitle-1 font-weight-light"></div>
+          </template>
 
-<!--مسیر دهی  -->
-        <v-form>
-          <v-container class="py-0">
-            <v-row>
-              <v-col cols="12"  class="mt-5">
-                <v-select
-                  v-model="categgory"
-                  :items="categgory.name"
-                  color="pink"
-                  label="انتخاب دسته"
-                  required
-                ></v-select>
-              </v-col>
-          
-            </v-row>
-          </v-container>
-        </v-form>
-      </base-material-card>
-    </v-col>
+          <!--مسیر دهی  -->
+          <v-form>
+            <v-container class="py-0">
+              <v-row>
+                <v-col cols="12" class="mt-5">
+                  <v-select
+                    v-model="categgory"
+                    :items="categgory.name"
+                    color="pink"
+                    label="انتخاب دسته"
+                    required
+                  ></v-select>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-form>
+        </base-material-card>
+      </v-col>
     </v-row>
 
     <div class="py-3" />
@@ -81,10 +80,14 @@
             <td>{{ product.id }}</td>
             <td class="text-center">{{ product.name }}</td>
             <td class="text-center">
-              <v-btn medium color="yellow">ویرایش</v-btn>
+              <v-btn   icon  class="my-4" min-width="0" text large>
+                <v-icon large> mdi-clipboard-edit-outline</v-icon>
+              </v-btn>
             </td>
             <td class="text-center">
-              <v-btn medium color="red">حذف</v-btn>
+              <v-btn   icon  class="my-4" min-width="0" text large>
+                <v-icon  large> mdi-delete-empty</v-icon>
+              </v-btn>
             </td>
           </tr>
         </tbody>
@@ -97,7 +100,7 @@
       <v-col cols="12">
         <base-material-card>
           <template v-slot:heading>
-            <div class="display-2 font-weight-light">ایجاد زیر دسته </div>
+            <div class="display-2 font-weight-light">ایجاد زیر دسته</div>
 
             <div class="subtitle-1 font-weight-light"></div>
           </template>

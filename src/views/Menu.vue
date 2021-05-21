@@ -238,7 +238,7 @@ export default {
 
     changetoggle(id){
     
-      if(id === 1){
+      if(id === 1 && this.$router.push('/')){
         this.displayN = true;
       }
       else{

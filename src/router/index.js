@@ -32,6 +32,10 @@ import Upgrade from '../views/admin/views/dashboard/Upgrade.vue'
 //login
  import Login from '../views/login/Login.vue'
 
+
+ /////
+//  import index from '../store/index'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -86,6 +90,14 @@ const routes = [
   path: '/admin',
   name: 'Admin',
   component:Admin,
+  // beforeEnter: (to, from, next) => {
+  //   if (!index.getters['auth/authenticated']) {
+  //     return next({
+  //       name: 'Login',
+  //     })
+  //   }
+  //   next()
+  // },
       children: [
         // Dashboard
         {
@@ -156,16 +168,7 @@ const routes = [
 }
       
 
-
-
-
-
-
-
-
-
-     
-    
+ 
  
 ]
 

@@ -3,8 +3,8 @@
     <div class="success1">
       <v-container
         tag="section"
-        class="px-xl-16 px-lg-16 px-md-8 px-sm-4 pt-0"
-        style="height: 100%"
+        class="px-xl-16 px-lg-16 px-md-8 px-sm-4 pt-0 "
+        style="height: 50%"
       >
         <v-row
           class="mt-0 px-xl-8 px-lg-8 px-md-2 px-sm-1"
@@ -65,6 +65,10 @@ export default {
 .success1 {
   height: 100vh;
   background-color: $color-menu;
+  section{
+    position: relative;
+    top: 23%;
+  }
   .not-card {
     display: flex;
     flex-direction: row;
@@ -74,7 +78,7 @@ export default {
       direction: ltr;
       font-size: 1.3em sans-serif;
       width: 100%;
-      height: 40%;
+      height: 100%;
       .tex{
           height: 100%;
            display: flex;
@@ -92,6 +96,18 @@ export default {
             letter-spacing: 2;
       }
     }
+  }
+}
+
+@media #{$bp-xs} {
+section{
+    top: 15% !important;
+  }
+}
+
+@media #{$bp-sm} {
+section{
+    top: 15% !important;
   }
 }
 </style>

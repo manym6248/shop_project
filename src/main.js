@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import Flickity from '../node_modules/flickity'
 import VueResource from 'vue-resource'
-import vue2Swiper from 'vue2-swiper'
+
 
 
 
@@ -25,6 +25,9 @@ import axiosInstance from '../axios.config';
 Vue.prototype.$http = axiosInstance;
 
 //////////////////////////
+
+
+
 Vue.config.productionTip = false
 
 new Vue({
@@ -32,7 +35,7 @@ new Vue({
   store,
   vuetify,
   Flickity,
-  vue2Swiper,
+
   VueResource,
   
 

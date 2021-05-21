@@ -1,6 +1,6 @@
 <template>
   <v-list-group
-    :group="group"
+    
     :prepend-icon="item.icon"
     :sub-group="subGroup"
     append-icon="mdi-menu-down"
@@ -38,7 +38,7 @@
         v-else
         :key="`item-${i}`"
         :item="child"
-        text
+      
       />
     </template>
   </v-list-group>
@@ -61,6 +61,7 @@
           avatar: undefined,
           group: undefined,
           title: undefined,
+          icon: undefined,
           children: [],
         }),
       },

@@ -22,7 +22,7 @@
 
                 <v-col cols="12" md="4" class="my-7">
                   <v-btn large color="blue" @click="add()"
-                    >دسته بندی جدید را اضافه کن</v-btn
+                    >ثبت</v-btn
                   >
                 </v-col>
               </v-row>
@@ -30,7 +30,6 @@
           </v-form>
         </base-material-card>
       </v-col>
-      
     </v-row>
 
     <div class="py-3" />
@@ -55,10 +54,14 @@
             <td>{{ product.id }}</td>
             <td class="text-center">{{ product.name }}</td>
             <td class="text-center">
-              <v-btn medium color="yellow">ویرایش</v-btn>
+              <v-btn class="my-4" min-width="0" text large>
+                <v-icon large> mdi-clipboard-edit-outline</v-icon>
+              </v-btn>
             </td>
             <td class="text-center">
-              <v-btn medium color="red">حذف</v-btn>
+              <v-btn class="my-4" min-width="0" text large>
+                <v-icon large> mdi-delete-empty</v-icon>
+              </v-btn>
             </td>
           </tr>
         </tbody>
@@ -108,9 +111,8 @@ export default {
   data() {
     return {
       categgory: ["Dog", "Cat", "Rabbit", "Turtle", "Snake"],
-      categorized:[],
+      categorized: [],
       product: {
-       
         name: "",
         price: "",
         description: "",
@@ -123,17 +125,16 @@ export default {
     ////////////
     add() {
       var xr = {
-          name:this.product.name
+        name: this.product.name,
       };
 
       console.log(xr);
-      this.$http.post('/.json',xr).then((res) => console.log(res.config.data));
+      this.$http.post("/.json", xr).then((res) => console.log(res.config.data));
     },
-  
   },
-    created(){
-       this.$http.get('/.json').then((res) => console.log(res.data));
-    }
+  created() {
+    this.$http.get("/.json").then((res) => console.log(res.data));
+  },
 };
 </script>
 <style lang="scss" >

@@ -60,6 +60,7 @@
           v-if="item.children"
           :key="`group-${i}`"
           :item="item"
+   
         >
           <!--  -->
         </base-item-group>
@@ -120,15 +121,25 @@
           to: '/pages/user',
         },
         {
-          icon: 'mdi-cart-arrow-down',
-          title: 'ایجاد محصول',
+          icon: 'mdi-cart-outline',
+          title: ' محصولات',
           to: '/products/addProduct',
+         group:'/products' ,
+          children:[
+             {
+          icon: 'mdi-plus-box',
+          title: 'ایجاد محصول',
+          to: 'addProduct',
+         
         },
-        {
+         {
           icon: 'mdi-clipboard-edit-outline',
           title: 'ویرایش و حذف محصول',
-          to: '/products/editProduct',
+          to: 'editProduct',
         },
+          ]
+        },
+       
         {
           icon: 'mdi-buffer',
           title: 'دسته بندی',
