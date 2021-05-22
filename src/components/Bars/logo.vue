@@ -1,5 +1,5 @@
 <template>
-  <v-container class="pa-0">
+  <v-container class="pa-0 pb-5">
     <div
       class="gallery p-c-bar js-flickity"
       data-flickity='{  "wrapAround": true, "autoPlay":6000,"groupCells": 2 }'

@@ -79,11 +79,11 @@
                           vertical
                         ></v-divider>
 
-                        <li class="item">
+                       <router-link to="/register" class="item">
                           <a href="" class="link">
-                            <v-icon> mdi-heart-outline </v-icon>علاقه مندی
+                            <v-icon> mdi-account  </v-icon>ثبت نام
                           </a>
-                        </li>
+                        </router-link>
                         <v-divider
                           style="border-color: rgb(80 74 74 / 59%)"
                           vertical

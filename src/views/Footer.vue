@@ -1,6 +1,6 @@
 <template>
   <div class="l12">
-    <v-container fluid class="pa-0 pt-5">
+    <v-container fluid class="pa-0 ">
       <div class="header-footer py-8">
         <v-container class="pa-0" style="height: 100%">
           <v-row class="ma-0 pa-0" style="height: 100%">
@@ -465,7 +465,7 @@ export default {
   justify-content: space-between;
 }
 .l12 {
-  height: 444px;
+  height: 424px;
   text-align: center;
   width: 100%;
   .jus2 {

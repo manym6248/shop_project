@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import Flickity from '../node_modules/flickity'
 import VueResource from 'vue-resource'
+import Vuelidate from 'vuelidate'
 
 
 
@@ -35,6 +36,7 @@ new Vue({
   store,
   vuetify,
   Flickity,
+  Vuelidate,
 
   VueResource,
   

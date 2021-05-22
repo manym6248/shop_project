@@ -1,8 +1,9 @@
 <template>
-  <v-container tag="section" class="mt-16">
+<div class="body-lgin">
+   <v-container tag="section" class="at-16">
     <v-container
       tag="section"
-      class="mt-4 px-xl-16 px-lg-16 px-md-8 px-sm-4 pt-0"
+      class="mt-0 px-xl-16 px-lg-16 px-md-8 px-sm-4 pt-0"
     >
       <v-row class="mt-0 px-xl-8 px-lg-8 px-md-2 px-sm-1" justify="center">
         <v-col cols="12" md="7" sm="6" class="px-5">
@@ -62,6 +63,8 @@
       </v-row>
     </v-container>
   </v-container>
+</div>
+ 
 </template>
 
 <script>
@@ -115,6 +118,16 @@ export default {
 <style lang="scss" >
 @import "../../assets/scss/utility/utility.scss";
 
+.body-lgin{
+  padding: 0px;
+  margin: 0px;
+  height: 80Vh;
+  width: 100%;
+  background-color:$color-header2;
+  padding-top: 20px;
+ 
+
+}
 .div1 {
   width: 900px;
   margin: auto;
@@ -144,5 +157,13 @@ export default {
   .login-card {
     height: 400px;
   }
+  .body-lgin{
+    padding: 10px;
+  }
+}
+@media #{$bp-sm}{
+  .body-lgin{
+  padding-top: 10px;
+  height: 90Vh;}
 }
 </style>

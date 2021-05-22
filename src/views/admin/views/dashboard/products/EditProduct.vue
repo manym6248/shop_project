@@ -56,15 +56,15 @@
         </thead>
 
         <tbody>
-          <tr>
-            <td>{{ product.id }}</td>
-            <td class="text-center">{{ product.name }}</td>
-            <td class="text-center">{{ product.price }}</td>
+          <tr v-for="(item, i) in apidata" :key="i">
+            <td>{{ item.id }}</td>
+            <td class="text-center">{{ item.name }}</td>
+            <td class="text-center">{{ item.price }}</td>
             <td class="text-center">
               <v-img
                 class="my-4 mx-auto"
                 max-height="80px"
-                :src="product.imageUrl"
+                :src="item.Url"
                 width="100px"
                 height="100px"
               ></v-img>
@@ -270,8 +270,11 @@ export default {
     },
   },
   created() {
-    this.$http.get("/.json").then((res) => {
-      console.log(res.data);
+    this.$http.get("/photos").then((res) => {
+      var data = res.data;
+      var x = JSON.stringify(data);
+      this.apidata = x;
+     
     });
   },
 

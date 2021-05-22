@@ -29,8 +29,9 @@ import GoogleMaps from '../views/admin/views/dashboard/maps/GoogleMaps.vue'
 import Upgrade from '../views/admin/views/dashboard/Upgrade.vue'
 
 
-//login
+//Login and Register
  import Login from '../views/login/Login.vue'
+ import Register from '../views/Register/Register.vue'
 
 
  /////
@@ -69,15 +70,22 @@ const routes = [
         name: 'About',
         component:About,
       },
+      {
+        path: 'login',
+        name: 'Login',
+        component:Login,
+          
+      },
+      {
+        path: 'register',
+        name: 'Register',
+        component:Register,
+          
+      },
     ]
   },
 
-  {
-    path: '/login',
-    name: 'Login',
-    component:Login,
-      
-  },
+ 
   {
     path: '*',
     name: 'NotFoundPage',
