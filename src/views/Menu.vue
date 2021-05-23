@@ -16,7 +16,7 @@
                 class="my-0"
                 outlined
                 color="#000"
-                @click="chan()"
+                @click="toggleN"
                 height="100%"
                 width="100%"
               >
@@ -30,7 +30,7 @@
                 class="hrd"
                 :class="{ abslut: gaitem }"
                 style="height: 100%"
-                v-if="displayN"
+                v-if="count"
                 ><div class="hon">
                   <v-card
                     height="400"
@@ -103,6 +103,7 @@
 </template>
 
 <script>
+import {mapMutations} from "vuex"
 export default {
   data() {
     return {
@@ -138,7 +139,7 @@ export default {
           icon: "",
         },
         {
-          to: "/",
+          to: "/Product",
           class1: "",
           text: "ویژگی ها",
           classicon: false,
@@ -211,22 +212,28 @@ export default {
         },
       ],
       w: 0,
-      displayN:false
+      displayN:null
+    
     };
   },
   created() {
     window.addEventListener("resize", this.handleResize);
     this.handleResize();
 
+ 
+      
+  
+      
    
   },
   destroyed() {
     window.removeEventListener("resize", this.handleResize);
   },
   methods: {
-    chan() {
-      this.displayN = !this.displayN;
-    },
+    ...mapMutations ([
+    "toggleN"
+    ]),
+    
     handleResize() {
       this.w = window.innerWidth;
       if (this.w > 960) {
@@ -247,6 +254,13 @@ export default {
       
     }
   },
+  computed: {
+    count () {
+      return this.$store.state.displayN
+    }
+  }
+   
+
 };
 </script>
 

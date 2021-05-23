@@ -9,13 +9,13 @@
       <h1>Flickity - autoPlay</h1>
 
 <!-- Flickity HTML init -->
-<div class="carousel" data-flickity='{ "autoPlay": true }'>
+<flickity ref="flickity" :options="flickityOptions">
   <div class="carousel-cell"></div>
   <div class="carousel-cell"></div>
   <div class="carousel-cell"></div>
   <div class="carousel-cell"></div>
   <div class="carousel-cell"></div>
-</div>
+</flickity>
       
        </v-container>
 
@@ -88,9 +88,25 @@
   </v-container>
 </template>
 <script>
+import Flickity from 'vue-flickity';
+
 export default {
+  components:{
+    Flickity
+  },
   data() {
+
+
     return {
+
+       flickityOptions: {
+        initialIndex: 3,
+        prevNextButtons: false,
+        pageDots: false,
+        wrapAround: true
+        
+        // any options from Flickity can be used
+      },
       admins: [
         ['Management', 'mdi-account-multiple-outline'],
         ['Settings', 'mdi-cog-outline'],

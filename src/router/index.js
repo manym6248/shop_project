@@ -7,6 +7,7 @@ import Blog from '../views/Blog.vue'
 import ProductPage from '../views/ProductPage.vue'
 import Main from '../Main.vue'
 import NotFoundPage from '../components/NotFoundPage.vue'
+import Product from '../components/Product.vue'
 
 
 
@@ -80,6 +81,12 @@ const routes = [
         path: 'register',
         name: 'Register',
         component:Register,
+          
+      },
+      {
+        path: 'product',
+        name: 'Product',
+        component:Product,
           
       },
     ]

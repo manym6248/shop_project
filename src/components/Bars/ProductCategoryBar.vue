@@ -1,6 +1,6 @@
 <template>
   <v-container class="pa-0">
-    <div class="gallery p-c-bar1 js-flickity " data-flickity='{  "wrapAround": true, "autoPlay":6000,"groupCells": 2 }'>
+    <flickity ref="flickity" :options="flickityOptions" class="gallery p-c-bar1 js-flickity ">
         <v-col class="py-0 pc " cols="6" sm="6" lg="3" md="3" xl="3" v-for="(item, i) in items" :key="i" style="height:100%">
               <div class="gallery-cell " >
                 <div class="bn">
@@ -22,19 +22,26 @@
               
             </v-col>
   
-</div>
+</flickity>
   </v-container>
 </template>
 
 <script>
 import ProductCategoryCard from '../OtherCards/ProductCategoryCard';
+import Flickity from 'vue-flickity';
 export default {
   components: { 
-      ProductCategoryCard 
+      ProductCategoryCard,
+      Flickity
   
   },
   data() {
     return {
+        flickityOptions: {
+        wrapAround: true,
+       autoPlay:6000,
+       groupCells: 2
+      },
       items: [
         {
           to: "/",

@@ -9,7 +9,7 @@
 </div>
 <v-divider></v-divider>
 
-    <div class="gallery pc-b24 js-flickity big4442 " data-flickity='{  "wrapAround": true, "autoPlay":8000,"groupCells": 2 }'  >
+    <flickity ref="flickity" :options="flickityOptions" class="gallery pc-b24 js-flickity big4442 " >
         <v-col class="py-0 pc " cols="6" sm="6" xl="3" lg="3" md="3"  v-for="n in 12" :key="n" >
               <div class="gallery-cell  gallery-cellm " >
                 <div class="bn">
@@ -30,8 +30,8 @@
               </div>
         </v-col>
   
-</div>
-    <div class="gallery pc-b24 js-flickity mini-44442" style=" display: none"  data-flickity='{  "wrapAround": true, "autoPlay":8000,"groupCells": 1 }'  >
+</flickity>
+    <flickity ref="flickity" :options="flickityOptions2" class="gallery pc-b24 js-flickity mini-44442" style=" display: none"    >
         <v-col class="py-0 pc " cols="12" sm="6" xl="3" lg="3" md="3"  v-for="n in 12" :key="n" >
               <div class="gallery-cell  gallery-cellm " >
                 <div class="bn">
@@ -52,19 +52,36 @@
               </div>
         </v-col>
   
-</div>
+</flickity>
   </v-container>
 </template>
 
 <script>
 import Magale from '../OtherCards/Magale';
+import Flickity from 'vue-flickity';
 
 export default {
   components: { 
     
-    Magale 
+    Magale ,
+    Flickity
   
   },
+  data(){
+    return{
+        flickityOptions: {
+      wrapAround: true,
+       autoPlay:8000,
+       groupCells: 2
+      },
+        flickityOptions2: {
+      wrapAround: true,
+       autoPlay:8000,
+       groupCells: 1
+      },
+      
+    }
+  }
   
   };
 </script>

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Flickity from '../node_modules/flickity'
+import Flickity from 'vue-flickity';
 import VueResource from 'vue-resource'
 import Vuelidate from 'vuelidate'
 

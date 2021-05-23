@@ -1,8 +1,8 @@
 <template>
   <v-container class="pa-0 pb-5">
-    <div
+    <flickity ref="flickity" :options="flickityOptions"
       class="gallery p-c-bar js-flickity"
-      data-flickity='{  "wrapAround": true, "autoPlay":6000,"groupCells": 2 }'
+     
     >
       <v-col
         class="py-0 pc"
@@ -29,15 +29,21 @@
           </div>
         </div>
       </v-col>
-    </div>
+    </flickity>
   </v-container>
 </template>
 
 <script>
+import Flickity from 'vue-flickity';
 export default {
-  components: {},
+  components: {Flickity,},
   data() {
     return {
+         flickityOptions: {
+        wrapAround: true,
+       autoPlay:6000,
+       groupCells: 2
+      },
       items: [
         {
           img: require("../../assets/img/svg/Brand-1.png"),

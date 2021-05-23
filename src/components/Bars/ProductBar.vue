@@ -9,7 +9,7 @@
 </div>
 <v-divider></v-divider>
 
-    <div class="gallery pc-b js-flickity big444 " data-flickity='{  "wrapAround": true, "autoPlay":8000,"groupCells": 2 }'>
+    <flickity ref="flickity" :options="flickityOptions" class="gallery pc-b js-flickity big444 " >
         <v-col class="py-0 pc " cols="12" sm="6" lg="3" xl="3" v-for="n in 12" :key="n" >
               <div class="gallery-cell " >
                 <div class="bn">
@@ -30,8 +30,8 @@
               </div>
             </v-col>
   
-</div>
-    <div class="gallery pc-b js-flickity mini-4444" style=" display: none" data-flickity='{  "wrapAround": true, "autoPlay":8000,"groupCells": 1 }'>
+</flickity>
+    <flickity ref="flickity" :options="flickityOptions2" class="gallery pc-b js-flickity mini-4444" style=" display: none" >
         <v-col class="py-0 pc " cols="12" sm="6" lg="3" xl="3" v-for="n in 12" :key="n" >
               <div class="gallery-cell " >
                 <div class="bn">
@@ -52,17 +52,34 @@
               </div>
             </v-col>
   
-</div>
+</flickity>
   </v-container>
 </template>
 
 <script>
+import Flickity from 'vue-flickity';
 import ProductCard from '../ProductCards/ProductCard.vue';
 export default {
   components: { 
+      Flickity,
       ProductCard 
   
   },
+  data(){
+    return{
+        flickityOptions: {
+      wrapAround: true,
+       autoPlay:8000,
+       groupCells: 2
+      },
+        flickityOptions2: {
+      wrapAround: true,
+       autoPlay:8000,
+       groupCells: 1
+      },
+      
+    }
+  }
   
   };
 </script>
