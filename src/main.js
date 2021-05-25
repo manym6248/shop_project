@@ -2,14 +2,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Flickity from 'vue-flickity';
 import VueResource from 'vue-resource'
 import Vuelidate from 'vuelidate'
+import Flickity from "vue-flickity";
+import InnerImageZoom from "vue-inner-image-zoom";
 
 
 
 
 
+
+import 'vue-inner-image-zoom/lib/vue-inner-image-zoom.css';
 /////////////////////
 import vuetify from './plugins/vuetify';
 import 'es6-promise'
@@ -37,7 +40,9 @@ new Vue({
   vuetify,
   Flickity,
   Vuelidate,
-
+  InnerImageZoom,
+  
+  
   VueResource,
   
 

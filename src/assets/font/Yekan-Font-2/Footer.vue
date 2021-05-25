@@ -42,7 +42,7 @@
             <h4 class="ma-0 mb-3">تماس با ما</h4>
             <ul class="items">
               <li class="item mb-2">
-                <v-icon class="ml-2 " color="red">mdi-map-marker-outline</v-icon>
+                <v-icon class="ml-2" color="red">mdi-map-marker-outline</v-icon>
 
                 تهران , سهروردی شمالی
               </li>
@@ -63,38 +63,38 @@
           <div class="widget-contact-us">
             <h4 class="ma-0 mb-3">سریع پیدا کن</h4>
             <ul class="items">
-              <li class="item mb-2 ">
-                <v-icon class="ml-1 mt-0" color="red">mdi-chevron-left</v-icon>
+              <li class="item mb-2">
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >برند محصولات</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1 mt-0" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >سوالات فروش</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >طراحی ریسپانسیو</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >خدمات نصب</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >توسعه سایت</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com">فروشگاه</a>
               </li>
             </ul>
@@ -105,7 +105,7 @@
             <h4 class="ma-0 mb-3">اطلاعات</h4>
             <ul class="items">
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com">حساب من</a>
               </li>
               <li class="item mb-2">
@@ -115,25 +115,25 @@
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >محصولات پر امتیاز</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >شرایط و ضوابط</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >ویژگی ها</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com">سفارشات</a>
               </li>
             </ul>
@@ -144,7 +144,7 @@
             <h4 class="ma-0 mb-3">لینک های سریع</h4>
             <ul class="items">
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >دریافت اطلاعات</a
                 >
@@ -156,25 +156,25 @@
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >سفارشات من</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >خدمات نصب</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >اطلاعات محصول</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >درباره ما</a
                 >
@@ -198,7 +198,7 @@
                     v-for="(item2, i) in item.items"
                     :key="i"
                   >
-                    <v-icon class="ml-0" color="red">{{ item2.icon }}</v-icon>
+                    <v-icon class="ml-2" color="red">{{ item2.icon }}</v-icon>
                     {{ item2.text }}
                     <a class="link" :href="item2.herf">{{ item2.atext }}</a>
                   </li>
@@ -476,7 +476,7 @@ export default {
       align-items: start;
       .link {
         color:$color-dark;
-        font-size: 0.9em;
+        font-size:1.1em !important;
       }
     }
   }
@@ -509,6 +509,7 @@ export default {
         border-radius: 50px 0px 0px 50px;
         span {
           color: white;
+          font-size: 1.1em !important;
         }
         &:hover {
           background-color:$color-dark;
@@ -546,7 +547,7 @@ export default {
       }
       .item2 {
         span {
-          font-size: 0.9em;
+          font-size: 1.2em;
           color: #bdb9b9;
         }
       }
@@ -590,15 +591,15 @@ export default {
       height: 25px;
       color: #000;
       margin: 0px;
-      font-size: 1em;
+      letter-spacing: 1px;
+
+      font-size: 1rem;
       .link {
-        font-size: 1em;
+        font-size: 1rem;
         color: #000;
-        letter-spacing: 0;
-     
+        letter-spacing: 1px;
       
       }
-      
       &:hover {
         .link {
           color: #000;

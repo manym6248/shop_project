@@ -10,10 +10,10 @@
               class="text404 px-1 py-0"
               style="height: 100%"
               ><div class="search">
-                <span>
+                <C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue>
                   <h4>برای دریافت جدیدترین اخبار عضو خبرنامه ما شوید</h4>
-                </span>
-                <span class="mt-1"> به ازای هر خرید 20 درصد تخفیف بگیرید </span>
+                </C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue>
+                <C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue class="mt-1"> به ازای هر خرید 20 درصد تخفیف بگیرید </C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue>
               </div></v-col
             >
             <v-col
@@ -23,7 +23,7 @@
               style="height: 100%"
               ><div class="text">
                 <button class="btn">
-                  <span>اشتراک گذاری</span>
+                  <C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue>اشتراک گذاری</C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue>
                 </button>
                 <input
                   type="text"
@@ -42,7 +42,7 @@
             <h4 class="ma-0 mb-3">تماس با ما</h4>
             <ul class="items">
               <li class="item mb-2">
-                <v-icon class="ml-2 " color="red">mdi-map-marker-outline</v-icon>
+                <v-icon class="ml-2" color="red">mdi-map-marker-outline</v-icon>
 
                 تهران , سهروردی شمالی
               </li>
@@ -63,38 +63,38 @@
           <div class="widget-contact-us">
             <h4 class="ma-0 mb-3">سریع پیدا کن</h4>
             <ul class="items">
-              <li class="item mb-2 ">
-                <v-icon class="ml-1 mt-0" color="red">mdi-chevron-left</v-icon>
+              <li class="item mb-2">
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >برند محصولات</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1 mt-0" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >سوالات فروش</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >طراحی ریسپانسیو</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >خدمات نصب</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >توسعه سایت</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com">فروشگاه</a>
               </li>
             </ul>
@@ -105,7 +105,7 @@
             <h4 class="ma-0 mb-3">اطلاعات</h4>
             <ul class="items">
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com">حساب من</a>
               </li>
               <li class="item mb-2">
@@ -115,25 +115,25 @@
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >محصولات پر امتیاز</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >شرایط و ضوابط</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >ویژگی ها</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com">سفارشات</a>
               </li>
             </ul>
@@ -144,7 +144,7 @@
             <h4 class="ma-0 mb-3">لینک های سریع</h4>
             <ul class="items">
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >دریافت اطلاعات</a
                 >
@@ -156,25 +156,25 @@
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >سفارشات من</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >خدمات نصب</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >اطلاعات محصول</a
                 >
               </li>
               <li class="item mb-2">
-                <v-icon class="ml-1" color="red">mdi-chevron-left</v-icon>
+                <v-icon class="ml-2" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >درباره ما</a
                 >
@@ -198,7 +198,7 @@
                     v-for="(item2, i) in item.items"
                     :key="i"
                   >
-                    <v-icon class="ml-0" color="red">{{ item2.icon }}</v-icon>
+                    <v-icon class="ml-2" color="red">{{ item2.icon }}</v-icon>
                     {{ item2.text }}
                     <a class="link" :href="item2.herf">{{ item2.atext }}</a>
                   </li>
@@ -228,8 +228,8 @@
                   <v-icon dark> mdi-headphones </v-icon>
                 </v-btn>
                 <ul class="items">
-                  <li class="item"><span>پشتیبانی رایگان</span></li>
-                  <li class="item2"><span>24 ساعته</span></li>
+                  <li class="item"><C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue>پشتیبانی رایگان</C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue></li>
+                  <li class="item2"><C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue>24 ساعته</C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue></li>
                 </ul>
               </v-row>
             </div>
@@ -250,8 +250,8 @@
                   <v-icon dark> mdi-credit-card-multiple-outline </v-icon>
                 </v-btn>
                 <ul class="items">
-                  <li class="item"><span> روش های پرداخت</span></li>
-                  <li class="item2"><span>سیستم امن </span></li>
+                  <li class="item"><C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue> روش های پرداخت</C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue></li>
+                  <li class="item2"><C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue>سیستم امن </C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue></li>
                 </ul>
               </v-row>
             </div>
@@ -273,8 +273,8 @@
                   <v-icon dark> mdi-cash-100 </v-icon>
                 </v-btn>
                 <ul class="items">
-                  <li class="item"><span>ضمانت بازگشت وجه</span></li>
-                  <li class="item2"><span>30 روزه </span></li>
+                  <li class="item"><C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue>ضمانت بازگشت وجه</C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue></li>
+                  <li class="item2"><C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue>30 روزه </C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue></li>
                 </ul>
               </v-row>
             </div>
@@ -295,8 +295,8 @@
                   <v-icon dark> mdi-rocket-launch </v-icon>
                 </v-btn>
                 <ul class="items">
-                  <li class="item"><span>پشتیبانی آنلاین</span></li>
-                  <li class="item2"><span>از 25 هزار تومن</span></li>
+                  <li class="item"><C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue>پشتیبانی آنلاین</C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue></li>
+                  <li class="item2"><C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue>از 25 هزار تومن</C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue></li>
                 </ul>
               </v-row>
             </div></a
@@ -311,7 +311,7 @@
     <v-container fluid style="background-color: #252424">
       <div class="end">
         <v-row class="end-copy">
-          <span> .copyright © 2021 mherdad.ir All rights reserved </span>
+          <C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue> .copyright © 2021 mherdad.ir All rights reserved </C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue>
         </v-row>
       </div>
     </v-container>
@@ -507,8 +507,9 @@ export default {
         background-color: rgb(201 232 221);
 
         border-radius: 50px 0px 0px 50px;
-        span {
+        C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue {
           color: white;
+          font-size: 1.2em;
         }
         &:hover {
           background-color:$color-dark;
@@ -545,7 +546,7 @@ export default {
         color: $color-dark;
       }
       .item2 {
-        span {
+        C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue {
           font-size: 0.9em;
           color: #bdb9b9;
         }
@@ -590,15 +591,15 @@ export default {
       height: 25px;
       color: #000;
       margin: 0px;
-      font-size: 1em;
+      letter-spacing: 1px;
+
+      font-size: 1rem;
       .link {
-        font-size: 1em;
+        font-size: 1rem;
         color: #000;
-        letter-spacing: 0;
-     
-      
+        letter-spacing: 1px;
+       
       }
-      
       &:hover {
         .link {
           color: #000;
@@ -615,10 +616,10 @@ export default {
   .end-copy {
     justify-content: center;
   }
-  span {
+  C:\Users\Mehrdad\Desktop\ar\ar\src\views\admin\base\Card.vue {
   
     color: white;
-    font-size: 0.8em;
+    font-size: 1em;
     letter-spacing: 2px;
   }
 }
