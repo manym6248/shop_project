@@ -1,48 +1,21 @@
 <template>
   <v-container id="user-profile" fluid tag="section" class="my-5">
-    
-    <v-row class="ma-0">
+    <v-row class="ma-12 ma-xl-0 ma-lg-0 ma-md-0">
       <v-col cols="12" sm="12" lg="4" xl="4" md="4" class="py-0 px-0">
         <div class="blue1">
-          <flickity
-            class="carousel carousel-main mb-5"
-            :options="flickityOptionsH"
+          <div
+            id="my-strictly-unique-vue-upload-multiple-image"
+            style="display: flex; justify-content: center; height: 100%"
           >
-            <div class="carousel-cell">
-              <inner-image-zoom class="img-f" :src="bigURL" :zoomSrc="bigURL" />
-            </div>
-          </flickity>
-
-          <flickity
-            ref="flickity"
-            :options="flickityOptions"
-            class="carousel carousel-nav"
-          >
-            <div class="carousel-cell" >
-              <figure class="img-f1" >
-                 <v-btn height="100%" width="100%" class="ma-0 "  color="blue" @click="onPickFile">
-                    <v-icon>mdi-camera-plus-outline</v-icon> </v-btn
-                  >
-
-                  <input
-                    type="file"
-                    style="display: none"
-                    ref="fileInput"
-                    accept="image/*"
-                    @change="onFilePicked"
-                  />
-             
-              </figure>
-            </div>
-            <div class="carousel-cell" v-for="(item, i) in imgs" :key="i">
-              <figure class="img-f" @click="bigUrl(item.url)">
-               
-                <v-img width="100%" height="100%" :src="item.url">
-                    <v-btn right x-small class="red mr-0 rounded-0" @click="remove(i)"><v-icon>mdi-window-close</v-icon></v-btn>
-                </v-img>
-              </figure>
-            </div>
-          </flickity>
+            <vue-upload-multiple-image
+              @upload-success="uploadImageSuccess"
+              @before-remove="beforeRemove"
+              @edit-image="editImage"
+              :data-images="images"
+              idUpload="myIdUpload"
+              editUpload="myIdEdit"
+            ></vue-upload-multiple-image>
+          </div>
         </div>
       </v-col>
       <v-col
@@ -65,7 +38,7 @@
 
             <v-card-text style="height: 130px" class="pa-10">
               <div class="my-0 subtitle-1">
-                <h1> {{ product.name }}</h1>
+                <h1>{{ product.name }}</h1>
               </div>
               <v-row align="center" class="mx-0 my-2 mt-10">
                 <v-rating
@@ -81,15 +54,13 @@
                   ({{ rating }})
                 </span>
               </v-row>
-              <div class="py-5 my-0 mt-1 pric14">{{ product.price  | currency }}</div>
-              <div class="pargaph">
-                <p>{{ product.description }}
-                </p>
+              <div class="py-5 my-0 mt-1 pric14">
+                {{ product.price | currency }}
               </div>
-              
+              <div class="pargaph">
+                <p>{{ product.description }}</p>
+              </div>
 
-          
-           
               <v-row class="ma-0" align="center">
                 <h3>دسته :</h3>
                 <v-row class="ma-0 mr-4">
@@ -122,7 +93,7 @@
                     v-model="product.name"
                   ></v-text-field>
                 </v-col>
-                <v-col cols="6"  class="mt-5" >
+                <v-col cols="6" class="mt-5">
                   <v-text-field
                     label=" قیمت  (عدد بدون واحد وارد شود واحد تومن می باشد)"
                     v-model="product.price"
@@ -137,8 +108,6 @@
                   ></v-text-field>
                 </v-col>
 
-                 
-
                 <v-col cols="6">
                   <v-text-field
                     label="  برند محصول"
@@ -146,29 +115,15 @@
                     v-model="product.brand"
                   ></v-text-field>
                 </v-col>
-               
+
                 <v-col cols="12">
                   <v-textarea
-                  
-                  
                     class="purple-input pa-10"
                     label="  توصیف محصول"
                     v-model="product.description"
                   />
                 </v-col>
-                <v-col cols="12">
-                  <v-btn large class="ma-7" color="blue" @click="onPickFile">
-                    افزودن عکس</v-btn
-                  >
 
-                  <input
-                    type="file"
-                    style="display: none"
-                    ref="fileInput"
-                    accept="image/*"
-                    @change="onFilePicked"
-                  />
-                </v-col>
                 <v-col cols="12">
                   <v-text-field label=" کلمات کلیدی" required></v-text-field>
                 </v-col>
@@ -181,86 +136,25 @@
         </base-material-card>
       </v-col>
     </v-row>
-    <v-row justify="center">
-      <v-col cols="12" md="12">
-        <base-material-card class="v-card-profile">
-          <template v-slot:heading>
-            <div class="display-2 font-weight-light">پیش نمایش</div>
-
-            <div class="subtitle-1 font-weight-light"></div>
-          </template>
-          <div class="image">
-            <v-img
-              :src="product.imageUrl"
-              width="200px"
-              height="200px"
-              max-height="200px"
-            ></v-img>
-          </div>
-          <v-card-text class="text-center">
-            <p class="display-2 font-weight-light mb-3 black--text">
-              {{ product.name }}
-            </p>
-            <p class="display-2 font-weight-light mb-3 black--text">
-              {{ product.price }}
-            </p>
-            <p class="display-2 font-weight-light mb-3 black--text">
-              {{ product.brand }}
-            </p>
-            <p class="display-2 font-weight-light mb-3 black--text">
-              {{ product.categgory }}
-            </p>
-            <p class="font-weight-light grey--text">
-              {{ product.description }}
-            </p>
-          </v-card-text>
-        </base-material-card>
-      </v-col>
-    </v-row>
   </v-container>
 </template>
 
 
 <script>
-import Flickity from "vue-flickity";
-import InnerImageZoom from "vue-inner-image-zoom";
-
+import VueUploadMultipleImage from "vue-upload-multiple-image";
 //import axios from 'axios'
 export default {
   components: {
-        InnerImageZoom,
-        Flickity,
-      },
+    VueUploadMultipleImage,
+  },
   data() {
     return {
-      
+      images: [],
 
       rating: 4,
-      flickityOptions: {
-        asNavFor: ".carousel-main",
-        contain: true,
-        pageDots: false,
-        groupCells: 3,
-        prevNextButtons: false,
-      },
-      flickityOptionsH: {
-        pageDots: false,
-        prevNextButtons: false,
-      },
+
       bigURL: "",
-      imgs: [
-        {
-          url: require("../../../../../assets/بهداشتی/شامپو/sustainable-bottle-2-1024x768.jpg"),
-        },
-        {
-          url: require("../../../../../assets/بهداشتی/شامپو/DSC_0261-3-682x1024.jpg"),
-        },
-        {
-          url: require("../../../../../assets/بهداشتی/صابون/soap-and-beauty-elements-keaghd-dawara-3415_L.jpg"),
-        },
-        { url: require("../../../../../assets/بهداشتی/صابون/wp2007995.jpg") },
-        { url: require("../../../../../assets/بهداشتی/صابون/wp2008050.jpg") },
-      ],
+     
       product: {
         imageUrl: null,
         image: null,
@@ -273,37 +167,24 @@ export default {
     };
   },
   methods: {
-
-    onPickFile() {
-      this.$refs.fileInput.click();
+    uploadImageSuccess(formData, index, fileList) {
+      console.log("data", formData, index, fileList);
+      // Upload image api
+      // axios.post('http://your-url-upload', formData).then(response => {
+      //   console.log(response)
+      // })
     },
-    onFilePicked(event) {
-      const files = event.target.files;
-      let filename = files[0].name;
-      if (filename.lastIndexOf(".") <= 0) {
-        return alert("hidsdas");
-      }
-      const fileReader = new FileReader();
-      fileReader.addEventListener("load", () => {
-        this.product.imageUrl = fileReader.result;
-      });
-      fileReader.readAsDataURL(files[0]);
-      this.product.image = files[0];
-    },
-    //////
-    remove(id){
-      for (let i = 0; i < this.imgs.length; i++) {
-    //  this.imgs.remove(this.imgs[id])
-    if(id === i){
-     
-       let remove = this.imgs.splice(i, 1);
-       this.image = remove;
-    }
-       
+    beforeRemove(index, done, fileList) {
+      console.log("index", index, fileList);
+      var r = confirm("remove image");
+      if (r == true) {
+        done();
       }
     },
+    editImage(formData, index, fileList) {
+      console.log("edit data", formData, index, fileList);
+    },
 
-    ////////////
     add() {
       var pr = {
         imageUrl: this.product.imageUrl,
@@ -316,18 +197,9 @@ export default {
 
       this.$http.post("/.json", pr).then(() => alert("با موفقیت اضافه شد"));
     },
-
-     bigUrl(url) {
-      this.bigURL = url;
-    },
   },
 
-  created() {
-    for (let i = 0; i < this.imgs.length; i++) {
-      this.bigURL = this.imgs[0].url;
-    }
-  },
-   filters: {
+  filters: {
     currency(value) {
       return (
         new Intl.NumberFormat("fa", { maximumSignificantDigits: 3 }).format(
@@ -339,9 +211,6 @@ export default {
       //new Intl.NumberFormat('fa', { style: 'currency', currency: 'IRR' }).format()
     },
   },
-
- 
-  
 };
 </script>
 <style lang="scss" >
@@ -393,7 +262,7 @@ export default {
       width: 100% !important;
     }
   }
-  .img-f1{
+  .img-f1 {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -425,11 +294,9 @@ export default {
   }
 }
 
-
-
 //////
 .carousel {
-  background: #FAFAFA;
+  background: #fafafa;
   margin-bottom: 40px;
 }
 
@@ -437,12 +304,9 @@ export default {
   width: 100%;
   height: 200px;
   margin-right: 10px;
-  background: #8C8;
+  background: #8c8;
   border-radius: 5px;
   counter-increment: carousel-cell;
 }
-
-
-
 </style>
 

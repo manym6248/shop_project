@@ -54,12 +54,12 @@
             <td>{{ product.id }}</td>
             <td class="text-center">{{ product.name }}</td>
             <td class="text-center">
-              <v-btn class="my-4" min-width="0" text large>
+              <v-btn class="my-4 edit-h" icon min-width="0" text large>
                 <v-icon large> mdi-clipboard-edit-outline</v-icon>
               </v-btn>
             </td>
             <td class="text-center">
-              <v-btn class="my-4" min-width="0" text large>
+              <v-btn class="my-4 removebtn-h" icon min-width="0" text large>
                 <v-icon large> mdi-delete-empty</v-icon>
               </v-btn>
             </td>
@@ -74,7 +74,7 @@
       <v-col cols="12">
         <base-material-card>
           <template v-slot:heading>
-            <div class="display-2 font-weight-light">ایجاد دسته بندی</div>
+            <div class="display-2 font-weight-light"> ویرایش دسته بندی</div>
 
             <div class="subtitle-1 font-weight-light"></div>
           </template>
@@ -92,7 +92,7 @@
 
                 <v-col cols="12" md="4" class="my-7">
                   <v-btn large color="oreng" @click="add()"
-                    >اعمال دویرایش</v-btn
+                    >ثبت</v-btn
                   >
                 </v-col>
               </v-row>
@@ -138,5 +138,28 @@ export default {
 };
 </script>
 <style lang="scss" >
+@import '../../../../../assets/scss/utility/utility.scss';
+.removebtn-h{
+  &:before{
+     background: none !important;
+  }
+  &:hover{
+    .v-icon{
+      color: rgb(187, 9, 9);
+    }
+  }
+ 
+}
+.edit-h{
+  &:before{
+     background: none !important;
+  }
+  &:hover{
+    .v-icon{
+      color: $color-dark;
+    }
+  }
+ 
+}
 </style>
 

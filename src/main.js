@@ -6,6 +6,7 @@ import VueResource from 'vue-resource'
 import Vuelidate from 'vuelidate'
 import Flickity from "vue-flickity";
 import InnerImageZoom from "vue-inner-image-zoom";
+import VueLazyload from 'vue-lazyload'
 
 
 
@@ -41,6 +42,7 @@ new Vue({
   Flickity,
   Vuelidate,
   InnerImageZoom,
+  VueLazyload,
   
   
   VueResource,

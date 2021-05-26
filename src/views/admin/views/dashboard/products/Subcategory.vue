@@ -80,12 +80,12 @@
             <td>{{ product.id }}</td>
             <td class="text-center">{{ product.name }}</td>
             <td class="text-center">
-              <v-btn   icon  class="my-4" min-width="0" text large>
+              <v-btn   icon  class="edit-h my-4" min-width="0" text large>
                 <v-icon large> mdi-clipboard-edit-outline</v-icon>
               </v-btn>
             </td>
             <td class="text-center">
-              <v-btn   icon  class="my-4" min-width="0" text large>
+              <v-btn   icon elevation="0" class="removebtn-h my-4"  min-width="0" text large>
                 <v-icon  large> mdi-delete-empty</v-icon>
               </v-btn>
             </td>
@@ -100,7 +100,7 @@
       <v-col cols="12">
         <base-material-card>
           <template v-slot:heading>
-            <div class="display-2 font-weight-light">ایجاد زیر دسته</div>
+            <div class="display-2 font-weight-light">ویرایش زیر دسته </div>
 
             <div class="subtitle-1 font-weight-light"></div>
           </template>
@@ -110,7 +110,7 @@
               <v-row>
                 <v-col cols="12" md="8" class="my-5">
                   <v-text-field
-                    label=" ویرایش ریر دسته "
+                    label=" ویرایش زیر دسته "
                     required
                     v-model="product.name"
                   ></v-text-field>
@@ -118,7 +118,7 @@
 
                 <v-col cols="12" md="4" class="my-7">
                   <v-btn large color="oreng" @click="add()"
-                    >اعمال دویرایش</v-btn
+                    >ثبت </v-btn
                   >
                 </v-col>
               </v-row>
@@ -167,5 +167,28 @@ export default {
 };
 </script>
 <style lang="scss" >
+@import '../../../../../assets/scss/utility/utility.scss';
+.removebtn-h{
+  &:before{
+     background: none !important;
+  }
+  &:hover{
+    .v-icon{
+      color: rgb(187, 9, 9);
+    }
+  }
+ 
+}
+.edit-h{
+  &:before{
+     background: none !important;
+  }
+  &:hover{
+    .v-icon{
+      color: $color-dark;
+    }
+  }
+ 
+}
 </style>
 

@@ -70,12 +70,12 @@
               ></v-img>
             </td>
             <td class="text-center">
-              <v-btn class="ml-2" min-width="0" text large>
+              <v-btn class="ml-2 edit-h" min-width="0" text large icon>
                 <v-icon large> mdi-clipboard-edit-outline</v-icon>
               </v-btn>
             </td>
             <td class="text-center">
-              <v-btn class="ml-2" min-width="0" text large>
+              <v-btn class="ml-2 removebtn-h" min-width="0" text large icon>
                 <v-icon large> mdi-delete-empty</v-icon>
               </v-btn>
             </td>
@@ -87,7 +87,83 @@
     <div class="py-3" />
 
     <v-row justify="center">
-      <v-col cols="12" md="8">
+      <v-col cols="12">
+        <v-row class="ma-12 ma-xl-0 ma-lg-0 ma-md-0">
+          <v-col cols="12" sm="12" lg="4" xl="4" md="4" class="py-0 px-0">
+            <div class="blue1">
+              <div
+                id="my-strictly-unique-vue-upload-multiple-image"
+                style="display: flex; justify-content: center; height: 100%"
+              >
+                <vue-upload-multiple-image
+                  @upload-success="uploadImageSuccess"
+                  @before-remove="beforeRemove"
+                  @edit-image="editImage"
+                  :data-images="images"
+                  idUpload="myIdUpload"
+                  editUpload="myIdEdit"
+                ></vue-upload-multiple-image>
+              </div>
+            </div>
+          </v-col>
+          <v-col
+            cols="12"
+            sm="12"
+            lg="8"
+            xl="8"
+            md="8"
+            class="py-0 px-0 pr-lg-5 pr-xl-5 pr-md-5"
+          >
+            <div class="red1">
+              <v-card class="mx-auto my-0 mb-1" width="100%" height="100%">
+                <template slot="progress">
+                  <v-progress-linear
+                    color="deep-purple"
+                    height="10"
+                    indeterminate
+                  ></v-progress-linear>
+                </template>
+
+                <v-card-text style="height: 130px" class="pa-10">
+                  <div class="my-0 subtitle-1">
+                    <h1>{{ product.name }}</h1>
+                  </div>
+                  <v-row align="center" class="mx-0 my-2 mt-10">
+                    <v-rating
+                      v-model="rating"
+                      color="yellow darken-3"
+                      background-color="grey darken-1"
+                      empty-icon="$ratingFull"
+                      dense
+                      value="2.5"
+                      size="35"
+                    ></v-rating>
+                    <span class="grey--text text--lighten-2 caption mr-2">
+                      ({{ rating }})
+                    </span>
+                  </v-row>
+                  <div class="py-5 my-0 mt-1 pric14">
+                    {{ product.price | currency }}
+                  </div>
+                  <div class="pargaph">
+                    <p>{{ product.description }}</p>
+                  </div>
+
+                  <v-row class="ma-0" align="center">
+                    <h3>دسته :</h3>
+                    <v-row class="ma-0 mr-4">
+                      <v-chip class="text-none chip2" :ripple="false">
+                        بهداشتی
+                      </v-chip>
+                    </v-row>
+                  </v-row>
+                </v-card-text>
+              </v-card>
+            </div>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col cols="12" md="12">
         <base-material-card>
           <template v-slot:heading>
             <div class="display-2 font-weight-light">ویرایش محصول مورد نظر</div>
@@ -98,34 +174,35 @@
           <v-form>
             <v-container class="py-0">
               <v-row>
-                <v-col cols="12" class="mt-5">
+                <v-col cols="6" class="mt-5">
                   <v-text-field
                     label="نام محصول"
                     required
                     v-model="product.name"
                   ></v-text-field>
                 </v-col>
-                <v-col cols="12">
-                  <v-text-field
-                    label=" دسته بندی محصول"
-                    required
-                    v-model="product.categgory"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12">
-                  <v-text-field
-                    label="  برند محصول"
-                    required
-                    v-model="product.brand"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12">
+                <v-col cols="6" class="mt-5">
                   <v-text-field
                     label=" قیمت  (عدد بدون واحد وارد شود واحد تومن می باشد)"
                     v-model="product.price"
                     required
                   ></v-text-field>
                 </v-col>
+                <v-col cols="6">
+                  <v-text-field
+                    label=" دسته بندی محصول"
+                    required
+                    v-model="product.categgory"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="6">
+                  <v-text-field
+                    label="  برند محصول"
+                    required
+                    v-model="product.brand"
+                  ></v-text-field>
+                </v-col>
+
                 <v-col cols="12">
                   <v-textarea
                     class="purple-input pa-10"
@@ -133,19 +210,7 @@
                     v-model="product.description"
                   />
                 </v-col>
-                <v-col cols="12">
-                  <v-btn large class="ma-7" color="blue" @click="onPickFile">
-                    افزودن عکس</v-btn
-                  >
 
-                  <input
-                    type="file"
-                    style="display: none"
-                    ref="fileInput"
-                    accept="image/*"
-                    @change="onFilePicked"
-                  />
-                </v-col>
                 <v-col cols="12">
                   <v-text-field label=" کلمات کلیدی" required></v-text-field>
                 </v-col>
@@ -157,55 +222,35 @@
           </v-form>
         </base-material-card>
       </v-col>
-
-      <v-col cols="12" md="4">
-        <base-material-card class="v-card-profile">
-          <template v-slot:heading>
-            <div class="display-2 font-weight-light">پیش نمایش</div>
-
-            <div class="subtitle-1 font-weight-light"></div>
-          </template>
-          <div class="image">
-            <v-img
-              :src="product.imageUrl"
-              width="200px"
-              height="200px"
-              max-height="200px"
-            ></v-img>
-          </div>
-          <v-card-text class="text-center">
-            <p class="display-2 font-weight-light mb-3 black--text">
-              {{ product.name }}
-            </p>
-            <p class="display-2 font-weight-light mb-3 black--text">
-              {{ product.price }}
-            </p>
-            <p class="display-2 font-weight-light mb-3 black--text">
-              {{ product.brand }}
-            </p>
-            <p class="display-2 font-weight-light mb-3 black--text">
-              {{ product.categgory }}
-            </p>
-            <p class="font-weight-light grey--text">
-              {{ product.description }}
-            </p>
-          </v-card-text>
-        </base-material-card>
-      </v-col>
     </v-row>
   </v-container>
 </template>
 
 
 <script>
+import VueUploadMultipleImage from "vue-upload-multiple-image";
 export default {
-  components: {},
+  components: { VueUploadMultipleImage },
   data() {
     return {
+      images: [],
+      rating: 4,
       animals: [],
-
       categgory: ["Dog", "Cat", "Rabbit", "Turtle", "Snake"],
-      apidata: [],
+      apidata: [
+        {
+          id: 1,
+          name: "شامپو",
+          price: "20000",
+          Url: require("../../../../../assets/بهداشتی/شامپو/DSC_0261-3-682x1024.jpg"),
+        },
+        {
+          id: 2,
+          name: "صابون",
+          price: "20000",
+          Url: require("../../../../../assets/بهداشتی/صابون/wp2007995.jpg"),
+        },
+      ],
       product: {
         id: 1,
         imageUrl: null,
@@ -252,41 +297,69 @@ export default {
     };
   },
   methods: {
-    onPickFile() {
-      this.$refs.fileInput.click();
-    },
-    onFilePicked(event) {
-      const files = event.target.files;
-      let filename = files[0].name;
-      if (filename.lastIndexOf(".") <= 0) {
-        return alert("hidsdas");
+     uploadImageSuccess(formData, index, fileList) {
+      console.log("data", formData, index, fileList);},
+    beforeRemove(index, done, fileList) {
+      console.log("index", index, fileList);
+      var r = confirm("remove image");
+      if (r == true) {
+        done();
       }
-      const fileReader = new FileReader();
-      fileReader.addEventListener("load", () => {
-        this.product.imageUrl = fileReader.result;
-      });
-      fileReader.readAsDataURL(files[0]);
-      this.product.image = files[0];
+    },
+    editImage(formData, index, fileList) {
+      console.log("edit data", formData, index, fileList);
     },
   },
   created() {
-    this.$http.get("/photos").then((res) => {
-      var data = res.data;
-      var x = JSON.stringify(data);
-      this.apidata = x;
-     
-    });
+    // this.$http.get("/photos").then((res) => {
+    //   var data = res.data;
+    //   var x = JSON.stringify(data);
+    //   this.apidata = x;
+    // });
   },
 
-  comments: {},
+ filters: {
+    currency(value) {
+      return (
+        new Intl.NumberFormat("fa", { maximumSignificantDigits: 3 }).format(
+          value
+        ) +
+        " " +
+        "تومن"
+      );
+      //new Intl.NumberFormat('fa', { style: 'currency', currency: 'IRR' }).format()
+    },
+  },
 };
 </script>
 <style lang="scss" >
+@import "../../../../../assets/scss/utility/utility.scss";
 .image {
   margin: 20px;
   height: 200px;
   width: 200px;
   border: 1px solid grey;
+}
+
+.removebtn-h {
+  &:before {
+    background: none !important;
+  }
+  &:hover {
+    .v-icon {
+      color: rgb(187, 9, 9);
+    }
+  }
+}
+.edit-h {
+  &:before {
+    background: none !important;
+  }
+  &:hover {
+    .v-icon {
+      color: $color-dark;
+    }
+  }
 }
 </style>
 
