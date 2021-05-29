@@ -28,7 +28,7 @@
                 cols="12"
                 md="12"
                 class="hrd"
-                :class="{ abslut: gaitem }"
+                
                 style="height: 100%"
                 v-if="count"
                 ><div class="hon">
@@ -82,7 +82,7 @@
                 :key="item.id"
                 :id="item.id"
                 :to="item.to"
-               @click.native="changetoggle(item.id)"
+               @click.native="changetoggle()"
                 tag="li"
                 class="item"
                 active-class="active"
@@ -123,6 +123,7 @@ export default {
           text: "فروشگاه",
           classicon: false,
           icon: "",
+          id:2
         },
         {
           to: "/blog",
@@ -130,6 +131,7 @@ export default {
           text: "  وبلاگ",
           classicon: false,
           icon: "",
+          id:3
         },
         {
           to: "/madia",
@@ -137,20 +139,23 @@ export default {
           text: "رسانه",
           classicon: false,
           icon: "",
-        },
-        {
-          to: "/Product",
-          class1: "",
-          text: "ویژگی ها",
-          classicon: false,
-          icon: "",
+          id:4
         },
         {
           to: "/",
           class1: "",
+          text: "ویژگی ها",
+          classicon: false,
+          icon: "",
+          id:6
+        },
+        {
+          to: "/user",
+          class1: "",
           text: "در باره ما ",
           classicon: false,
           icon: "",
+          id:7
         },
       ],
       items2: [
@@ -217,8 +222,8 @@ export default {
     };
   },
   created() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
+    // window.addEventListener("resize", this.handleResize);
+    // this.handleResize();
 
  
       
@@ -234,23 +239,14 @@ export default {
     "toggleN"
     ]),
     
-    handleResize() {
-      this.w = window.innerWidth;
-      if (this.w > 960) {
-        this.gaitem = false;
-      } else {
-        this.gaitem = true;
-      }
-    },
+   
 
-    changetoggle(id){
+    changetoggle(){
     
-      if(id === 1 && this.$router.push('/')){
-        this.displayN = true;
-      }
-      else{
+   
          this.displayN = false;
-      }
+      
+     
       
     }
   },

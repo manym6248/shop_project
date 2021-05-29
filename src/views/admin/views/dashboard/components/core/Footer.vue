@@ -7,21 +7,7 @@
         align="center"
         no-gutters
       >
-        <v-col
-          v-for="(link, i) in links"
-          :key="i"
-          class="text-center mb-sm-0 mb-5"
-          cols="auto"
-        >
-          <a
-            :href="link.href"
-            class="mr-0 grey--text text--darken-3"
-            rel="noopener"
-            target="_blank"
-            v-text="link.text"
-          />
-        </v-col>
-
+      
         <v-spacer class="hidden-sm-and-down" />
 
         <v-col
@@ -33,7 +19,7 @@
             <v-icon size="18">
               mdi-heart
             </v-icon>
-            by <a href="https://www.creative-tim.com">Creative Tim</a> for a better web.
+          
           </div>
         </v-col>
       </v-row>

@@ -3,7 +3,50 @@
     <div class="carsul-1">
       <v-container class="pa-0" style="height: 100%">
         <v-row class="ma-0 pa-0" style="height: 100%">
-          <v-col cols="12" md="3" class="px-1 pl-4 py-0 delet"></v-col>
+          <v-col cols="12" md="3" class="px-1 pl-4 py-0 delet">
+            
+              <v-col
+                cols="12"
+                md="12"
+                class="hrd1"
+               
+                style="height: 100%"
+                
+                ><div class="hon1">
+                  <v-card
+                    height="400"
+                    width="100%"
+                    class="mx-0 mt-0 rounded"
+                    elevation="2"
+                  >
+                    <v-navigation-drawer permanent width="100%">
+                      <v-list dense nav class="pa-0 rounded-0">
+                        <v-list-item
+                          v-for="item in items2"
+                          :key="item.text"
+                          link
+                          class="pa-0 px-3 ma-0 rounded-0"
+                        >
+                          <router-link
+                            :id="item.id"
+                            :to="item.to"
+                            tag="li"
+                            class="item"
+                            active-class="active"
+                            ><a class="link"
+                              ><span></span>
+                              <v-icon small class="ml-2"
+                                >mdi-{{ item.icon }}</v-icon
+                              >{{ item.text }}</a
+                            >
+                          </router-link>
+                        </v-list-item>
+                      </v-list>
+                    </v-navigation-drawer>
+                  </v-card>
+                </div></v-col
+              >
+          </v-col>
           <v-col
             cols="12"
             md="9"
@@ -63,6 +106,64 @@ export default {
 
   data() {
     return {
+       items2: [
+        {
+          to: "/",
+          class1: "",
+          text: "دکور خانه  ",
+          classicon: true,
+          icon: "arrow-left",
+        },
+        {
+          to: "/",
+          class1: "",
+          text: "  ساعت",
+          classicon: false,
+          icon: "arrow-left",
+        },
+        {
+          to: "/",
+          class1: "",
+          text: "سکه و پول",
+          classicon: false,
+          icon: "arrow-left",
+        },
+        {
+          to: "/",
+          class1: "",
+          text: " سوزن",
+          classicon: false,
+          icon: "arrow-left",
+        },
+        {
+          to: "/",
+          class1: "",
+          text: " سوزن ته گرد",
+          classicon: false,
+          icon: "arrow-left",
+        },
+        {
+          to: "/",
+          class1: "",
+          text: " غذا و تخمیر",
+          classicon: false,
+          icon: "arrow-left",
+        },
+        {
+          to: "/",
+          class1: "",
+          text: " قیچی",
+          classicon: false,
+          icon: "arrow-left",
+        },
+        {
+          to: "/",
+          class1: "",
+          text: " دسته ببشتر",
+          classicon: false,
+          icon: "arrow-left",
+        },
+      ],
       toggle: false,
 
       items: [
@@ -89,6 +190,40 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "../assets/scss/utility/utility.scss";
+
+.hrd1 {
+  display: block;
+  position: relative;
+}
+.hon1 {
+  position: absolute;
+  z-index: 600;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  right: 0;
+
+  .v-card {
+    .v-navigation-drawer {
+      background-color: $color-menu;
+      list-style: none;
+      .v-list-item {
+        border-bottom: 1px solid $color-menu;
+        font-size: 1em;
+        .item {
+          .link {
+            color: $color-dark;
+          }
+        }
+      }
+    }
+  }
+  .v-list-item {
+    &:before {
+      border-radius: 0px !important;
+    }
+  }
+}
 .carsul-1 {
   padding-top: 30px;
   height: 430px;

@@ -5,6 +5,7 @@ import About from '../views/About.vue'
 import Madia from '../views/Madia.vue'
 import Blog from '../views/Blog.vue'
 import ProductPage from '../views/ProductPage.vue'
+import User from '../views/usersite/User.vue'
 import Main from '../Main.vue'
 import NotFoundPage from '../components/NotFoundPage.vue'
 import Product from '../components/Product.vue'
@@ -21,6 +22,8 @@ import AddProduct from '../views/admin/views/dashboard/products/AddProduct.vue'
 import EditProduct from '../views/admin/views/dashboard/products/EditProduct.vue'
 import Categorized from '../views/admin/views/dashboard/products/Categorized.vue'
 import Subcategory from '../views/admin/views/dashboard/products/Subcategory.vue'
+import Edituser from '../views/admin/views/dashboard/usersite/Edituser.vue'
+import Newuser from '../views/admin/views/dashboard/usersite/Newuser.vue'
 
 import Notifications from '../views/admin/views/dashboard/component/Notifications.vue'
 import Icons from '../views/admin/views/dashboard/component/Icons.vue'
@@ -84,9 +87,15 @@ const routes = [
           
       },
       {
-        path: 'product',
+        path: 'product/:id',
         name: 'Product',
         component:Product,
+          
+      },
+      {
+        path: 'User',
+        name: 'user',
+        component:User,
           
       },
     ]
@@ -145,6 +154,16 @@ const routes = [
           name: 'Subcategory',
           path: '/products/subcategory',
           component: Subcategory,
+        },
+        {
+          name: 'Newuser',
+          path: '/usersite/newuser',
+          component: Newuser,
+        },
+        {
+          name: 'Edituser',
+          path: '/usersite/edituser',
+          component: Edituser,
         },
         {
           name: 'Notifications',

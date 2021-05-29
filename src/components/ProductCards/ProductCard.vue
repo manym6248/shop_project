@@ -1,5 +1,5 @@
 <template>
-  <a href="#">
+  <router-link to="/product/item.id">
     <v-card
       :loading="loading"
       class="mx-auto my-0 mb-1 product-card-m"
@@ -63,7 +63,7 @@
         </div>
       </v-card-text>
     </v-card>
-  </a>
+  </router-link>
 </template>
 
 <script>

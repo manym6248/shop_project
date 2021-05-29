@@ -110,6 +110,7 @@ export default {
     ProductBar,
     productPageCard,
   },
+ 
   data() {
     return {
       desserts: [

@@ -121,6 +121,26 @@
           to: '/pages/user',
         },
         {
+          icon: 'mdi-account',
+          title: 'کاربران',
+          to: '/products/addProduct',
+         group:'/usersite' ,
+          children:[
+             {
+          icon: 'mdi-plus-box',
+          title: 'ایجاد کاربر جدید',
+          to: 'newuser',
+         
+        },
+         {
+          icon: 'mdi-clipboard-edit-outline',
+          title: 'ویرایش و حذف کاربران',
+          to: 'edituser',
+        },
+          ]
+        },
+       
+        {
           icon: 'mdi-cart-outline',
           title: ' محصولات',
           to: '/products/addProduct',
