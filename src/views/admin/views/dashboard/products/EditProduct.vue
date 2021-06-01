@@ -242,13 +242,13 @@ export default {
           id: 1,
           name: "شامپو",
           price: "20000",
-          Url: require("../../../../../assets/بهداشتی/شامپو/DSC_0261-3-682x1024.jpg"),
+          Url: require("../../../../../assets/img/dev/بستنی/240306.jpg"),
         },
         {
           id: 2,
           name: "صابون",
           price: "20000",
-          Url: require("../../../../../assets/بهداشتی/صابون/wp2007995.jpg"),
+          Url: require("../../../../../assets/img/dev/بستنی/240447.jpg"),
         },
       ],
       product: {

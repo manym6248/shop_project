@@ -1,5 +1,6 @@
 <template>
   <v-container fluid class="ma-0 pa-3" style="height: 100%">
+    <router-link :to="{ name: 'Product', params: { id: item.id } }">
     <div class="card">
       <v-row class="ma-0" style="height: 100%">
         <v-col cols="4" class="pa-0 py-4">
@@ -7,7 +8,7 @@
             <v-img
               class="rounded"
               height="114px"
-              src="../../assets/img/svg/2/undraw_city_driver_jh2h.svg"
+              :src="imgUrl1"
             ></v-img></div
         ></v-col>
         <v-col cols="8" class="pa-0"
@@ -25,10 +26,10 @@
               </v-row>
 
               <div class="my-0 subtitle-1">
-                <h5>ساعت دیواری</h5>
+                <h5>{{item.name}}</h5>
               </div>
               <div class="my-0 mt-1 subtitle-1 price-1">
-                {{ 90000 | currency }}
+                {{ item.price | currency }}
               </div>
 
               <div class="card-item">
@@ -61,11 +62,33 @@
         >
       </v-row>
     </div>
+    </router-link>
   </v-container>
 </template>
 
 <script>
 export default {
+   props: {
+    item: {
+      type: Object,
+      default() {
+        // Why like this?
+        return {};
+      },
+    },
+    img: {
+      type: Array,
+      default: () => [],
+    },
+  },
+   computed: {
+    imgUrl1() {
+      for (let i = 0; i < this.img.length; i++) {
+        var x = this.img[0].url;
+      }
+      return x;
+    },
+  },
   filters: {
     currency(value) {
       return (

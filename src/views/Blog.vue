@@ -5,118 +5,34 @@
       <v-breadcrumbs large :items="items" divider="/"></v-breadcrumbs>
     </div>
 
-    <v-container class="pt-4 pb-3 px-0 mb-4">
-      <h1>Flickity - autoPlay</h1>
-
-<!-- Flickity HTML init -->
-<flickity ref="flickity" :options="flickityOptions">
-  <div class="carousel-cell"></div>
-  <div class="carousel-cell"></div>
-  <div class="carousel-cell"></div>
-  <div class="carousel-cell"></div>
-  <div class="carousel-cell"></div>
-</flickity>
-      
-       </v-container>
-
-  
-  <v-card
-    class="mx-auto"
-    width="300"
-  >
-    <v-list>
-    
-
-      <v-list-group
-        :value="true"
-        prepend-icon="mdi-account-circle"
-      >
-        <template v-slot:activator>
-          <v-list-item-title>Users</v-list-item-title>
-        </template>
-
-        <v-list-group
-          :value="true"
-          no-action
-          sub-group
-        >
-          <template v-slot:activator>
-            <v-list-item-content>
-              <v-list-item-title>Admin</v-list-item-title>
-            </v-list-item-content>
-          </template>
-
-          <v-list-item
-            v-for="([title, icon], i) in admins"
-            :key="i"
-            link
-          >
-            <v-list-item-title v-text="title"></v-list-item-title>
-
-            <v-list-item-icon>
-              <v-icon v-text="icon"></v-icon>
-            </v-list-item-icon>
-          </v-list-item>
-        </v-list-group>
-
-        <v-list-group
-          no-action
-          sub-group
-        >
-          <template v-slot:activator>
-            <v-list-item-content>
-              <v-list-item-title>Actions</v-list-item-title>
-            </v-list-item-content>
-          </template>
-
-          <v-list-item
-            v-for="([title, icon], i) in cruds"
-            :key="i"
-            link
-          >
-            <v-list-item-title v-text="title"></v-list-item-title>
-
-            <v-list-item-icon>
-              <v-icon v-text="icon"></v-icon>
-            </v-list-item-icon>
-          </v-list-item>
-        </v-list-group>
-      </v-list-group>
-    </v-list>
-  </v-card>
+ 
+      <ul>
+      <li v-for="item in products" :key="item.id">
+        <h1>{{ item.name }}</h1>
+        
+      </li>
+    </ul>
+ 
 
   </v-container>
 </template>
 <script>
-import Flickity from 'vue-flickity';
+
 
 export default {
   components:{
-    Flickity
+ 
   },
+   
+    
+   
+
   data() {
 
 
     return {
-
-       flickityOptions: {
-        initialIndex: 3,
-        prevNextButtons: false,
-        pageDots: false,
-        wrapAround: true
-        
-        // any options from Flickity can be used
-      },
-      admins: [
-        ['Management', 'mdi-account-multiple-outline'],
-        ['Settings', 'mdi-cog-outline'],
-      ],
-      cruds: [
-        ['Create', 'mdi-plus-outline'],
-        ['Read', 'mdi-file-outline'],
-        ['Update', 'mdi-update'],
-        ['Delete', 'mdi-delete'],
-      ],
+      products : this.$store.state.products.products,
+     
       items: [
         {
           text: "صفحه اصلی",
@@ -130,6 +46,10 @@ export default {
       ],
     };
   },
+
+  created(){
+    console.log(this.products.products);
+  }
 };
 </script>
 

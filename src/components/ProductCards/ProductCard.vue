@@ -1,7 +1,6 @@
 <template>
-  <router-link to="/product/item.id">
+  <router-link :to="{ name: 'Product', params: { id: item.id } }">
     <v-card
-      :loading="loading"
       class="mx-auto my-0 mb-1 product-card-m"
       max-width="428px"
       height="100%"
@@ -13,11 +12,9 @@
           indeterminate
         ></v-progress-linear>
       </template>
-
-      <v-img
-        height="270px"
-        src="../../assets/img/svg/2/undraw_by_my_car_ttge.svg"
-      ></v-img>
+      <div class="images">
+        <v-img height="270px" :src="imgUrl1"></v-img>
+      </div>
 
       <v-card-text style="height: 130px">
         <v-row align="center" class="mx-0 my-2">
@@ -32,9 +29,11 @@
         </v-row>
 
         <div class="my-0 subtitle-1">
-          <h5>ساعت دیواری</h5>
+          <h5>{{ item.name }}</h5>
         </div>
-        <div class="my-0 mt-1 subtitle-1 price-1">{{ 90000 | currency }}</div>
+        <div class="my-0 mt-1 subtitle-1 price-1">
+          {{ item.price | currency }}
+        </div>
 
         <div class="card-item">
           <ul class="items">
@@ -68,10 +67,27 @@
 
 <script>
 export default {
-  data: () => ({
-    loading: false,
-    selection: 1,
-  }),
+  props: {
+    item: {
+      type: Object,
+      default() {
+        // Why like this?
+        return {};
+      },
+    },
+    img: {
+      type: Array,
+      default: () => [],
+    },
+  },
+
+  data() {
+    return {
+      loading: false,
+      selection: 1,
+      url1: [],
+    };
+  },
 
   methods: {
     reserve() {
@@ -90,6 +106,14 @@ export default {
         "تومن"
       );
       //new Intl.NumberFormat('fa', { style: 'currency', currency: 'IRR' }).format()
+    },
+  },
+  computed: {
+    imgUrl1() {
+      for (let i = 0; i < this.img.length; i++) {
+        var x = this.img[0].url;
+      }
+      return x;
     },
   },
 };

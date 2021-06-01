@@ -10,17 +10,17 @@
         <v-row class="ma-0 pa-0" style="height: 100%">
           <v-col cols="12" md="4" class="pa-0 pr-1" style="height: 100%"
             ><div class="long pa-7">
-              <product-card /></div
+              <product-card :item="item1" :img="item1.images" /></div
           ></v-col>
 
           <v-col cols="12" md="4" class="pa-0" style="height: 100%"
             ><div class="medium">
               <v-col cols="12" md="12" class="pa-0 border" style="height: 50%">
-                <horizontal-product-card />
+                <horizontal-product-card :item="item1" :img="item1.images" />
               </v-col>
 
               <v-col cols="12" md="12" class="pa-0 border" style="height: 50%">
-                <horizontal-product-card />
+                <horizontal-product-card :item="item1" :img="item1.images" />
               </v-col>
             </div>
           </v-col>
@@ -32,7 +32,7 @@
                 class="pa-0 border"
                 style="height: 33.333333%"
               >
-                <horizontal-product-card />
+                <horizontal-product-card :item="item1" :img="item1.images" />
               </v-col>
 
               <v-col
@@ -41,10 +41,10 @@
                 class="pa-0 border"
                 style="height: 33.333333%"
               >
-                <horizontal-product-card />
+                <horizontal-product-card :item="item1" :img="item1.images" />
               </v-col>
               <v-col cols="12" md="12" class="pa-0" style="height: 33.333333%">
-                <horizontal-product-card />
+                <horizontal-product-card :item="item1" :img="item1.images" />
               </v-col></div
           ></v-col>
         </v-row>
@@ -63,11 +63,11 @@
               xl="4"
               md="4"
               class="ma-0 pa-0"
-              v-for="n in 6"
-              :key="n"
+              v-for="item in products"
+              :key="item.id"
             >
               <div class="product">
-                <product-card />
+                <product-card :item="item" :img="item.images" />
               </div>
             </v-col>
           </v-row>
@@ -83,6 +83,19 @@ import ProductCard from "./ProductCard";
 
 export default {
   components: { ProductCard, HorizontalProductCard },
+  data(){
+    return{
+        products : this.$store.state.products.products,
+    }
+  },
+  computed:{
+    item1(){
+      for (const item of this.products) {
+        var x = item
+      }
+      return x
+    }
+  }
 };
 </script>
 

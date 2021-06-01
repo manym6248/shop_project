@@ -10,13 +10,13 @@
 <v-divider></v-divider>
 
     <flickity ref="flickity" :options="flickityOptions" class="gallery pc-b js-flickity big444 " >
-        <v-col class="py-0 pc " cols="12" sm="6" lg="3" xl="3" v-for="n in 12" :key="n" >
+        <v-col class="py-0 pc " cols="12" sm="6" lg="3" xl="3" v-for="item in products" :key="item.id" >
               <div class="gallery-cell " >
                 <div class="bn">
 
 
 
-              <product-card />
+              <product-card :item="item" :img="item.images"  />
 
 
 
@@ -32,13 +32,13 @@
   
 </flickity>
     <flickity ref="flickity" :options="flickityOptions2" class="gallery pc-b js-flickity mini-4444" style=" display: none" >
-        <v-col class="py-0 pc " cols="12" sm="6" lg="3" xl="3" v-for="n in 12" :key="n" >
+        <v-col class="py-0 pc " cols="12" sm="6" lg="3" xl="3" v-for="item in products" :key="item.id" >
               <div class="gallery-cell " >
                 <div class="bn">
 
 
 
-              <product-card />
+              <product-card :item="item" :img="item.images"  />
 
 
 
@@ -77,11 +77,18 @@ export default {
        autoPlay:8000,
        groupCells: 1
       },
+      products : this.$store.state.products.products,
       
     }
+  },
+  created(){
+ 
+    
   }
   
+  
   };
+  
 </script>
 
 <style lang="scss" >

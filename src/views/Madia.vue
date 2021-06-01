@@ -16,7 +16,7 @@
               class="pa-1"
             >
               <v-img
-                src="../assets/بهداشتی/شامپو/DSC_0261-3-682x1024.jpg"
+                src="../assets/img/dev/بستنی/240306.jpg"
                 lazy-src=""
                 aspect-ratio="1"
               ></v-img>

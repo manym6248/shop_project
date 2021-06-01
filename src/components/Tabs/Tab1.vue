@@ -32,27 +32,30 @@
 
         <v-tab-item>
           <v-row class="ma-0">
-            <v-col cols="12" md="4" class="ma-0 pa-0" v-for="n in 6" :key="n">
+            <v-col cols="12" md="4" class="ma-0 pa-0" v-for="item in products"
+              :key="item.id">
               <div class="product">
-                <product-card />
+                <product-card :item="item" :img="item.images" />
               </div>
             </v-col>
           </v-row>
         </v-tab-item>
         <v-tab-item>
           <v-row class="ma-0">
-            <v-col cols="12" md="4" class="ma-0 pa-0" v-for="n in 5" :key="n">
+            <v-col cols="12" md="4" class="ma-0 pa-0"  v-for="item in products"
+              :key="item.id">
               <div class="product">
-                <product-card />
+                <product-card :item="item" :img="item.images" />
               </div>
             </v-col>
           </v-row>
         </v-tab-item>
         <v-tab-item>
           <v-row class="ma-0">
-            <v-col cols="12" md="4" class="ma-0 pa-0" v-for="n in 9" :key="n">
+            <v-col cols="12" md="4" class="ma-0 pa-0"  v-for="item in products"
+              :key="item.id">
               <div class="product">
-                <product-card />
+                <product-card :item="item" :img="item.images" />
               </div>
             </v-col>
           </v-row>
@@ -93,11 +96,11 @@
               xl="4"
               md="4"
               class="ma-0 pa-0"
-              v-for="n in 6"
-              :key="n"
+              v-for="item in products"
+              :key="item.id"
             >
               <div class="product">
-                <product-card />
+                <product-card :item="item" :img="item.images" />
               </div>
             </v-col>
           </v-row>
@@ -111,11 +114,11 @@
               xl="4"
               md="4"
               class="ma-0 pa-0"
-              v-for="n in 5"
-              :key="n"
+              v-for="item in products"
+              :key="item.id"
             >
               <div class="product">
-                <product-card />
+                <product-card :item="item" :img="item.images" />
               </div>
             </v-col>
           </v-row>
@@ -129,11 +132,11 @@
               xl="4"
               md="4"
               class="ma-0 pa-0"
-              v-for="n in 9"
-              :key="n"
+              v-for="item in products"
+              :key="item.id"
             >
               <div class="product">
-                <product-card />
+                <product-card :item="item" :img="item.images" />
               </div>
             </v-col>
           </v-row>
@@ -147,6 +150,11 @@
 import ProductCard from "../ProductCards/ProductCard.vue";
 export default {
   components: { ProductCard },
+  data(){
+    return{
+        products : this.$store.state.products.products,
+    }
+  }
 };
 </script>
 
