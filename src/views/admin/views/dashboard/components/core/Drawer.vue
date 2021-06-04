@@ -176,6 +176,11 @@
           to: '/tables/regular-tables',
         },
         {
+          title: 'نظرات',
+          icon: 'mdi-comment-multiple-outline',
+          to: '/Comments/comments',
+        },
+        {
           title: 'typography',
           icon: 'mdi-format-font',
           to: '/components/typography',

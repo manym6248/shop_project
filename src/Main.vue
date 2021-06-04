@@ -211,7 +211,7 @@
                             <a href="#" class="link">سبد من</a>
                           </li>
                           <li class="item">
-                            <a href="#" class="link">0 محصول </a>
+                            <a href="#" class="link">{{cartCount}} محصول </a>
                           </li>
                         </ul>
                       </div>
@@ -289,6 +289,11 @@ export default {
       },
     ],
   }),
+   computed: {
+    cartCount() {
+      return this.$store.getters.cartItems.length
+    }
+  },
   methods: {
     ok() {
       alert("hiiiii");

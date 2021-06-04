@@ -21,12 +21,13 @@
                   
                   <th class="primary--text text-center my-4 mx-auto ">عکس</th>
                   <th class="primary--text text-center">نام کاربری</th>
-                  <th class="primary--text text-center px-16"></th>
-                  <th class="primary--text text-center px-16"></th>
+                  <th class="primary--text text-center ">ایمیل</th>
+                  <th class="primary--text text-center ">موبایل</th>
+                  <th class="primary--text text-center ">سطح کاربری</th>
                   
 
-                  <th class="primary--text text-center pl-0">ویرایش</th>
-                  <th class="primary--text text-center pr-0">حذف</th>
+                  <th class="primary--text text-center ">تاریخ عضویت</th>
+                  <th class="primary--text text-center ">عملیات</th>
                 </tr>
               </thead>
 
@@ -39,24 +40,26 @@
                       class="rounded-circle my-2 mx-auto"
                       max-height="80px"
                       :src="item.Url"
-                      width="60px"
-                      height="60px"
+                      width="55px"
+                      height="55px"
                     ></v-img>
                           
                      
                   </td>
                   <td class="text-center">{{ item.name }}</td>
-                  <td class="text-center px-6"></td>
-                  <td class="text-center px-6"></td>
+                  <td class="text-center px-6">{{item. email}}</td>
+                  <td class="text-center px-6">{{item.phone}}</td>
+                  <td class="text-center px-6">نویسنده</td>
                 
                  
                 
                   <td class="text-center">
-                    <v-btn class="ml-2 edit-h" min-width="0" text large icon>
-                      <v-icon large> mdi-cart-outline</v-icon>
-                    </v-btn>
+                   200/06/29
                   </td>
                   <td class="text-center">
+                     <v-btn class="ml-2 edit-h" min-width="0" text large icon>
+                      <v-icon > mdi-clipboard-edit-outline</v-icon>
+                    </v-btn>
                     
                     <v-btn
                       class="ml-2 removebtn-h"
@@ -65,7 +68,7 @@
                       large
                       icon
                     >
-                      <v-icon large> mdi-delete-empty</v-icon>
+                      <v-icon > mdi-delete-empty</v-icon>
                     </v-btn>
                   </td>
                 </tr>
@@ -93,15 +96,15 @@ export default {
       {
         id: 1,
         name: "شامپو",
-        price: "260000",
-        count: "1",
+        phone: "099999998",
+        email: "jdfgdjfgdj@yahooooo.com",
         Url: require("../../../../../assets/img/dev/بستنی/240306.jpg"),
       },
       {
         id: 2,
         name: "صابون",
-        price: "200000",
-        count: "5",
+        phone: "099999997",
+        email: "jdfgdjfgdj@gmaillll.com",
         Url: require("../../../../../assets/img/dev/بستنی/240447.jpg"),
       },
     ],
@@ -109,7 +112,9 @@ export default {
 
   computed: {},
 
-  methods: {},
+  methods: {
+    
+  },
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="pa-0">
+  <v-container fluid class="pa-0" id="baseContiner">
     <div class="media-header mb-8">
       <h3>رسانه</h3>
       <v-breadcrumbs large :items="items" divider="/"></v-breadcrumbs>
@@ -27,9 +27,19 @@
               :options="flickityOptions"
               class="carousel carousel-nav"
             >
-              <div class="carousel-cell" v-for="(item, i) in imgs" :key="i">
+              <div
+                class="carousel-cell"
+                v-for="(item, i) in product.images"
+                :key="i"
+              >
                 <figure class="img-f" @click="bigUrl(item.url)">
-                  <v-img class="f-img" width="100%" height="100%" :src="imgs.url"></v-img>
+                  <v-img
+                    class="f-img"
+                    width="100%"
+                    height="100%"
+                    :src="item.url"
+                  >
+                  </v-img>
                 </figure>
               </div>
             </flickity>
@@ -55,7 +65,7 @@
 
               <v-card-text style="height: 130px" class="pa-10">
                 <div class="my-0 subtitle-1">
-                  <h1>{{product.name}}</h1>
+                  <h1>{{ product.name }}</h1>
                 </div>
                 <v-row align="center" class="mx-0 my-2 mt-10">
                   <v-rating
@@ -71,14 +81,16 @@
                     ({{ rating }})
                   </span>
                 </v-row>
-                <div class="py-5 my-0 mt-1 pric14">{{ product.price | currency }}</div>
+                <div class="py-5 my-0 mt-1 pric14">
+                  {{ product.price | currency }}
+                </div>
                 <div class="pargaph">
                   <p>
-                  {{product.description}}
+                    {{ product.description }}
                   </p>
                 </div>
                 <div class="pa-3"></div>
-                <v-btn class="by-btn ma-0 rounded-pill" large>خرید</v-btn>
+                <v-btn class="by-btn ma-0 rounded-pill" large  @click="addToCart">خرید</v-btn>
 
                 <div class="card-item">
                   <ul class="items">
@@ -211,7 +223,7 @@
         </v-tabs>
       </v-card>
 
-      <ProductBar />
+      <product-bar />
     </v-container>
   </v-container>
 </template>
@@ -231,7 +243,6 @@ export default {
 
   data() {
     return {
-      product: this.$store.getters.product(this.$route.params.id),
       rating: 4,
       flickityOptions: {
         asNavFor: ".carousel-main",
@@ -244,10 +255,6 @@ export default {
         pageDots: false,
         prevNextButtons: false,
       },
-      bigURL: "",
-      imgs: [
-        
-      ],
 
       desserts: [
         {
@@ -266,7 +273,7 @@ export default {
       tab: null,
       items1: ["توضیحات", "اطلاعات بیشتر", "نظرات"],
       text:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, snulled do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       items: [
         {
           text: "صفحه اصلی",
@@ -281,6 +288,10 @@ export default {
       selected: ["Trevor Handsen"],
 
       title: "",
+
+      product: this.$store.getters.product(this.$route.params.id),
+      bigURL: "",
+      imgs: [],
     };
   },
   filters: {
@@ -295,9 +306,23 @@ export default {
       //new Intl.NumberFormat('fa', { style: 'currency', currency: 'IRR' }).format()
     },
   },
+
+  watch: {
+    "$route.params.id": function (id) {
+      this.product = this.$store.getters.product(id);
+      this.imgs = this.product.images;
+      for (let i = 0; i < this.imgs.length; i++) {
+        this.bigURL = this.imgs[0].url;
+      }
+    },
+  },
   methods: {
     bigUrl(url) {
       this.bigURL = url;
+    },
+    addToCart() {
+      this.$store.dispatch("addToCart", this.$route.params.id);
+      alert("به سبد خرید اضافه شد")
     },
   },
   created() {
@@ -305,8 +330,6 @@ export default {
     for (let i = 0; i < this.imgs.length; i++) {
       this.bigURL = this.imgs[0].url;
     }
-    
-
   },
 };
 </script>
@@ -314,6 +337,7 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/scss/utility/utility.scss";
 @import "../../node_modules/flickity/css/flickity.css";
+@import "../../node_modules/flickity/dist/flickity.css";
 
 .blue1 {
   height: 90vh;
@@ -323,7 +347,7 @@ export default {
       width: 100%;
       height: 100%;
       margin-right: 10px;
-     
+
       border-radius: 5px;
       counter-increment: carousel-cell;
     }

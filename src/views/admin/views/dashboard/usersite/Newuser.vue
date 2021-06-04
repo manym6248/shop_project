@@ -16,15 +16,44 @@
 
               <div class="login-card">
                 <form @submit.prevent="SubmitForm">
-                  <v-text-field
-                    v-model="person.name"
-                    :error-messages="nameErrors"
-                    :counter="10"
-                    label="نام کاربری"
-                    required
-                    @input="$v.person.name.$touch()"
-                    @blur="$v.person.name.$touch()"
-                  ></v-text-field>
+                  <v-row
+                    class="mt-3"
+                    style="
+                      text-align: center;
+                      justify-content: center;
+                      align-items: center;
+                    "
+                  >
+                    <v-col cols="4" md="4" lg="3" xl="3"
+                      ><v-avatar size="128" color="indigo" alt="عکس پروفایل">
+                        
+                        <v-icon dark x-large v-if="span1"> mdi-account-circle </v-icon>
+
+                        <v-btn
+                          width="100%"
+                          height="32%"
+                          class="ma-0 pa-0 img-btn"
+                          color="#999999b8"
+                          @click="onPickFile"
+                          style="position: absolute; bottom: -1px"
+                        >
+                          <v-icon dark>mdi-camera-plus-outline</v-icon></v-btn
+                        >
+                        <img :src="imageUrl" v-if="span2" />
+                      </v-avatar>
+                    </v-col>
+                    <v-col cols="8" md="8" lg="9" xl="9">
+                      <v-text-field
+                        v-model="person.name"
+                        :error-messages="nameErrors"
+                        :counter="10"
+                        label="نام کاربری"
+                        required
+                        @input="$v.person.name.$touch()"
+                        @blur="$v.person.name.$touch()"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
 
                   <v-text-field
                     v-model="person.email"
@@ -66,7 +95,15 @@
                   <div class="pa-3"></div>
 
                   <v-btn class="mr-4" type="submit"> submit </v-btn>
-                  <v-btn @click="clear"> clear </v-btn>
+                  <v-btn @click="clear" class="mr-4"> clear </v-btn>
+
+                  <input
+                    type="file"
+                    style="display: none"
+                    ref="fileInput"
+                    accept="image/*"
+                    @change="onFilePicked"
+                  />
                 </form>
               </div>
             </base-material-card>
@@ -91,6 +128,10 @@ export default {
   mixins: [validationMixin],
 
   data: () => ({
+    span1: true,
+    span2: false,
+    image: null,
+    imageUrl: null,
     show1: false,
     rules: {
       required: (value) => !!value || "Required.",
@@ -175,6 +216,20 @@ export default {
       this.name = "";
       this.email = "";
     },
+    onPickFile() {
+      this.$refs.fileInput.click();
+      this.span1 =false;
+      this.span2=true;
+    },
+    onFilePicked(event) {
+      const files = event.target.files;
+      const fileReader = new FileReader();
+      fileReader.addEventListener("load", () => {
+        this.imageUrl = fileReader.result;
+      });
+      fileReader.readAsDataURL(files[0]);
+      this.image = files[0];
+    },
   },
 };
 </script>
@@ -184,6 +239,17 @@ export default {
 
 <style lang="scss" >
 @import "../../../../../assets/scss/utility/utility.scss";
+
+.v-avatar {
+  .img-btn {
+    display: none;
+  }
+  &:hover {
+    .img-btn {
+      display: block;
+    }
+  }
+}
 
 .body-lgin1 {
   padding: 0px;

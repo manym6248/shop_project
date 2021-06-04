@@ -3,6 +3,7 @@ const state = {
   "products": [
     {
       "id": 3,
+      "count":1,
       "name": "بیسکویت",
       "images": [
         {
@@ -24,6 +25,7 @@ const state = {
     
     {
       "id": 44,
+      "count":1,
       "name": "کیک",
       "images": [
         {
@@ -41,6 +43,7 @@ const state = {
     },
     {
       "id": 99,
+      "count":1,
       "name": "شکلات",
       "images": [
         { "url": require("../../assets/img/dev/شکلات/Sweet-White-Chocolate-Dessert-Wallpaper-1600x1200-340x220.jpg") },
@@ -58,6 +61,7 @@ const state = {
     },
     {
       "id": 86,
+      "count":1,
       "name": "آدامس",
       "images": [
         { "url": require("../../assets/img/dev/آبنبات/BuzzFeed.jpg") },
@@ -75,6 +79,7 @@ const state = {
     },
     {
       "id": 8,
+      "count":1,
       "name": "چیپس",
       "images": [
         {
@@ -92,6 +97,7 @@ const state = {
     },
     {
       "id": 100,
+      "count":1,
       "name": "بستنی",
       "images": [
         {
@@ -109,6 +115,7 @@ const state = {
     },
     {
       "id": 5,
+      "count":1,
       "name": "نوشابه",
       "images": [
         {
@@ -128,6 +135,7 @@ const state = {
     
     {
       "id": 6,
+      "count":1,
       "name": "آبنبات",
       "images": [
         {
@@ -163,13 +171,35 @@ const getters = {
 
 };
 const mutations = {
-
+  ///اضافه کردن به سبد خرید
+  addToCart (state, payload) {
+    state.cart.push( Number(payload) )
+  },
+  ///حذف از سبد خرید
+  removeFromCart (state, payload) {
+    let indexToDelete = state.cart.indexOf( Number(payload) );
+    state.cart.splice(indexToDelete, 1)
+  },
+  //کاهش تعداد محصول در لیست خرید 
+  decrementProductInventory(state, payload) {
+    let product = state.products.find(product => product.id === Number(payload))
+    product.quantity--;
+  },
+   /// افزایش تعداد محصول در لیست خرید 
+  incrementProductInventory(state, payload) {
+    let product = state.products.find(product => product.id === Number(payload))
+    product.quantity++;
+  }
 
 };
 const actions = {
   addToCart({ commit }, payload) {
     commit('addToCart', payload)
     commit('decrementProductInventory', payload)
+  },
+  removeFromCart({ commit }, payload) {
+    commit('removeFromCart', payload)
+    commit('incrementProductInventory', payload)
   },
 
 };

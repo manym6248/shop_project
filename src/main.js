@@ -13,6 +13,7 @@ import VueLazyload from 'vue-lazyload'
 
 
 
+
 import 'vue-inner-image-zoom/lib/vue-inner-image-zoom.css';
 /////////////////////
 import vuetify from './plugins/vuetify';
@@ -26,7 +27,13 @@ import './plugins/vee-validate'
 import axiosInstance from '../axios.config';
 
 
- //Vue.$http.options.root = 'http://localhost:8085'
+//Vue.$http.options.root = 'http://localhost:8085'
+
+
+
+
+
+
 Vue.prototype.$http = axiosInstance;
 
 //////////////////////////
@@ -43,13 +50,6 @@ new Vue({
   Vuelidate,
   InnerImageZoom,
   VueLazyload,
-  
-  
   VueResource,
-  
-
-  
-
-
   render: h => h(App)
 }).$mount('#app')

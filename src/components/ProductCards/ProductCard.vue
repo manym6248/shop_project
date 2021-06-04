@@ -39,7 +39,7 @@
           <ul class="items">
             <li class="item">
               <a href="#">
-                <v-btn class="mx-2" fab dark x-small color="pink">
+                <v-btn class="mx-2" fab dark x-small color="pink" >
                   <v-icon dark> mdi-cart-outline </v-icon>
                 </v-btn>
               </a>
@@ -92,9 +92,12 @@ export default {
   methods: {
     reserve() {
       this.loading = true;
-
       setTimeout(() => (this.loading = false), 2000);
     },
+
+    //  addToCart() {
+    //   this.$store.dispatch('addToCart', this.$route.params.id)
+    // }
   },
   filters: {
     currency(value) {
