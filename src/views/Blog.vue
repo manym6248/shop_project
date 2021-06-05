@@ -5,23 +5,18 @@
       <v-breadcrumbs large :items="items" divider="/"></v-breadcrumbs>
     </div>
 
- 
-      <ul>
-      <li v-for="item in products" :key="item.id">
-        <h1>{{ item.name }}</h1>
-        
-      </li>
-    </ul>
+  <Edituserinformation />
+   
  
 
   </v-container>
 </template>
 <script>
 
-
+import Edituserinformation from '../components/Edituserinformation/Edituserinformation'
 export default {
   components:{
- 
+    Edituserinformation
   },
    
     

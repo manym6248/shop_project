@@ -1,5 +1,5 @@
 const state = {
-    "cart": [],
+    "cart2": [],
     "users": [
       {
         "id": 3,
@@ -7,11 +7,22 @@ const state = {
         "userName":"many45646",
         "password":"1355556djhfjd",
         "email":"m45ny545@yhoooo.com",
-        "images": "../../assets/login.jpg",
+        "img": require("../../assets/login.jpg"),
         "phone":"099999999",
         "userlevel":"admin", //=> admin or normalUser =>normal user just can buying but can't access to admin panel
         "biography": "I'm frontend developer",
       },
+      {
+        "id": 5,
+        "name": "many2",
+        "userName":"many456456",
+        "password":"13djhfjd",
+        "email":"m45n545y545@yhoooo.com",
+        "img": require("../../assets/login.jpg"),
+        "phone":"09999993333",
+        "userlevel":"admin", //=> admin or normalUser =>normal user just can buying but can't access to admin panel
+        "biography": "I'm frontend developer",
+      }
      
       
    
@@ -23,46 +34,30 @@ const state = {
     user: (state) => (id) => {
       return state.users.filter(u => u.id === Number(id))[0]
     },
-    cartItems: (state) => {
-      return state.cart.map(
-        itemId => state.users.find(
-            user => user.id === itemId
-        )
-      )
-    },
+  
   
   
   };
   const mutations = {
     ///اضافه کردن به لیست کاربران
-    addToCart (state, payload) {
-      state.cart.push( Number(payload) )
+    addToCart2 (state, payload) {
+      state.users.push( Number(payload) )
     },
     ///حذف از لیست کاربران
-    removeFromCart (state, payload) {
-      let indexToDelete = state.cart.indexOf( Number(payload) );
-      state.cart.splice(indexToDelete, 1)
+    removeFromCart2 (state, payload) {
+      let indexToDelete = state.users.indexOf( Number(payload) );
+      state.users.splice(indexToDelete, 1)
     },
-     /// کاهش تعداد افراد موجود در لیست کاربران
-    decrementUserInventory(state, payload) {
-      let user = state.users.find(user => user.id === Number(payload))
-      user.quantity--;
-    },
-     /// افزایش تعداد افراد موجود در لیست کاربران 
-    incrementUserInventory(state, payload) {
-      let user = state.users.find(user => user.id === Number(payload))
-      user.quantity++;
-    }
-  
+    
   };
   const actions = {
-    addToCart({ commit }, payload) {
-      commit('addToCart', payload)
-      commit('decrementUserInventory', payload)
+    addToCart2({ commit }, payload) {
+      commit('addToCart2', payload)
+      
     },
-    removeFromCart({ commit }, payload) {
-      commit('removeFromCart', payload)
-      commit('incrementUserInventory', payload)
+    removeFromCart2({ commit }, payload) {
+      commit('removeFromCart2', payload)
+    
     },
   
   };

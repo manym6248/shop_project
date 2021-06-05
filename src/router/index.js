@@ -9,6 +9,7 @@ import User from '../views/usersite/User.vue'
 import Main from '../Main.vue'
 import NotFoundPage from '../components/NotFoundPage.vue'
 import Product from '../components/Product.vue'
+import Edituserinformation from '../components/Edituserinformation/Edituserinformation.vue'
 
 
 
@@ -24,8 +25,10 @@ import Categorized from '../views/admin/views/dashboard/products/Categorized.vue
 import Subcategory from '../views/admin/views/dashboard/products/Subcategory.vue'
 import Edituser from '../views/admin/views/dashboard/usersite/Edituser.vue'
 import Newuser from '../views/admin/views/dashboard/usersite/Newuser.vue'
+import Comments from '../views/admin/views/dashboard/Comments/Comments.vue'
 
 import Notifications from '../views/admin/views/dashboard/component/Notifications.vue'
+import Edituserinformationadmin from '../views/admin/views/dashboard/component/Edituserinformationadmin.vue'
 import Icons from '../views/admin/views/dashboard/component/Icons.vue'
 import Typography from '../views/admin/views/dashboard/component/Typography.vue'
 import RegularTables from '../views/admin/views/dashboard/tables/RegularTables.vue'
@@ -98,6 +101,12 @@ const routes = [
         component:User,
           
       },
+      {
+        path: 'edituserinformation/:id',
+        name: 'Edituserinformation',
+        component:Edituserinformation,
+          
+      },
     ]
   },
 
@@ -166,6 +175,11 @@ const routes = [
           component: Edituser,
         },
         {
+          name: 'Comments',
+          path: '/Comments/comments',
+          component: Comments,
+        },
+        {
           name: 'Notifications',
           path: '/components/notifications',
           component: Notifications,
@@ -179,6 +193,11 @@ const routes = [
           name: 'Typography',
           path: '/components/typography',
           component:Typography,
+        },
+        {
+          name: 'Edituserinformationadmin',
+          path: '/component/edituserinformationadmin/:id',
+          component:Edituserinformationadmin,
         },
         // Tables
         {
@@ -209,7 +228,14 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior () {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ x: 0, y: 0 })
+      }, 0)
+    })
+  }
 })
 
 export default router

@@ -35,11 +35,14 @@
                 <tr v-for="(item, i) in apidata" :key="i">
                 
                   <td class="text-center">
-                   
+                                         <!-- :src="getImage(item.img)" -->
                        <v-img
                       class="rounded-circle my-2 mx-auto"
                       max-height="80px"
-                      :src="item.Url"
+ 
+                      :src="item.img" 
+                     
+
                       width="55px"
                       height="55px"
                     ></v-img>
@@ -57,7 +60,7 @@
                    200/06/29
                   </td>
                   <td class="text-center">
-                     <v-btn class="ml-2 edit-h" min-width="0" text large icon>
+                     <v-btn class="ml-2 edit-h" min-width="0" text large icon @click="goedit(item.id)">
                       <v-icon > mdi-clipboard-edit-outline</v-icon>
                     </v-btn>
                     
@@ -67,6 +70,7 @@
                       text
                       large
                       icon
+                      @click="removeFromCart2(item.id)"
                     >
                       <v-icon > mdi-delete-empty</v-icon>
                     </v-btn>
@@ -91,30 +95,32 @@ import { validationMixin } from "vuelidate";
 export default {
   mixins: [validationMixin],
 
-  data: () => ({
-    apidata: [
-      {
-        id: 1,
-        name: "شامپو",
-        phone: "099999998",
-        email: "jdfgdjfgdj@yahooooo.com",
-        Url: require("../../../../../assets/img/dev/بستنی/240306.jpg"),
-      },
-      {
-        id: 2,
-        name: "صابون",
-        phone: "099999997",
-        email: "jdfgdjfgdj@gmaillll.com",
-        Url: require("../../../../../assets/img/dev/بستنی/240447.jpg"),
-      },
-    ],
-  }),
+  data () {
+    return {
 
-  computed: {},
+    apidata:this.$store.state.user.users,}
+  },
 
-  methods: {
+  computed: {
+    getImage(path) {
+  return require(path)
+}
     
   },
+
+  methods: {
+
+      removeFromCart2(itemId) {
+      this.$store.dispatch('removeFromCart2', itemId)
+    },
+    goedit(id){
+       this.$router.push('/component/edituserinformationadmin/'+id);
+    }
+    
+  },
+  created(){
+   
+  }
 };
 </script>
 
