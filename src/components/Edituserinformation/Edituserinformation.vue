@@ -151,7 +151,7 @@ export default {
 
   data(){
       return{
-    user: this.$store.getters.user(this.$route.params.id),
+    // user: this.$store.getters.user(this.$route.params.id),
     bio: "",
     span1: true,
     span2: false,
@@ -170,12 +170,21 @@ export default {
     },
     isEditing: true,
     model: null,
+    user: {
+      name: "",
+      password: "Password",
+      confirmPassword: "",
+      email: "",
+      phone: null,
+      userName:""
+    },
     person: {
       name: "",
       password: "Password",
       confirmPassword: "",
       email: "",
       phone: null,
+      userName:""
     },
 
     Submitstatus: null,
@@ -186,6 +195,7 @@ export default {
   // etbar sanji
   validations: {
     person: {
+      userName:{ required },
       name: { required },
       phone: { required, numeric, minLength: minLength(12) },
       email: { required, email },
@@ -266,7 +276,7 @@ export default {
     },
   },
   created(){
-      console.log(this.user);
+   
   }
 };
 </script>

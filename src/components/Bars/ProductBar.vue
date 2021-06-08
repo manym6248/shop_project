@@ -2,7 +2,8 @@
   <v-container class="pc-b12">
 <div class="title-pb pr-4">
   <v-row class="ma-0">
-    <h1>برترین های امروز</h1>
+    <h1  :class="{block12:name1.required1}">برترین های امروز</h1>
+    <h1 >{{name1.name}}</h1>
 
 
   </v-row>
@@ -60,6 +61,15 @@
 import Flickity from 'vue-flickity';
 import ProductCard from '../ProductCards/ProductCard.vue';
 export default {
+  props:{name1:{
+    type:Object,
+    default() {
+        // Why like this?
+        return {
+         
+        };
+      },
+  }},
   components: { 
       Flickity,
       ProductCard 
@@ -94,7 +104,9 @@ export default {
 <style lang="scss" >
 @import "../../assets/scss/utility/utility.scss";
 
-
+.block12{
+  display: none;
+}
 .pc-b12{
   padding: 0px ;
 
@@ -108,7 +120,7 @@ export default {
 
 .pc-b {
   
-  margin: 30px 0px;
+  margin:  0px;
    height: 430px;
    justify-content: center;
   .pc{

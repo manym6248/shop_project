@@ -115,21 +115,23 @@
               </thead>
 
               <tbody>
-                <tr v-for="(item, i) in apidata" :key="i">
+                <tr v-for="(item, i) in interestscartItem" :key="i">
                   <td>{{ item.id }}</td>
                   <td class="text-center">{{ item.name }}</td>
                   <td class="text-center">{{ item.price }}</td>
                   <td class="text-center">
                     <v-img
+                     v-for="(item3, i) in item.images.slice(0, 1)"
+                     :key="i"
                       class="my-1 mx-auto"
                       max-height="80px"
-                      :src="item.Url"
+                      :src="item3.url"
                       width="100px"
                       height="100px"
                     ></v-img>
                   </td>
                   <td class="text-center">
-                    <v-btn class="ml-2 edit-h" min-width="0" text large icon>
+                    <v-btn class="ml-2 edit-h" min-width="0" @click="addToCart(item.id)" text large icon> 
                       <v-icon large> mdi-cart-outline</v-icon>
                     </v-btn>
                   </td>
@@ -140,6 +142,7 @@
                       text
                       large
                       icon
+                      @click="removeFrominterestscart"
                     >
                       <v-icon large> mdi-delete-empty</v-icon>
                     </v-btn>
@@ -151,7 +154,7 @@
         </v-card>
         <div class="pa-3"></div>
         <v-card class="mt-0">
-          <v-card-title> محصولات خریداری شده</v-card-title>
+          <v-card-title> سبد خرید</v-card-title>
           <v-divider></v-divider>
           <v-card-text class="pa-0">
             <v-simple-table>
@@ -174,18 +177,17 @@
               </thead>
 
               <tbody>
-                <tr v-for="(item, i) in cartItems" :key="i">
+                <tr v-for="item in cartItems" :key="item.id">
                   <td style="width: 30px">{{ item.id }}</td>
                   <td class="text-center">{{ item.name }}</td>
-                  <td class="text-center">{{ item.price*item.count | currency }}</td>
+                  <td class="text-center" id="loop">{{ item.price * item.count | currency }}</td>
                   <td class="text-center">
                     <v-img
-                       v-for="(item2 ,i) in item.images.slice(0, 1)" :key="i"
-                       
+                      v-for="(item2, i) in item.images.slice(0, 1)"
+                      :key="i"
                       class="my-1 mx-auto"
                       max-height="80px"
                       :src="item2.url"
-                      
                       width="100px"
                       height="100px"
                     ></v-img>
@@ -193,7 +195,7 @@
                   <td class="text-center">
                     <v-text-field
                       class="mt-2 mx-auto text-center"
-                      style="width: 80px; text-align: center;"
+                      style="width: 80px; text-align: center"
                       label="تعداد"
                       solo
                       v-model="item.count"
@@ -218,12 +220,16 @@
                   </td>
                 </tr>
                 <tr>
+                 
+                
+                 
+                  <td class="text-center"></td>
+                  <th class="text-center" > <h3>  جمع کل: {{ sum | currency }}</h3> </th>
                   <td class="text-center"></td>
                   <td class="text-center"></td>
-                  <td class="text-center">
-                    {{ sum | currency }}
+                  <td class="text-center ">
+                    <v-btn  color="primary" style="letter-spacing: 0;">تکمیل خرید</v-btn>
                   </td>
-                  <td class="text-center"></td>
                   <td class="text-center"></td>
                   <td class="text-center"></td>
                 </tr>
@@ -240,57 +246,42 @@
 export default {
   data() {
     return {
-      apidata: [
-        {
-          id: 1,
-          name: "شامپو",
-          price: "260000",
-          count: "1",
-          Url: require("../../assets/img/dev/بستنی/240306.jpg"),
-        },
-        {
-          id: 2,
-          name: "صابون",
-          price: "200000",
-          count: "5",
-          Url: require("../../assets/img/dev/بستنی/240403.jpg"),
-        },
-      ],
-      img:Array,
+      
+      img: Array,
 
       ///pric
       arraypric: [],
       sum: 0,
+
+      pricsum: 0,
     };
   },
-  created() {
-    for (let item of this.apidata) {
-      this.arraypric.push(parseInt(item.price) * parseInt(item.count));
-      for (var i = 0; i < this.arraypric.length; i++) {
-        this.sum += this.arraypric[i];
-      }
-    }
-    console.log(this.price);
-
-   
-  },
-
-    computed: {
-    cartItems() {
-      return this.$store.getters.cartItems
-    },
-    price(){
-      for (let item of this.cartItems) {
-        var price = item.price
-      }
-    return price
-    }
   
+
+  computed: {
+    cartItems() {
+      return this.$store.getters.cartItems;
+    },
+    interestscartItem() {
+      return this.$store.getters.interestscartItem;
+    },
+    // price(){
+    //   
+    // }
+    
   },
-    methods: {
+  methods: {
     removeFromCart(itemId) {
-      this.$store.dispatch('removeFromCart', itemId)
-    }
+      this.$store.dispatch("removeFromCart", itemId);
+    },
+     removeFrominterestscart (itemId) {
+      this.$store.dispatch("removeFrominterestscart", itemId);
+    },
+     addToCart(id) {
+      this.$store.dispatch("addToCart", id);
+      alert("به سبد خرید اضافه شد")
+    },
+  
   },
   filters: {
     currency(value) {
@@ -304,6 +295,27 @@ export default {
       //new Intl.NumberFormat('fa', { style: 'currency', currency: 'IRR' }).format()
     },
   },
+  created(){
+    // var  pricearray=[]
+    //   const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    //   for (let i = 0; i < this.cartItems.length; i++) {
+    //      pricearray.push( this.cartItems[i].price * this.cartItems[i].count)
+        
+    //  }
+    // this.sum =pricearray.reduce(reducer)
+    
+  },
+  watch:{
+    "$store.getters.cartItems":function(val) {
+      var  pricearray=[]
+      const reducer = (accumulator, currentValue) => accumulator + currentValue;
+      for (let i = 0; i < val.length; i++) {
+         pricearray.push(val[i].price * val[i].count)
+        
+     }
+     console.log(pricearray.reduce(reducer));
+    }
+  }
 
   //
 };
@@ -369,7 +381,11 @@ export default {
   }
 }
 
-
-td { .v-text-field{ input{text-align: center !important ;}}}
-
+td {
+  .v-text-field {
+    input {
+      text-align: center !important ;
+    }
+  }
+}
 </style>

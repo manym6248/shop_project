@@ -1,5 +1,9 @@
+
+
+
 const state = {
   "cart": [],
+  "interestscart":[],
   "products": [
     {
       "id": 3,
@@ -161,11 +165,29 @@ const getters = {
     return state.products.filter(p => p.id === Number(id))[0]
   },
   cartItems: (state) => {
-    return state.cart.map(
+    const itemcart = state.cart.map(
       itemId => state.products.find(
         product => product.id === itemId
       )
     )
+  
+      return Array.from(new Set( itemcart));
+    
+
+   
+  },
+
+  interestscartItem: (state) => {
+    const interestscartItem = state.interestscart.map(
+      itemId => state.products.find(
+        product => product.id === itemId
+      )
+    )
+  
+      return Array.from(new Set(interestscartItem));
+    
+
+   
   },
 
 
@@ -179,6 +201,15 @@ const mutations = {
   removeFromCart (state, payload) {
     let indexToDelete = state.cart.indexOf( Number(payload) );
     state.cart.splice(indexToDelete, 1)
+  },
+  ///اضافه کردن به لیست علاقمندی ها
+  addTointerestscart (state, payload) {
+    state.interestscart.push( Number(payload) )
+  },
+  ///حذف از   لیست علاقمندی ها
+  removeFrominterestscart (state, payload) {
+    let indexToDelete = state.interestscart.indexOf( Number(payload) );
+    state.interestscart.splice(indexToDelete, 1)
   },
   //کاهش تعداد محصول در لیست خرید 
   decrementProductInventory(state, payload) {
@@ -200,6 +231,19 @@ const actions = {
   removeFromCart({ commit }, payload) {
     commit('removeFromCart', payload)
     commit('incrementProductInventory', payload)
+  },
+
+  addTointerestscart({ commit }, payload) {
+    commit('addTointerestscart', payload)
+    commit('decrementProductInventory', payload)
+
+    
+  },
+  removeFrominterestscart({ commit }, payload) {
+    commit('removeFrominterestscart', payload)
+    commit('incrementProductInventory', payload)
+   
+   
   },
 
 };

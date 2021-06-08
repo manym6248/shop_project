@@ -95,30 +95,20 @@
                 <div class="card-item">
                   <ul class="items">
                     <li class="item">
-                      <a href="#">
+                      <a >
                         <v-btn
                           class="ml-2 rounded-pill"
                           dark
                           large
                           color="pink"
+                          @click=" addTointerestscart"
                         >
                           <v-icon dark> mdi-heart </v-icon>
                           افزودن به علاقه مندی ها
                         </v-btn>
                       </a>
                     </li>
-                    <li class="item">
-                      <a href="#">
-                        <v-btn
-                          class="ml-2 rounded-pill"
-                          dark
-                          large
-                          color="pink"
-                        >
-                          <v-icon dark> mdi-eye-outline </v-icon>
-                        </v-btn>
-                      </a>
-                    </li>
+                   
                   </ul>
                 </div>
                 <div class="pa-5 chip"></div>
@@ -223,6 +213,8 @@
         </v-tabs>
       </v-card>
 
+      <product-bar :name1="name1" class="pb-0 mb-0" />
+
       <product-bar />
     </v-container>
   </v-container>
@@ -243,6 +235,8 @@ export default {
 
   data() {
     return {
+      name1:{name:"محصولات مرتبط",
+               required1:true},
       rating: 4,
       flickityOptions: {
         asNavFor: ".carousel-main",
@@ -315,6 +309,7 @@ export default {
         this.bigURL = this.imgs[0].url;
       }
     },
+    
   },
   methods: {
     bigUrl(url) {
@@ -324,12 +319,18 @@ export default {
       this.$store.dispatch("addToCart", this.$route.params.id);
       alert("به سبد خرید اضافه شد")
     },
+      addTointerestscart() {
+      this.$store.dispatch("addTointerestscart", this.$route.params.id);
+      alert("به علاقمندها اضافه شد")
+    },
   },
   created() {
     this.imgs = this.product.images;
     for (let i = 0; i < this.imgs.length; i++) {
       this.bigURL = this.imgs[0].url;
     }
+
+   
   },
 };
 </script>
@@ -449,5 +450,9 @@ export default {
 .image-h {
   height: 450px;
   width: 100%;
+}
+
+.pc-b{
+  margin: 0px;
 }
 </style>

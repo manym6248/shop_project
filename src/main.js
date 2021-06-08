@@ -8,6 +8,12 @@ import Flickity from "vue-flickity";
 import InnerImageZoom from "vue-inner-image-zoom";
 import VueLazyload from 'vue-lazyload'
 import 'vue-inner-image-zoom/lib/vue-inner-image-zoom.css';
+import 'core-js';
+import 'core-js/features/array/from';
+
+
+
+
 
 
 

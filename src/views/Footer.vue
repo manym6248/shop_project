@@ -1,6 +1,6 @@
 <template>
   <div class="l12">
-    <v-container fluid class="pa-0 ">
+    <v-container fluid class="pa-0">
       <div class="header-footer py-8">
         <v-container class="pa-0" style="height: 100%">
           <v-row class="ma-0 pa-0" style="height: 100%">
@@ -35,14 +35,14 @@
         </v-container>
       </div>
     </v-container>
-    <v-container class="pt-15 pb-3 px-0">
+    <v-container class="py-2 py-lg-3 py-lx-3 px-0" style="background-color: whitesmoke">
       <v-row class="jus ma-0">
         <v-col class="px-1" cols="12" xl="3" lg="3" md="3">
           <div class="widget-contact-us">
             <h4 class="ma-0 mb-3">تماس با ما</h4>
             <ul class="items">
               <li class="item mb-2">
-                <v-icon class="ml-2 " color="red">mdi-map-marker-outline</v-icon>
+                <v-icon class="ml-2" color="red">mdi-map-marker-outline</v-icon>
 
                 تهران , سهروردی شمالی
               </li>
@@ -63,7 +63,7 @@
           <div class="widget-contact-us">
             <h4 class="ma-0 mb-3">سریع پیدا کن</h4>
             <ul class="items">
-              <li class="item mb-2 ">
+              <li class="item mb-2">
                 <v-icon class="ml-1 mt-0" color="red">mdi-chevron-left</v-icon>
                 <a class="link" href="mailto:first.last@example.com"
                   >برند محصولات</a
@@ -184,7 +184,7 @@
         </v-col>
       </v-row>
 
-      <div class="jus2 mb-7 pa-5">
+      <div class="jus2 mb-0 mb-xl-7 mb-lg-7 pa-5">
         <v-row justify="center">
           <v-expansion-panels accordion>
             <v-expansion-panel v-for="(item, i) in jus2" :key="i">
@@ -211,98 +211,100 @@
     </v-container>
 
     <!-- -->
-    <v-container class="pa-0 mb-10">
-      <v-row class="jus1 ma-0">
-        <v-col
-          class="pa-lg-3 pa-lg-3 pa-md-3 pa-sm-1 py-1"
-          cols="10"
-          xl="3"
-          lg="3"
-          md="3"
-          sm="10"
-        >
-          <a href="#" class="pa-0">
-            <div class="button1-f">
-              <v-row class="ma-0">
-                <v-btn class="mx-2" fab dark large color="#c9e8dd">
-                  <v-icon dark> mdi-headphones </v-icon>
-                </v-btn>
-                <ul class="items">
-                  <li class="item"><span>پشتیبانی رایگان</span></li>
-                  <li class="item2"><span>24 ساعته</span></li>
-                </ul>
-              </v-row>
-            </div>
-          </a>
-        </v-col>
-        <v-col
-          class="pa-lg-3 pa-lg-3 pa-md-3 pa-sm-1 py-1"
-          cols="10"
-          xl="3"
-          lg="3"
-          md="3"
-          sm="10"
-        >
-          <a href="#" class="pa-0">
-            <div class="button1-f">
-              <v-row class="ma-0">
-                <v-btn class="mx-2" fab dark large color="#c9e8dd">
-                  <v-icon dark> mdi-credit-card-multiple-outline </v-icon>
-                </v-btn>
-                <ul class="items">
-                  <li class="item"><span> روش های پرداخت</span></li>
-                  <li class="item2"><span>سیستم امن </span></li>
-                </ul>
-              </v-row>
-            </div>
-          </a>
-        </v-col>
-
-        <v-col
-          class="pa-lg-3 pa-lg-3 pa-md-3 pa-sm-1 py-1"
-          cols="10"
-          xl="3"
-          lg="3"
-          md="3"
-          sm="10"
-        >
-          <a href="#" class="pa-0">
-            <div class="button1-f">
-              <v-row class="ma-0">
-                <v-btn class="mx-2" fab dark large color="#c9e8dd">
-                  <v-icon dark> mdi-cash-100 </v-icon>
-                </v-btn>
-                <ul class="items">
-                  <li class="item"><span>ضمانت بازگشت وجه</span></li>
-                  <li class="item2"><span>30 روزه </span></li>
-                </ul>
-              </v-row>
-            </div>
-          </a>
-        </v-col>
-        <v-col
-          class="pa-lg-3 pa-lg-3 pa-md-3 pa-sm-1 py-1"
-          cols="10"
-          xl="3"
-          lg="3"
-          md="3"
-          sm="10"
-        >
-          <a href="#" class="pa-0"
-            ><div class="button1-f">
-              <v-row class="ma-0">
-                <v-btn class="mx-2" fab dark large color="#c9e8dd">
-                  <v-icon dark> mdi-rocket-launch </v-icon>
-                </v-btn>
-                <ul class="items">
-                  <li class="item"><span>پشتیبانی آنلاین</span></li>
-                  <li class="item2"><span>از 25 هزار تومن</span></li>
-                </ul>
-              </v-row>
-            </div></a
+    <v-container fluid class="ma-0 pa-0 " style="background-color: whitesmoke">
+      <v-container class="pa-0 pb-10" >
+        <v-row class="jus1 ma-0">
+          <v-col
+            class="pa-lg-3 pa-lg-3 pa-md-3 pa-sm-1 py-1"
+            cols="10"
+            xl="3"
+            lg="3"
+            md="3"
+            sm="10"
           >
-        </v-col>
-      </v-row>
+            <a href="#" class="pa-0">
+              <div class="button1-f">
+                <v-row class="ma-0">
+                  <v-btn class="mx-2" fab dark large color="#c9e8dd">
+                    <v-icon dark> mdi-headphones </v-icon>
+                  </v-btn>
+                  <ul class="items">
+                    <li class="item"><span>پشتیبانی رایگان</span></li>
+                    <li class="item2"><span>24 ساعته</span></li>
+                  </ul>
+                </v-row>
+              </div>
+            </a>
+          </v-col>
+          <v-col
+            class="pa-lg-3 pa-lg-3 pa-md-3 pa-sm-1 py-1"
+            cols="10"
+            xl="3"
+            lg="3"
+            md="3"
+            sm="10"
+          >
+            <a href="#" class="pa-0">
+              <div class="button1-f">
+                <v-row class="ma-0">
+                  <v-btn class="mx-2" fab dark large color="#c9e8dd">
+                    <v-icon dark> mdi-credit-card-multiple-outline </v-icon>
+                  </v-btn>
+                  <ul class="items">
+                    <li class="item"><span> روش های پرداخت</span></li>
+                    <li class="item2"><span>سیستم امن </span></li>
+                  </ul>
+                </v-row>
+              </div>
+            </a>
+          </v-col>
+
+          <v-col
+            class="pa-lg-3 pa-lg-3 pa-md-3 pa-sm-1 py-1"
+            cols="10"
+            xl="3"
+            lg="3"
+            md="3"
+            sm="10"
+          >
+            <a href="#" class="pa-0">
+              <div class="button1-f">
+                <v-row class="ma-0">
+                  <v-btn class="mx-2" fab dark large color="#c9e8dd">
+                    <v-icon dark> mdi-cash-100 </v-icon>
+                  </v-btn>
+                  <ul class="items">
+                    <li class="item"><span>ضمانت بازگشت وجه</span></li>
+                    <li class="item2"><span>30 روزه </span></li>
+                  </ul>
+                </v-row>
+              </div>
+            </a>
+          </v-col>
+          <v-col
+            class="pa-lg-3 pa-lg-3 pa-md-3 pa-sm-1 py-1"
+            cols="10"
+            xl="3"
+            lg="3"
+            md="3"
+            sm="10"
+          >
+            <a href="#" class="pa-0"
+              ><div class="button1-f">
+                <v-row class="ma-0">
+                  <v-btn class="mx-2" fab dark large color="#c9e8dd">
+                    <v-icon dark> mdi-rocket-launch </v-icon>
+                  </v-btn>
+                  <ul class="items">
+                    <li class="item"><span>پشتیبانی آنلاین</span></li>
+                    <li class="item2"><span>از 25 هزار تومن</span></li>
+                  </ul>
+                </v-row>
+              </div></a
+            >
+          </v-col>
+        </v-row>
+      </v-container>
     </v-container>
 
     <v-container fluid class="pa-0">
@@ -465,6 +467,8 @@ export default {
   justify-content: space-between;
 }
 .l12 {
+  background-color: whitesmoke;
+
   height: 424px;
   text-align: center;
   width: 100%;
@@ -475,7 +479,7 @@ export default {
       flex-direction: column;
       align-items: start;
       .link {
-        color:$color-dark;
+        color: $color-dark;
         font-size: 0.9em;
       }
     }
@@ -483,7 +487,7 @@ export default {
 
   .header-footer {
     height: 120px;
-    background-color:$color-header;
+    background-color: $color-header;
     .search {
       width: 100%;
       height: 100%;
@@ -511,7 +515,7 @@ export default {
           color: white;
         }
         &:hover {
-          background-color:$color-dark;
+          background-color: $color-dark;
         }
       }
       .in-s {
@@ -553,7 +557,7 @@ export default {
     }
     .v-btn {
       i {
-        color:$color-dark;
+        color: $color-dark;
       }
     }
     &:hover {
@@ -595,10 +599,8 @@ export default {
         font-size: 1em;
         color: #000;
         letter-spacing: 0;
-     
-      
       }
-      
+
       &:hover {
         .link {
           color: #000;
@@ -616,7 +618,6 @@ export default {
     justify-content: center;
   }
   span {
-  
     color: white;
     font-size: 0.8em;
     letter-spacing: 2px;

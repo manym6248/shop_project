@@ -6,26 +6,27 @@ import admin from './moduls/admin'
 import products from './moduls/products'
 import user from './moduls/user'
 
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    displayN:false,
-  
-    //admin
-    
-    
+    displayN: false,
 
-   
+    //admin
+
+
+
+
   },
   mutations: {
 
-    toggleN(state){
+    toggleN(state) {
       state.displayN = !state.displayN;
     },
-    
 
-  
+
+
 
   },
   actions: {
@@ -34,6 +35,7 @@ export default new Vuex.Store({
     login,
     admin,
     products,
-    user
+    user,
+    
   }
 })

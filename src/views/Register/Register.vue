@@ -9,11 +9,11 @@
           <v-col cols="12" md="7" sm="8" class="px-5">
             <div class="login-card">
               <v-card class="rounded-xl mt-0" height="100%">
-                <v-toolbar flat color="#6c63ff">
-                  <v-icon color="#fff">mdi-account</v-icon>
+                <v-toolbar flat class="cartheader">
+                  <v-icon >mdi-account</v-icon>
                   <v-toolbar-title
                     class="font-weight-light mr-1"
-                    style="color: #fff"
+                    
                   >
                     ثبت نام
                   </v-toolbar-title>
@@ -81,7 +81,7 @@
           <v-col cols="12" md="5" sm="4" class="px-5 svg1">
             <div class="img-log">
               <v-img
-                src="../../assets/img/svg/login/undraw_accept_tasks_po1c.svg"
+                src="../../assets/img/svg/login/undraw_accept_tasks_po1c (1).svg"
               ></v-img>
             </div>
           </v-col>

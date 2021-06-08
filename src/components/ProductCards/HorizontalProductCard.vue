@@ -106,6 +106,13 @@ export default {
 
 <style lang="scss" scoped  >
 @import '../../assets/scss/utility/utility.scss';
+
+.v-card__text{
+  .subtitle-1 {
+    color: $color-dark;
+  }
+}
+
 .card {
   height: 160px;
   .card-item {
@@ -116,10 +123,12 @@ export default {
       padding: 0;
 
       .item {
+        color: $color-dark;
         &:hover {
           transform: rotate(360deg);
         }
         .link {
+           color: $color-dark;
           padding: 0px 12px;
           .v-btn {
             background-color: darkgreen !important;

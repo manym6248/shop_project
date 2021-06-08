@@ -11,7 +11,7 @@
             sm="12"
             class="px-1 pl-4 py-0"
             style="height: 100%"
-            ><div class="box-category">
+            ><div class="box-category" v-if="btntoggle">
               <v-btn
                 class="my-0"
                 outlined
@@ -28,7 +28,6 @@
                 cols="12"
                 md="12"
                 class="hrd"
-                
                 style="height: 100%"
                 v-if="count"
                 ><div class="hon">
@@ -65,8 +64,63 @@
                   </v-card>
                 </div></v-col
               >
-            </div></v-col
-          >
+            </div>
+            <div class="box-category-2" v-if="btntoggle2">
+              <v-btn
+                class="my-0"
+                outlined
+                color="#000"
+                @click="toggleN"
+                height="100%"
+                width="100%"
+              >
+                <v-icon class="ml-2">mdi-menu</v-icon>
+                تمام دسته ها
+              </v-btn>
+
+              <v-col
+                cols="12"
+                md="12"
+                class="hrd"
+                style="height: 100%"
+                v-if="count"
+              >
+                <div class="hon">
+                  <v-card
+                    height="400"
+                    width="100%"
+                    class="mx-0 mt-0 rounded"
+                    elevation="2"
+                  >
+                    <v-navigation-drawer permanent width="100%">
+                      <v-list dense nav class="pa-0 rounded-0">
+                        <v-list-item
+                          v-for="item in items2"
+                          :key="item.text"
+                          link
+                          class="pa-0 px-3 ma-0 rounded-0"
+                        >
+                          <router-link
+                            :id="item.id"
+                            :to="item.to"
+                            tag="li"
+                            class="item"
+                            active-class="active"
+                            ><a class="link"
+                              ><span></span>
+                              <v-icon small class="ml-2"
+                                >mdi-{{ item.icon }}</v-icon
+                              >{{ item.text }}</a
+                            >
+                          </router-link>
+                        </v-list-item>
+                      </v-list>
+                    </v-navigation-drawer>
+                  </v-card>
+                </div>
+              </v-col>
+            </div>
+          </v-col>
           <v-col
             cols="0"
             lg="9"
@@ -77,16 +131,15 @@
           >
             <ul class="items">
               <router-link
-               
                 v-for="item in itemsGategory"
                 :key="item.id"
                 :id="item.id"
                 :to="item.to"
-               @click.native="changetoggle()"
+                @click.native="changetoggle()"
                 tag="li"
                 class="item"
                 active-class="active"
-                ><a class="link"  
+                ><a class="link"
                   ><span></span>
                   <v-icon :v-if="item.classicon === true" medium>{{
                     item.icon
@@ -103,11 +156,13 @@
 </template>
 
 <script>
-import {mapMutations} from "vuex"
+import { mapMutations } from "vuex";
 export default {
   data() {
     return {
-   
+      btntoggle: true,
+      btntoggle2: true,
+
       itemsGategory: [
         {
           to: "/",
@@ -115,15 +170,15 @@ export default {
           text: "صحفه اصلی ",
           classicon: true,
           icon: "",
-          id:1
+          id: 1,
         },
-         {
+        {
           to: "/productpage",
           class1: "",
           text: "فروشگاه",
           classicon: false,
           icon: "",
-          id:2
+          id: 2,
         },
         {
           to: "/blog",
@@ -131,7 +186,7 @@ export default {
           text: "  وبلاگ",
           classicon: false,
           icon: "",
-          id:3
+          id: 3,
         },
         {
           to: "/madia",
@@ -139,7 +194,7 @@ export default {
           text: "رسانه",
           classicon: false,
           icon: "",
-          id:4
+          id: 4,
         },
         {
           to: "/",
@@ -147,7 +202,7 @@ export default {
           text: "ویژگی ها",
           classicon: false,
           icon: "",
-          id:6
+          id: 6,
         },
         {
           to: "/user",
@@ -155,7 +210,7 @@ export default {
           text: "در باره ما ",
           classicon: false,
           icon: "",
-          id:7
+          id: 7,
         },
       ],
       items2: [
@@ -217,46 +272,42 @@ export default {
         },
       ],
       w: 0,
-      displayN:null
-    
+      displayN: null,
     };
   },
-  created() {
-    // window.addEventListener("resize", this.handleResize);
-    // this.handleResize();
-
- 
-      
-  
-      
-   
+  watch: {
+    $route() {
+      if (this.$route.path === "/") {
+        this.btntoggle = false;
+        this.btntoggle2 = true;
+      } else {
+        this.btntoggle = true;
+        this.btntoggle2 = false;
+      }
+    },
   },
   destroyed() {
     window.removeEventListener("resize", this.handleResize);
   },
   methods: {
-    ...mapMutations ([
-    "toggleN"
-    ]),
-    
-   
+    ...mapMutations(["toggleN"]),
 
-    changetoggle(){
-    
-   
-         this.displayN = false;
-      
-     
-      
-    }
+    changetoggle() {
+      this.displayN = false;
+    },
   },
   computed: {
-    count () {
-      return this.$store.state.displayN
+    count() {
+      return this.$store.state.displayN;
+    },
+  },
+  created() {
+    if (this.$route.path === "/") {
+      this.btntoggle = false;
+    } else {
+      this.btntoggle = true;
     }
-  }
-   
-
+  },
 };
 </script>
 
@@ -274,6 +325,12 @@ export default {
     background: $color-light;
   }
   .box-category {
+    height: 100%;
+    align-self: center;
+    padding: 12px 0px;
+  }
+  .box-category-2 {
+    display: none;
     height: 100%;
     align-self: center;
     padding: 12px 0px;
@@ -340,6 +397,9 @@ export default {
       display: none;
     }
   }
+  .box-category-2 {
+    display: block !important;
+  }
 }
 @media #{$bp-sm} {
   .menue {
@@ -347,6 +407,9 @@ export default {
     .items {
       display: none;
     }
+  }
+  .box-category-2 {
+    display: block !important;
   }
 }
 </style>

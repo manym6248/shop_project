@@ -57,41 +57,17 @@
                           @click="drawer = !drawer"
                         ></v-app-bar-nav-icon>
                         <v-spacer class="space"></v-spacer>
-                        <li class="item">
-                          <a href="" class="link">
-                            <v-icon> mdi-map-marker-outline </v-icon>پرداخت</a
-                          >
-                        </li>
-                        <v-divider
-                          style="border-color: rgb(80 74 74 / 59%)"
-                          vertical
-                        ></v-divider>
+                        
+                     
 
-                        <li class="item">
-                          <a href="" class="link">
-                            <v-icon> mdi-credit-card-multiple-outline </v-icon
-                            >حساب من
-                          </a>
-                        </li>
+                        
+                      
 
-                        <v-divider
-                          style="border-color: rgb(80 74 74 / 59%)"
-                          vertical
-                        ></v-divider>
-
-                       <router-link to="/register" class="item">
-                          <a href="" class="link">
-                            <v-icon> mdi-account  </v-icon>ثبت نام
-                          </a>
-                        </router-link>
-                        <v-divider
-                          style="border-color: rgb(80 74 74 / 59%)"
-                          vertical
-                        ></v-divider>
+                     
 
                         <router-link to="/login" class="item">
                           <a href="" class="link">
-                            <v-icon> mdi-login-variant </v-icon>ورود کاربر</a
+                            <v-icon> mdi-account </v-icon>ورود کاربر</a
                           >
                         </router-link>
                       </ul>
