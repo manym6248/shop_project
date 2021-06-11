@@ -174,6 +174,32 @@
               </v-card>
             </v-card-text>
           </v-tab-item>
+           <v-tab-item transition="scale-transition" class="mt-5 item-tab">
+              <v-card-text>
+          <div class="font-weight-bold mr-8 mb-2">
+            نظرات شما
+          </div>
+
+          <v-timeline
+            align-top
+            dense
+          >
+            <v-timeline-item
+              v-for="(message, i) in messages"
+              :key="i"
+              :color="message.color"
+              small
+            >
+              <div>
+                <div class="font-weight-normal">
+                  <strong class="ml-3">{{ message.from }}</strong> {{ message.time }}
+                </div>
+                <div>{{ message.message }}</div>
+              </div>
+            </v-timeline-item>
+          </v-timeline>
+        </v-card-text>
+          </v-tab-item>
           <v-tab-item transition="scale-transition" class="mt-5 item-tab">
             <v-card-text class="pa-10">
               <v-form>
@@ -235,6 +261,39 @@ export default {
 
   data() {
     return {
+        messages: [
+        {
+          from: 'مانی',
+          message: `بهترین سایتی که دیدم `,
+          time: '10:42am',
+          color: 'deep-purple lighten-1',
+        },
+        {
+          from: 'رز بنفش',
+          message: 'عالی بود , عالی ',
+          time: '16:37am',
+          color: 'green',
+        },
+        {
+          from: 'مهرداد',
+          message: 'خوب بود توصیه میکنم',
+          time: '20:27am',
+          color: 'deep-purple lighten-1',
+        },
+        {
+          from: 'کاربر پاک شده',
+          message: ' با تاریخ روز بود و کاملا تازه ممنون ',
+          time: '22:47am',
+          color: 'deep-purple lighten-1',
+        },
+        {
+          from: 'ربات',
+          message: ' لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله...   در ستون و سطرآنچنان که لازم است ولورم ایپسوم متن ساختگی با تولید',
+          time: '9:47am',
+          color: 'deep-purple lighten-1',
+        },
+        
+      ],
       name1:{name:"محصولات مرتبط",
                required1:true},
       rating: 4,
@@ -265,7 +324,7 @@ export default {
         },
       ],
       tab: null,
-      items1: ["توضیحات", "اطلاعات بیشتر", "نظرات"],
+      items1: ["توضیحات", "اطلاعات بیشتر", "نظرات","ارسال نظر"],
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, snulled do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       items: [

@@ -71,8 +71,8 @@
                     ></v-text-field>
                     <div class="pa-3"></div>
 
-                    <v-btn class="mr-4" type="submit"> submit </v-btn>
-                    <v-btn @click="clear"> clear </v-btn>
+                    <v-btn class="mr-4" color="blue" type="submit"> ثبت </v-btn>
+                    <v-btn @click="clear"> لغو </v-btn>
                   </form>
                 </v-card-text>
               </v-card>
@@ -198,10 +198,10 @@ export default {
 .body-lgin {
   padding: 0px;
   margin: 0px;
-  height: 100vh;
+  height: 550px;
   width: 100%;
   background-color: $color-header2;
-  padding-top: 20px;
+  padding-top: 23px;
 }
 .div1 {
   width: 900px;
@@ -229,17 +229,17 @@ export default {
   .svg1 {
     display: none;
   }
-  .login-card {
-    height: 450px;
-  }
+ 
   .body-lgin {
     padding: 10px;
+    height: 530px;
   }
 }
 @media #{$bp-sm} {
   .body-lgin {
     padding-top: 10px;
-    height: 90vh;
+   height: 530px;
   }
+
 }
 </style>

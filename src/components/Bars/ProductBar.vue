@@ -8,7 +8,7 @@
 
   </v-row>
 </div>
-<v-divider></v-divider>
+<v-divider class=" mb-4"></v-divider>
 
     <flickity ref="flickity" :options="flickityOptions" class="gallery pc-b js-flickity big444 " >
         <v-col class="py-0 pc " cols="12" sm="6" lg="3" xl="3" v-for="item in products" :key="item.id" >

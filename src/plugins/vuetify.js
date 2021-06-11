@@ -5,13 +5,15 @@ import Vuetify from 'vuetify/lib';
 
 
 
+
 const theme = {
   primary: '#2196f3',
   secondary: '#9C27b0',
   accent: '#9C27b0',
   info: '#00CAE3',
   success: '#2196F3',
-  cartheader:'#faebd7'
+  cartheader:'#faebd7',
+  colorheader:'#f8d4db'
 }
 
 

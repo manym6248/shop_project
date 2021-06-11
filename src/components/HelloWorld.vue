@@ -58,20 +58,41 @@
               cycle
               height="100%"
               class="rounded xs-rrounded-0"
+              interval="9000"
             >
               <v-carousel-item
                 v-for="(item, i) in items"
                 :key="i"
-                :src="item.src"
-              ></v-carousel-item>
+                transition="slide-x-transition"
+              >
+               
+       <div class="hon ">
+           
+               <div class="gallery-text">
+                <a href="#">
+                  <h1>   تخفیف های ویژه + </h1>
+                  <h2 class="mr-12">به ازای هر خرید 20 درصد تخفیف</h2>
+                </a>
+              </div>
+              <v-img height="100%" class="rounded " min-height="100%" max-height="100%" :src="item.src"></v-img>
+           
+            </div>
+     
+              
+              
+              
+              
+              </v-carousel-item>
             </v-carousel>
           </v-col>
         </v-row>
       </v-container>
     </div>
-    <product-category-bar />
+    <!-- <product-category-bar /> -->
+    <three-img-card />
     <product-bar />
-    <two-img-card />
+    
+    <!-- <two-img-card /> -->
     <big-products-card class="big" />
     <three-img-card />
     <tab-1 />
@@ -81,26 +102,30 @@
 </template>
 
 <script>
-import TwoImgCard from "./ImgCards/TwoImgCard";
+// import TwoImgCard from "./ImgCards/TwoImgCard";
 import ProductBar from "./Bars/ProductBar";
-import ProductCategoryBar from "./Bars/ProductCategoryBar";
+//import ProductCategoryBar from "./Bars/ProductCategoryBar";
 import BigProductsCard from "./ProductCards/BigProductsCard.vue";
 import Logo from "./Bars/logo.vue";
 import MaglatBar from "./Bars/MaglatBar.vue";
 import ThreeImgCard from "./ImgCards/ThreeImgCard.vue";
 import Tab1 from "./Tabs/Tab1.vue";
+
 import { mapState } from "vuex";
+
 
 export default {
   components: {
-    TwoImgCard,
+    
+    // TwoImgCard,
     ProductBar,
-    ProductCategoryBar,
+    // ProductCategoryBar,
     BigProductsCard,
     Logo,
     MaglatBar,
     ThreeImgCard,
     Tab1,
+    
   },
   name: "HelloWorld",
 
@@ -168,16 +193,16 @@ export default {
 
       items: [
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+          src: require("../assets/img/svg/img/colorful-fruit-juice-wallpaper-2560x1080_14.jpg"),
         },
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+          src: require("../assets/img/dev/بستنی/240317.jpg"),
         },
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
+          src: require("../assets/img/dev/کیک/pexels-photo-433527.jpeg"),
         },
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+          src:  require("../assets/img/svg/img/ca61003f3cfeb8a1b0ac742cf47f7b08.jpg"),
         },
       ],
     };
@@ -228,7 +253,90 @@ export default {
   padding-top: 30px;
   height: 430px;
   position: relative;
+
+  
  
+}
+.v-carousel{
+ .hon {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    .gallery-text {
+      left: 0;
+      margin: 0 auto;
+      padding: 20px;
+      opacity: 1;
+      position: absolute;
+      right: 10%;
+      text-align: right;
+      top: 20%;
+      transform: translate3d(0px, -38%, 0px);
+      visibility: initial;
+
+      width: 100%;
+      z-index: 3;
+      color: white;
+
+      h1 {
+        font-size: 2em;
+        font-style: normal;
+        font-weight: 700;
+        letter-spacing: 1px;
+        line-height: 18px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        transform: translate(0, -10px);
+        opacity: 1;
+        color: white;
+        
+      }
+      h2 {
+        display: block;
+        font-size: 1.4em;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        color: #a8a8a8;
+        opacity: 1;
+        background-color: brown;
+        padding: 5px 10px;
+      }
+    }
+
+    .v-image {
+      filter: brightness(0.5) !important;
+      filter: blur(0px);
+    }
+
+    h1 {
+      animation: fade-in3 1.5s ease-out forwards;
+    }
+    h2 {
+      animation: fade-in4 1.25s ease-out forwards;
+    }
+  }
+    }
+      @keyframes fade-in3 {
+        from {
+          transform: translatex(100px);
+          opacity: 0;
+        }
+        to {
+          transform: translatex(0);
+          opacity: 1;
+        }
+
+}
+      @keyframes fade-in4 {
+        from {
+          transform: translatex(-100px);
+          opacity: 0;
+        }
+        to {
+          transform: translatex(0);
+          opacity: 1;
+        }
+
 }
 
 @media #{$bp-xs} {

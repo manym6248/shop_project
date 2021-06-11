@@ -7,10 +7,9 @@
 
     <v-container class="pa-0">
       <v-row class="ma-0 pa-0">
-        <v-col cols="12" md="3" class="px-0 pl-4 py-0">
+        <v-col cols="12" md="3" class="px-0 pl-4 py-0 blue11">
           <div class="blue1">
             <v-system-bar
-              elevation="0"
               max="100px"
               height="48px"
               class="banner rounded-lg pa-3"
@@ -67,9 +66,9 @@
 
             <v-card class="mx-auto mt-4 mb-0" max-width="344">
               <v-range-slider
-              color="blue"
+                color="blue"
                 :thumb-color="ex3.color"
-                 :track-color="ex2.color"
+                :track-color="ex2.color"
                 v-model="range"
                 :min="ex2.min"
                 :max="ex2.max"
@@ -148,9 +147,15 @@
                 </v-chip-group>
               </div>
             </v-card>
-
-            <div class="py-3" />
-
+            <div class="py-10" />
+          </div>
+        </v-col>
+        <v-col
+          cols="12"
+          md="9"
+          class="px-xl-0 pr-xl-3 px-lg-0 pr-lg-3 py-0 pa-5"
+        >
+          <div class="red1">
             <v-system-bar
               elevation="0"
               max="100px"
@@ -158,52 +163,31 @@
               class="banner rounded-lg pa-3"
               color="rgb(183 219 206)"
             >
-              <h3>پر فروش ها</h3>
+              <h3 class="mr-3">محصولات</h3>
+           
             </v-system-bar>
-            <v-card class="mx-auto mt-4 mb-0" max-width="344">
-              <HorizontalProductCard />
-              <v-divider class="pa-0"></v-divider>
-              <HorizontalProductCard />
-            </v-card>
-
-            <div class="py-3" />
-          </div>
-        </v-col>
-        <v-col
-          cols="12"
-          md="9"
-          class="px-xl-0 pr-xl-3 px-lg-0 pr-lg-3 py-0 pa-0"
-        >
-          <div class="red1 ">
-          <v-system-bar
-              elevation="0"
-              max="100px"
-              height="48px"
-              class="banner rounded-lg pa-3"
-              color="rgb(183 219 206)"
-            >
-              <h3>دسته محصولات</h3>
-            </v-system-bar>
-             <v-row class="ma-0 py-3">
-            <v-col
-              v-for="i in 12"
-              :key="i"
-              cols="12"
-              md="4"
-              class="pa-1"
-            >
-             
-             <ProductCard/>
-            </v-col>
-          </v-row>
-          <div class="text-center">
-     <v-pagination
-      v-model="page"
-      :length="4"
-      prev-icon="mdi-menu-left"
-      next-icon="mdi-menu-right"
-    ></v-pagination>
-  </div>
+            <v-row class="ma-0 my-3">
+              <v-col
+                v-for="item in products"
+                :key="item.id"
+                cols="12"
+                sm="6"
+                md="6"
+                lg="4"
+                xl="4"
+                class="pa-1 py-2"
+              >
+                <ProductCard :item="item" :img="item.images" />
+              </v-col>
+            </v-row>
+            <div class="text-center">
+              <v-pagination class="mb-10 mt-5"
+                v-model="page"
+                :length="4"
+                prev-icon="mdi-menu-left"
+                next-icon="mdi-menu-right"
+              ></v-pagination>
+            </div>
           </div>
         </v-col>
       </v-row>
@@ -211,16 +195,15 @@
   </v-container>
 </template>
 <script>
-import HorizontalProductCard from "../components/ProductCards/HorizontalProductCard";
 import ProductCard from "../components/ProductCards/ProductCard";
 export default {
   components: {
-    HorizontalProductCard,
     ProductCard,
   },
   data() {
     return {
-        page: 1,
+      products: this.$store.state.products.products,
+      page: 1,
       ex2: { min: 0, max: 90, color: "gray " },
       ex3: { color: "blue" },
 
@@ -391,7 +374,17 @@ export default {
     }
   }
 }
-.red1{
+.red1 {
   height: 100%;
+}
+
+
+
+@media #{$bp-xs} {
+.blue11{display: none;}
+}
+@media #{$bp-sm} {
+
+ .blue11{display: none;}
 }
 </style>

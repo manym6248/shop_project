@@ -1,5 +1,5 @@
 <template>
-  <div class="body-lgin">
+  <div class="body-lgin2">
     <v-container tag="section" class="at-16">
       <v-container
         tag="section"
@@ -7,7 +7,7 @@
       >
         <v-row class="mt-0 px-xl-8 px-lg-8 px-md-2 px-sm-1" justify="center">
           <v-col cols="12" md="7" sm="6" class="px-5">
-            <div class="login-card">
+            <div class="login-card2">
               <v-card class="rounded-xl mt-0" height="100%">
                 <v-toolbar flat class="cartheader">
                   <v-icon>mdi-account</v-icon>
@@ -125,10 +125,10 @@ export default {
   }
 }
 
-.body-lgin {
+.body-lgin2 {
   padding: 0px;
   margin: 0px;
-  height: 80vh;
+  height: 500px;
   width: 100%;
   background-color: $color-header2;
   padding-top: 20px;
@@ -151,7 +151,7 @@ export default {
   height: 100%;
   width: 100%;
 }
-.login-card {
+.login-card2 {
   height: 100%;
 }
 
@@ -159,17 +159,24 @@ export default {
   .svg1 {
     display: none;
   }
-  .login-card {
-    height: 400px;
-  }
-  .body-lgin {
+  .login-card2 {
+    height: 380px;
+}
+
+
+  .body-lgin2 {
     padding: 10px;
+   
   }
 }
 @media #{$bp-sm} {
   .body-lgin {
     padding-top: 10px;
-    height: 90vh;
+   
   }
+
+    .login-card2 {
+    height: 395px;
+}
 }
 </style>

@@ -67,7 +67,7 @@
 
                         <router-link to="/login" class="item">
                           <a href="" class="link">
-                            <v-icon> mdi-account </v-icon>ورود کاربر</a
+                            <v-icon> mdi-login-variant </v-icon>ورود </a
                           >
                         </router-link>
                       </ul>
@@ -76,9 +76,10 @@
                       <div class="number">
                         <li class="item">
                           <a href="#" class="link">
-                            <v-icon> mdi-phone-classic </v-icon>
-                            تماس :
                             <span class="pt-1"> 09100000000 </span>
+                             :
+                            <v-icon class="ma-0" 
+                            style="transform:rotate(24deg)"> mdi-phone </v-icon>
                           </a>
                         </li>
                       </div>

@@ -126,7 +126,7 @@
             lg="9"
             md="9"
             sm="0"
-            class="px-1 pr-0 py-0"
+            class="px-1 pr-0 py-0 mainmanue12"
             style="height: 100%"
           >
             <ul class="items">
@@ -138,7 +138,8 @@
                 @click.native="changetoggle()"
                 tag="li"
                 class="item"
-                active-class="active"
+                active-class="active1"
+                exact=""
                 ><a class="link"
                   ><span></span>
                   <v-icon :v-if="item.classicon === true" medium>{{
@@ -146,6 +147,44 @@
                   }}</v-icon
                   >{{ item.text }}</a
                 >
+                <v-card
+    class="mx-auto pa-5 main-items-card"
+    v-if="item.cart"
+    
+  >
+   <ul class="items2">
+            
+              
+                  <div class="pl-3" v-for="(item2, i) in item.category" :key="i">
+                    <h4 >{{item2.name}}</h4>
+                    <ul class="items3 mt-3">
+                      
+                        <router-link
+                v-for="(item3, i) in item2.subcategory"
+                :key="i"
+               
+                to="/"
+             
+                tag="li"
+                class="item"
+                active-class="active1"
+                >
+                 <v-icon class="ml-0 mt-0" color="red">mdi-chevron-left</v-icon>
+                <a class="link px-3 py-1 pr-0" 
+                  >
+                  {{item3.name}}
+                  </a>
+                  </router-link>
+                  
+                  
+
+                    </ul>
+                    
+                  </div>
+               
+   </ul>
+    
+  </v-card>
               </router-link>
             </ul>
           </v-col>
@@ -179,6 +218,28 @@ export default {
           classicon: false,
           icon: "",
           id: 2,
+          cart:true,
+           category:[
+               {name:'نوشیدنی', 
+                 subcategory:[
+                 {name:'گرم'},
+                 {name:'سرد'},
+                             ]
+               },
+               {name:'شیرینی', 
+               subcategory:[
+                 {name:'تر'},
+                 {name:'خشک'},
+                           ],
+                },
+               {name:'بستنی', 
+               subcategory:[
+                 {name:'بستنی میوه ای'},
+                 {name:'بستنی شکلاتی'},
+                 {name:'بستنی ویژه'},
+                           ],
+                },
+          ],
         },
         {
           to: "/blog",
@@ -197,7 +258,7 @@ export default {
           id: 4,
         },
         {
-          to: "/",
+          to: "/admin",
           class1: "",
           text: "ویژگی ها",
           classicon: false,
@@ -211,7 +272,7 @@ export default {
           classicon: false,
           icon: "",
           id: 7,
-        },
+         }
       ],
       items2: [
         {
@@ -341,16 +402,47 @@ export default {
     flex-direction: row;
     height: 100%;
     align-items: center;
+    position: relative;
+       
 
     .item {
       display: inline-block;
+     
       .link {
         padding: 20px 24px;
         color: $color-dark;
         font-size: 1em;
       }
+
+      .main-items-card{
+        display: none;
+        position: absolute;
+        top: 30px;
+        z-index: 20000;
+        height: 300px;
+        .items2{
+          display: flex;
+          flex-direction: row;
+        }
+        .items3{
+          display: flex;
+          flex-direction: column;
+          .item{
+            display: flex;
+            flex-direction: row;
+          }
+        }
+        
+      }
+
+      &:hover{
+         .main-items-card{
+        display: block;
+      }
+      }
     }
   }
+  
 }
 .abslut {
   display: none;
@@ -386,6 +478,29 @@ export default {
   .v-list-item {
     &:before {
       border-radius: 0px !important;
+    }
+  }
+}
+
+.mainmanue12{
+  .items{
+    .item{
+       transition:0.5s;
+      &.active1{
+        .link{
+            border-bottom: 2px solid;
+        }
+       
+      }
+      &:hover{
+       transition:0.5s;
+        .link{
+          border-bottom: 2px solid ;
+           
+
+        }
+        
+      }
     }
   }
 }
