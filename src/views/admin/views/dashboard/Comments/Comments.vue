@@ -32,21 +32,10 @@
               </thead>
 
               <tbody>
-                <tr v-for="(item, i) in apidata" :key="i">
+                <tr v-for="(item, i) in apidata2" :key="i">
                 
                   <td class="text-center">
-                                         <!-- :src="getImage(item.img)" -->
-                       <v-img
-                      class="rounded-circle my-2 mx-auto"
-                      max-height="80px"
- 
-                      :src="item.img" 
-                     
-
-                      width="55px"
-                      height="55px"
-                    ></v-img>
-                          
+                    {{item.id}}
                      
                   </td>
                   <td class="text-center">{{ item.name }}</td>
@@ -60,7 +49,7 @@
                    200/06/29
                   </td>
                   <td class="text-center">
-                     <v-btn class="ml-2 edit-h" min-width="0" text large icon @click="goedit(item.id)">
+                     <v-btn class="ml-2 edit-h" min-width="0" text large icon >
                       <v-icon > mdi-clipboard-edit-outline</v-icon>
                     </v-btn>
                     
@@ -70,7 +59,7 @@
                       text
                       large
                       icon
-                      @click="removeFromCart2(item.id)"
+                     
                     >
                       <v-icon > mdi-delete-empty</v-icon>
                     </v-btn>
@@ -97,14 +86,19 @@ export default {
 
   data () {
     return {
+apidata2:[
+    {id:1,
+    name:'مانیا',
+    email:'dfhdkfhdskfhds',
+    phone:'dfkdsjflkdjfdl'
 
-    apidata:this.$store.state.user.users,}
+    }
+]
+    }
   },
 
   computed: {
-    getImage(path) {
-  return require(path)
-}
+
     
   },
 
@@ -118,9 +112,7 @@ export default {
     }
     
   },
-  created(){
-   
-  }
+ 
 };
 </script>
 
