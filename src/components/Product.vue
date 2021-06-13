@@ -81,9 +81,19 @@
                     ({{ rating }})
                   </span>
                 </v-row>
-                <div class="py-5 my-0 mt-1 pric14">
+                <v-row class="ma-0 pa-0">
+<div class="py-5 my-0 mt-1 pric14">
+                  
                   {{ product.price | currency }}
+                  
                 </div>
+                <div class="py-5 my-0 mx-7 mt-1 pric15">
+                  
+                {{product.discount}} تخفیف 
+                  
+                </div>
+                </v-row>
+                
                 <div class="pargaph">
                   <p>
                     {{ product.description }}
@@ -444,6 +454,10 @@ export default {
   .pric14 {
     font-size: 2.1em;
     color: $color-header;
+  }
+  .pric15 {
+    font-size: 1.6em;
+    color: $color-menu;
   }
   .card-item {
     .items {

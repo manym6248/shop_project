@@ -166,11 +166,11 @@
                 to="/"
              
                 tag="li"
-                class="item"
+                class="itemm"
                 active-class="active1"
                 >
                  <v-icon class="ml-0 mt-0" color="red">mdi-chevron-left</v-icon>
-                <a class="link px-3 py-1 pr-0" 
+                <a class="linkk px-3 py-1 pr-0" 
                   >
                   {{item3.name}}
                   </a>
@@ -378,6 +378,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: $color-menu;
+  position: relative;
   .v-btn {
     letter-spacing: 0;
     justify-content: right;
@@ -402,7 +403,7 @@ export default {
     flex-direction: row;
     height: 100%;
     align-items: center;
-    position: relative;
+    
        
 
     .item {
@@ -415,27 +416,36 @@ export default {
       }
 
       .main-items-card{
+        right: 0;
         display: none;
         position: absolute;
-        top: 30px;
+        top: 40px;
+        width: 100%;
         z-index: 20000;
         height: 300px;
         .items2{
           display: flex;
           flex-direction: row;
+          justify-content: center;
         }
         .items3{
           display: flex;
           flex-direction: column;
-          .item{
+          .itemm{
             display: flex;
             flex-direction: row;
+            .linkk {
+            color: $color-dark;
+          }
           }
         }
         
       }
 
       &:hover{
+        .link{
+          color: brown;
+        }
          .main-items-card{
         display: block;
       }

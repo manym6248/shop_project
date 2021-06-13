@@ -3,11 +3,12 @@
 
 const state = {
   "cart": [],
-  "interestscart":[],
+  "interestscart": [],
   "products": [
-    {  "discount":"5%",
+    {
+      "discount": "5%",
       "id": 3,
-      "count":1,
+      "quantity": 0,
       "name": "بیسکویت",
       "images": [
         {
@@ -19,17 +20,18 @@ const state = {
         },
         { "url": require("../../assets/img/dev/بیسکویت/pexels-photo-3776942.jpeg") },
         { "url": require("../../assets/img/dev/بیسکویت/pexels-photo-4110541.jpeg") },
-       
-       
+
+
       ],
       "price": 12000,
       "description": " ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با  استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید  سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
     },
-   
-    
-    { "discount":"15%",
+
+
+    {
+      "discount": "15%",
       "id": 44,
-      "count":1,
+      "quantity": 0,
       "name": "کیک",
       "images": [
         {
@@ -45,9 +47,10 @@ const state = {
       "price": 5000000,
       "description": " ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با  استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید  سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
     },
-    { "discount":"32%",
+    {
+      "discount": "32%",
       "id": 99,
-      "count":1,
+      "quantity": 0,
       "name": "شکلات",
       "images": [
         { "url": require("../../assets/img/dev/شکلات/Sweet-White-Chocolate-Dessert-Wallpaper-1600x1200-340x220.jpg") },
@@ -63,9 +66,10 @@ const state = {
       "price": 39000,
       "description": " ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با  استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید  سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
     },
-    { "discount":"40%",
+    {
+      "discount": "40%",
       "id": 86,
-      "count":1,
+      "quantity": 0,
       "name": "آدامس",
       "images": [
         { "url": require("../../assets/img/dev/آبنبات/BuzzFeed.jpg") },
@@ -81,9 +85,10 @@ const state = {
       "price": 98000,
       "description": " ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با  استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید  سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
     },
-    { "discount":"16%",
+    {
+      "discount": "16%",
       "id": 8,
-      "count":1,
+      "quantity": 0,
       "name": "چیپس",
       "images": [
         {
@@ -99,9 +104,10 @@ const state = {
       "price": 4000,
       "description": " ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با  استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید  سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
     },
-    { "discount":"24%",
+    {
+      "discount": "24%",
       "id": 100,
-      "count":1,
+      "quantity": 0,
       "name": "بستنی",
       "images": [
         {
@@ -117,9 +123,10 @@ const state = {
       "price": 150000,
       "description": " ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با  استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید  سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
     },
-    { "discount":"27%",
+    {
+      "discount": "27%",
       "id": 5,
-      "count":1,
+      "quantity": 0,
       "name": "نوشابه",
       "images": [
         {
@@ -136,10 +143,11 @@ const state = {
       "description": " ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با  استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید  سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
     },
 
-    
-    { "discount":"25%",
+
+    {
+      "discount": "25%",
       "id": 6,
-      "count":1,
+      "quantity": 0,
       "name": "آبنبات",
       "images": [
         {
@@ -155,7 +163,7 @@ const state = {
       "price": 9000,
       "description": " ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با  استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید  سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
     },
- 
+
   ]
 };
 const getters = {
@@ -170,81 +178,94 @@ const getters = {
         product => product.id === itemId
       )
     )
-  
-      return Array.from(new Set( itemcart));
-    
 
-   
+    return Array.from(new Set(itemcart));
+
+
+
   },
-
   interestscartItem: (state) => {
     const interestscartItem = state.interestscart.map(
       itemId => state.products.find(
         product => product.id === itemId
       )
     )
-  
-      return Array.from(new Set(interestscartItem));
-    
 
-   
+    return Array.from(new Set(interestscartItem));
+
+
+
   },
 
 
 };
 const mutations = {
   ///اضافه کردن به سبد خرید
-  addToCart (state, payload) {
-    state.cart.push( Number(payload) )
+  addToCart(state, payload) {
+    state.cart.push(Number(payload))
   },
   ///حذف از سبد خرید
-  removeFromCart (state, payload) {
-    let indexToDelete = state.cart.indexOf( Number(payload) );
+  removeFromCart(state, payload) {
+    let indexToDelete = state.cart.indexOf(Number(payload));
     state.cart.splice(indexToDelete, 1)
   },
   ///اضافه کردن به لیست علاقمندی ها
-  addTointerestscart (state, payload) {
-    state.interestscart.push( Number(payload) )
+  addTointerestscart(state, payload) {
+    state.interestscart.push(Number(payload))
   },
   ///حذف از   لیست علاقمندی ها
-  removeFrominterestscart (state, payload) {
-    let indexToDelete = state.interestscart.indexOf( Number(payload) );
+  removeFrominterestscart(state, payload) {
+    let indexToDelete = state.interestscart.indexOf(Number(payload));
     state.interestscart.splice(indexToDelete, 1)
   },
   //کاهش تعداد محصول در لیست خرید 
   decrementProductInventory(state, payload) {
     let product = state.products.find(product => product.id === Number(payload))
     product.quantity--;
+    if(product.quantity < 0 ){
+      product.quantity = 0
+    }else{
+      product.quantity--
+    }
   },
-   /// افزایش تعداد محصول در لیست خرید 
+  /// افزایش تعداد محصول در لیست خرید 
   incrementProductInventory(state, payload) {
     let product = state.products.find(product => product.id === Number(payload))
     product.quantity++;
-  }
+  },
 
 };
 const actions = {
   addToCart({ commit }, payload) {
     commit('addToCart', payload)
-    commit('decrementProductInventory', payload)
+    commit('incrementProductInventory', payload)
+   
   },
   removeFromCart({ commit }, payload) {
     commit('removeFromCart', payload)
-    commit('incrementProductInventory', payload)
+    commit('decrementProductInventory', payload)
+   
   },
 
   addTointerestscart({ commit }, payload) {
     commit('addTointerestscart', payload)
-    commit('decrementProductInventory', payload)
+   
 
-    
+
   },
   removeFrominterestscart({ commit }, payload) {
     commit('removeFrominterestscart', payload)
-    commit('incrementProductInventory', payload)
-   
-   
+
+
+
   },
+
+  plus({ commit }, payload) {
+    commit('incrementProductInventory', payload)
+  },
+  minus({ commit }, payload) {
+    commit('decrementProductInventory', payload)
+  }
 
 };
 export default {
