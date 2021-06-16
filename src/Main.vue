@@ -178,18 +178,20 @@
                             max-height="95% "
                             max-width="95% "
                             width="95%"
+                            @click="gotocart()"
                           >
                             <v-icon dark> mdi-cart-outline </v-icon>
                           </v-btn>
                         </div>
 
                         <ul class="items">
-                          <li class="item">
-                            <a href="#" class="link">سبد من</a>
-                          </li>
-                          <li class="item">
-                            <a href="#" class="link">{{cartCount}} محصول </a>
-                          </li>
+                          <router-link tag="li" class="item" to="cart" >
+                          
+                            <a class="link">سبد من</a>
+                          </router-link>
+                          <router-link tag="li" class="item" to="cart" >
+                            <a  class="link">{{cartCount}} محصول </a>
+                          </router-link>
                         </ul>
                       </div>
                     </v-col>
@@ -275,6 +277,9 @@ export default {
     ok() {
       alert("hiiiii");
     },
+    gotocart(){
+      this.$router.push('cart')
+    }
   },
 };
 </script>

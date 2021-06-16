@@ -100,7 +100,7 @@
                   </p>
                 </div>
                 <div class="pa-3"></div>
-                <v-btn class="by-btn ma-0 rounded-pill" large  @click="addToCart">خرید</v-btn>
+                <v-btn  color="blue" class="by-btn ma-0 rounded-pill" large  @click="addToCart">خرید</v-btn>
 
                 <div class="card-item">
                   <ul class="items">

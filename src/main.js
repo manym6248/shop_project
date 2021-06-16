@@ -17,12 +17,13 @@ import 'core-js/features/array/from';
 
 
 
+
 /////////////////////
 import vuetify from './plugins/vuetify';
 import 'es6-promise'
 import './plugins/base'
 import './plugins/chartist'
-import './plugins/vee-validate'
+
 
 
 ///////////////////

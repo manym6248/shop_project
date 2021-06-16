@@ -1,3 +1,4 @@
+
 const state = {
     "cart2": [],
     "users": [
@@ -59,7 +60,10 @@ const state = {
       commit('removeFromCart2', payload)
     
     },
+
   
+  
+   
   };
   export default {
     state, mutations, actions, getters

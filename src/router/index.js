@@ -9,6 +9,7 @@ import User from '../views/usersite/User.vue'
 import Main from '../Main.vue'
 import NotFoundPage from '../components/NotFoundPage.vue'
 import Product from '../components/Product.vue'
+import Cart from '../components/Cart.vue'
 import Edituserinformation from '../components/Edituserinformation/Edituserinformation.vue'
 
 
@@ -37,8 +38,8 @@ import Upgrade from '../views/admin/views/dashboard/Upgrade.vue'
 
 
 //Login and Register
- import Login from '../views/login/Login.vue'
- import Register from '../views/Register/Register.vue'
+ import Login from '../components/auth/Login.vue'
+ import Register from '../components/auth/Register.vue'
 
 
  /////
@@ -93,6 +94,12 @@ const routes = [
         path: 'product/:id',
         name: 'Product',
         component:Product,
+          
+      },
+      {
+        path: 'cart',
+        name: 'Cart',
+        component:Cart,
           
       },
       {

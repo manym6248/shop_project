@@ -623,9 +623,9 @@ export default {
     letter-spacing: 2px;
   }
 }
-.v-text-field__details {
-  display: none !important;
-}
+// .v-text-field__details {
+//   display: none !important;
+// }
 
 @media #{$bp-xs} {
   .header-footer {
