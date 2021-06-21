@@ -82,6 +82,9 @@ const routes = [
         path: 'login',
         name: 'Login',
         component:Login,
+        meta: {
+          requiresVisitor: true,
+        }
           
       },
       {
@@ -106,6 +109,9 @@ const routes = [
         path: 'User',
         name: 'user',
         component:User,
+        meta: {
+          requiresAuth: true,
+        }
           
       },
       {
@@ -130,6 +136,10 @@ const routes = [
   path: '/admin',
   name: 'Admin',
   component:Admin,
+  meta: {
+    requiresAuth: true,
+  },
+  
   // beforeEnter: (to, from, next) => {
   //   if (!index.getters['auth/authenticated']) {
   //     return next({
@@ -242,7 +252,11 @@ const router = new VueRouter({
         resolve({ x: 0, y: 0 })
       }, 0)
     })
-  }
+  },
+  
 })
+
+
+
 
 export default router

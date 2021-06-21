@@ -5,6 +5,15 @@
         tag="section"
         class="mt-0 px-xl-16 px-lg-16 px-md-8 px-sm-4 pt-0"
       >
+         
+    <v-alert
+    v-if="error"
+      outlined
+      type="error"
+      text
+    >
+    ایمیل و یا رمز عبور وارد شده صحیح نیست !
+    </v-alert>
         <v-row class="mt-0 px-xl-8 px-lg-8 px-md-2 px-sm-1" justify="center">
           <v-col cols="12" md="7" sm="6" class="px-5">
             <div class="login-card2">
@@ -21,21 +30,21 @@
                     <v-text-field
                       :disabled="!isEditing"
                       v-model="email"
-                      label="نام کاربری"
+                      label="ایمیل"
                     ></v-text-field>
                     <v-text-field
                       v-model="password"
                       :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                      :rules="[rules.required, rules.min]"
+                  
                       :type="show1 ? 'text' : 'password'"
                       name="input-10-1"
-                      label="Normal with hint text"
-                      hint="At least 8 characters"
+                      label="کلمه عبور"
+                      hint=""
                       counter
                       @click:append="show1 = !show1"
                     ></v-text-field>
                     <div class="py-3" />
-                    <v-btn :disabled="!isEditing" color="success" type="submit">
+                    <v-btn  color="success" type="submit">
                       ورورد
                     </v-btn>
                     <div class="gotopage">
@@ -56,49 +65,50 @@
             </div>
           </v-col>
         </v-row>
+
+
       </v-container>
     </v-container>
   </div>
+  
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+
 
 export default {
   data() {
     return {
+      error:false,
       show1: false,
 
-      password: "Password",
+      password: "",
       email: "",
 
-      rules: {
-        required: (value) => !!value || "Required.",
-        min: (v) => v.length >= 8 || "Min 8 characters",
-        emailMatch: () => `The email and password you entered don't match`,
-      },
+    
       isEditing: true,
       model: null,
     };
   },
   ///////////////////
   methods: {
-    ...mapActions(["doLogin"]),
-    loginSubmit() {
-      this.doLogin({
+     loginSubmit() {
+      this.$store.dispatch('retrieveToken', {
         email: this.email,
         password: this.password,
-      });
-    },
-
-    // //////
-    //   login() {
-    //     this.$router.push("/admin");
-    //   },////
+      })
+        .then(() => {
+          // console.log(response);
+          this.$router.push({ name:'user' })
+        })
+        .catch(
+          this.error = true
+        )
+    }
   },
   ////////////////////////
   computed: {
-    ...mapState(["loggingIn", "loginError", "loginSuccessful"]),
+ 
   },
 };
 </script>
@@ -128,7 +138,7 @@ export default {
 .body-lgin2 {
   padding: 0px;
   margin: 0px;
-  height: 500px;
+  height: 580px;
   width: 100%;
   background-color: $color-header2;
   padding-top: 20px;

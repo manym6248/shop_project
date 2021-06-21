@@ -31,6 +31,27 @@ import axiosInstance from '../axios.config';
 //Vue.$http.options.root = 'http://localhost:8085'
 Vue.prototype.$http = axiosInstance;
 //////////////////////////
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!store.getters.loggedIn) {
+      next({
+        name:'Login',
+      })
+    } else {
+      next()
+    }
+  } else if (to.matched.some(record => record.meta.requiresVisitor)) {
+    if (store.getters.loggedIn) {
+      next({
+        name: 'User',
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
 
 
 

@@ -102,6 +102,7 @@ import {
   required,
   email,
   minLength,
+  maxLength,
   sameAs,
   numeric,
 } from "vuelidate/lib/validators";
@@ -114,9 +115,9 @@ export default {
    mixins: [validationMixin],
   validations: {
     name: { required, minLength: minLength(2) },
-    phone: { required, numeric, minLength: minLength(11), },
+    phone: { required, numeric, minLength: minLength(11), maxLength:maxLength(11) },
     email: { required, email },
-    password: { required, minLength: minLength(6) },
+    password: { required, minLength: minLength(8) },
     confirmPassword: { sameAsPassword: sameAs("password") },
   },
   //
@@ -156,6 +157,7 @@ export default {
       const errors = [];
       if (!this.$v.phone.$dirty) return errors;
       !this.$v.phone.minLength && errors.push("شماره تلفن کامل وارد کنید");
+      !this.$v.phone.maxLength && errors.push("شماره بطور صحیح وارد کنید");
       !this.$v.phone.required && errors.push("لطفا شماره موبایل خود را وارد کنید");
       return errors;
     },
@@ -163,7 +165,7 @@ export default {
       const errors = [];
       if (!this.$v.password.$dirty) return errors;
       !this.$v.password.minLength &&
-        errors.push("رمز عبور باید حداقل 6 کاراکتر داشته باشد");
+        errors.push("رمز عبور باید حداقل 8 کاراکتر داشته باشد");
       !this.$v.password.required && errors.push("لطفا رمز خود را وارد کنید");
       return errors;
     },

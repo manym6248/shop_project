@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import login from './moduls/login'
+
 import admin from './moduls/admin'
 import products from './moduls/products'
 import user from './moduls/user'
@@ -30,10 +30,11 @@ export default new Vuex.Store({
 
 
   },
+  getters:{},
   actions: {
   },
   modules: {
-    login,
+
     admin,
     products,
     user,

@@ -15,8 +15,10 @@
               </div>
               <div class="pt-0 item">
                 <div class="profile-name">
-                  <p class="pt-1 font-weight-light mb-0 black--text">مهرداد</p>
-                  <p class="mb-1 grey--text">manym65646</p>
+                  <p class="pt-1 font-weight-light mb-0 black--text">
+                    {{ user.name }}
+                  </p>
+                  <p class="mb-1 grey--text">{{ user.email }}</p>
                 </div>
               </div>
             </div>
@@ -72,19 +74,19 @@
                 <v-col cols="6">
                   <label>
                     <v-icon small>mdi-account </v-icon>
-                    نام و نام خانوادگی یا نام کاربری : amn_c41
+                    نام و نام خانوادگی یا نام کاربری : {{user.name}}
                   </label>
                 </v-col>
                 <v-col cols="6">
                   <label>
                     <v-icon small>mdi-phone</v-icon>
-                    شماره تماس : 0930000008
+                    شماره تماس : {{user.phone}}
                   </label>
                 </v-col>
                 <v-col cols="6">
                   <label>
                     <v-icon small>mdi-email</v-icon>
-                    ایمیل : mm2dssd48@gmail.com
+                    ایمیل : {{user.email}}
                   </label>
                 </v-col>
                 <v-col cols="6">
@@ -265,28 +267,35 @@ export default {
   data() {
     return {
       img: Array,
-
+      user: {
+        name: "",
+        email: "",
+        phone: "",
+        
+      },
     };
   },
 
   computed: {
+    ///
     cartItems() {
       return this.$store.getters.cartItems;
     },
     interestscartItem() {
       return this.$store.getters.interestscartItem;
     },
-  
-    total(){
-       var  pricearray=[0]
+    total() {
+      var pricearray = [0];
       const reducer = (accumulator, currentValue) => accumulator + currentValue;
       for (let i = 0; i < this.cartItems.length; i++) {
-         pricearray.push( this.cartItems[i].price * this.cartItems[i].quantity)
-     }
-     return pricearray.reduce(reducer)
-    }
+        pricearray.push(this.cartItems[i].price * this.cartItems[i].quantity);
+      }
+      return pricearray.reduce(reducer);
+    },
+    /////
   },
   methods: {
+    ///
     removeFromCart(itemId) {
       this.$store.dispatch("removeFromCart", itemId);
     },
@@ -316,7 +325,31 @@ export default {
       //new Intl.NumberFormat('fa', { style: 'currency', currency: 'IRR' }).format()
     },
   },
- 
+  ////
+
+  created() {
+    this.$http
+      .get("/me", {
+        headers: {
+          Authorization: `Bearer ${this.$store.getters.token}`,
+        },
+      })
+      .then((res) => {
+       
+          this.user.name= res.data.user.name;
+          this.user.email= res.data.user.email;
+          this.user.phone= res.data.user.phone;
+          
+       
+       
+
+        // console.log(res.data);
+
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  },
 
   //
 };

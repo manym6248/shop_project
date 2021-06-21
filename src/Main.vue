@@ -65,9 +65,14 @@
 
                      
 
-                        <router-link to="/login" class="item">
+                        <router-link v-if="!loggedIn" to="/login" class="item">
                           <a href="" class="link">
                             <v-icon> mdi-login-variant </v-icon>ورود </a
+                          >
+                        </router-link>
+                        <router-link v-if="loggedIn" to=""  @click.native="logout()" class="item">
+                          <a href="" class="link">
+                            <v-icon> mdi-login-variant </v-icon>خروج </a
                           >
                         </router-link>
                       </ul>
@@ -271,6 +276,9 @@ export default {
    computed: {
     cartCount() {
       return this.$store.getters.cartItems.length
+    },
+    loggedIn(){
+       return this.$store.getters.loggedIn
     }
   },
   methods: {
@@ -279,6 +287,14 @@ export default {
     },
     gotocart(){
       this.$router.push('cart')
+    },
+    logout(){
+       
+    this.$store.dispatch('destroyToken')
+      .then(response => {
+        this.$router.push({ name:'Home' })
+        console.log(response);
+      })
     }
   },
 };
