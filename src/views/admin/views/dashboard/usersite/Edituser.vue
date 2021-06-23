@@ -18,7 +18,7 @@
                   <v-simple-table>
               <thead>
                 <tr>
-                  
+                  <th class="primary--text text-center">شناسه</th>
                   <th class="primary--text text-center my-4 mx-auto ">عکس</th>
                   <th class="primary--text text-center">نام کاربری</th>
                   <th class="primary--text text-center ">ایمیل</th>
@@ -26,13 +26,15 @@
                   <th class="primary--text text-center ">سطح کاربری</th>
                   
 
-                  <th class="primary--text text-center ">تاریخ عضویت</th>
+                  <!-- <th class="primary--text text-center ">تاریخ عضویت</th> -->
                   <th class="primary--text text-center ">عملیات</th>
                 </tr>
               </thead>
 
               <tbody>
+                
                 <tr v-for="(item, i) in apidata" :key="i">
+                  <td class="text-center">{{ item.id }}</td>
                 
                   <td class="text-center">
                                          <!-- :src="getImage(item.img)" -->
@@ -49,30 +51,31 @@
                           
                      
                   </td>
+                  
                   <td class="text-center">{{ item.name }}</td>
                   <td class="text-center px-6">{{item. email}}</td>
                   <td class="text-center px-6">{{item.phone}}</td>
-                  <td class="text-center px-6">نویسنده</td>
+                  <td class="text-center px-6">{{item.role}}</td>
                 
                  
-                
+<!--                 
                   <td class="text-center">
                    200/06/29
-                  </td>
+                  </td> -->
                   <td class="text-center">
-                     <v-btn class="ml-2 edit-h" min-width="0" text large icon @click="goedit(item.id)">
-                      <v-icon > mdi-clipboard-edit-outline</v-icon>
-                    </v-btn>
                     
                     <v-btn
-                      class="ml-2 removebtn-h"
+                      class=" removebtn-h float-left"
                       min-width="0"
                       text
-                      large
+                     large
                       icon
                       @click="removeFromCart2(item.id)"
                     >
                       <v-icon > mdi-delete-empty</v-icon>
+                    </v-btn>
+                     <v-btn class=" edit-h float-left" min-width="0" text large icon @click="goedit(item.id)">
+                      <v-icon > mdi-pencil-outline</v-icon>
                     </v-btn>
                   </td>
                 </tr>
@@ -91,6 +94,7 @@
 
 <script>
 import { validationMixin } from "vuelidate";
+ 
 
 export default {
   mixins: [validationMixin],
@@ -98,19 +102,23 @@ export default {
   data () {
     return {
 
-    apidata:this.$store.state.user.users,}
+   
+    }
   },
 
   computed: {
     getImage(path) {
   return require(path)
-}
+},
+ apidata(){
+   return this.$store.state.user.users
+ }
     
   },
 
   methods: {
 
-      removeFromCart2(itemId) {
+   removeFromCart2(itemId) {
       this.$store.dispatch('removeFromCart2', itemId)
     },
     goedit(id){
@@ -119,6 +127,11 @@ export default {
     
   },
   created(){
+    
+    this.$store.dispatch("fetchUser").then(() => {
+    // console.log("This would be printed after dispatch!!")
+   
+  })
    
   }
 };

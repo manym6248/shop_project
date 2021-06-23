@@ -7,6 +7,48 @@
       >
         <v-row justify="center" class="ma-0">
           <v-col cols="12" md="12">
+            <v-card class="mt-0">
+              <v-card-title class="blue white--text"
+                >اطلاعات حساب کاربری</v-card-title
+              >
+              <v-divider></v-divider>
+              <v-card-text>
+                <form>
+                  <v-row class="ma-0">
+                    <v-col cols="6">
+                      <label>
+                        <v-icon small>mdi-account </v-icon>
+                        نام و نام خانوادگی یا نام کاربری : {{ user.name }}
+                      </label>
+                    </v-col>
+                    <v-col cols="6">
+                      <label>
+                        <v-icon small>mdi-phone</v-icon>
+                        شماره تماس : {{ user.phone }}
+                      </label>
+                    </v-col>
+                    <v-col cols="6">
+                      <label>
+                        <v-icon small>mdi-email</v-icon>
+                        ایمیل : {{ user.email }}
+                      </label>
+                    </v-col>
+                    <v-col cols="6">
+                      <label>
+                        <v-icon small>mdi-clipboard-outline</v-icon>
+                        بیوگرافی :
+                      </label>
+                    </v-col>
+                  </v-row>
+                </form>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
+        <div class="pa-3"></div>
+
+        <v-row justify="center" class="ma-0">
+          <v-col cols="12" md="12">
             <base-material-card class="pb-10">
               <template v-slot:heading>
                 <div class="display-2 font-weight-light">ویرایش اطلاعات</div>
@@ -15,7 +57,11 @@
               </template>
 
               <div class="login-card">
-                <form @submit.prevent="SubmitForm" style="height: 100%">
+                <v-form
+                  v-model="isValid"
+                  @submit.prevent="updateuser(user.id)"
+                  style="height: 100%"
+                >
                   <v-row
                     class="mt-3"
                     style="
@@ -44,67 +90,74 @@
                       </v-avatar>
                     </v-col>
                     <v-col cols="8" md="8" lg="9" xl="9">
-                      <v-text-field
-                        v-model="user.userName"
-                        :error-messages="nameErrors"
-                        :counter="10"
-                        label="نام کاربری"
+                      <!-- <v-text-field
+                        v-model="username"
+                        :error-messages="usernameErrors"
+                        label=" نام کاربری جدید"
                         required
-                        @input="$v.person.name.$touch()"
-                        @blur="$v.person.name.$touch()"
+                        @input="$v.username.$touch()"
+                        @blur="$v.username.$touch()"
+                      ></v-text-field> -->
+                      <v-text-field
+                        v-model="username"
+                        label=" نام کاربری جدید"
                       ></v-text-field>
                       <v-text-field
-                        v-model="user.name"
+                        v-model="name"
                         :error-messages="nameErrors"
-                        :counter="10"
-                        label="نام و نام خانوادگی"
+                        label=" ویرایش نام و نام خانوادگی "
                         required
-                        @input="$v.person.name.$touch()"
-                        @blur="$v.person.name.$touch()"
+                        @input="$v.name.$touch()"
+                        @blur="$v.name.$touch()"
                       ></v-text-field>
                     </v-col>
                   </v-row>
 
                   <v-text-field
-                    v-model="user.email"
+                    v-model="email"
                     label="ایمیل"
+                    :error-messages="emailErrors"
                     required
-                    @input="$v.person.email.$touch()"
-                    @blur="$v.person.email.$touch()"
+                    @input="$v.email.$touch()"
+                    @blur="$v.email.$touch()"
                   ></v-text-field>
                   <v-text-field
                     class="pt-lg-3 pt-xl-3 pt-md-1 pt-1"
-                    v-model="user.phone"
+                    v-model="phone"
                     :error-messages="phoneErrors"
-                    label="شماره موبایل"
+                    label=" ویرایش شماره موبایل "
                     required
-                    @input="$v.person.phone.$touch()"
-                    @blur="$v.person.phone.$touch()"
+                    @input="$v.phone.$touch()"
+                    @blur="$v.phone.$touch()"
+                    type="number"
                   ></v-text-field>
                   <v-text-field
-                    class="pt-lg-3 pt-xl-3 pt-md-1 pt-1"
-                    v-model="user.password"
+                    v-model="password"
                     :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                    :rules="[rules.required, rules.min]"
+                    required
                     :type="show1 ? 'text' : 'password'"
+                    :error-messages="passwordErrors"
                     name="input-10-1"
-                    label="پسورد"
-                    hint="At least 8 characters"
+                    label="رمز عبور"
+                    @input="$v.password.$touch()"
+                    @blur="$v.password.$touch()"
                     counter
                     @click:append="show1 = !show1"
                   ></v-text-field>
                   <v-text-field
-                    class="pt-lg-3 pt-xl-3 pt-md-1 pt-1"
-                    v-model="user.password"
+                    v-model="confirmPassword"
                     :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                    :rules="[rules.required, rules.min]"
                     :type="show1 ? 'text' : 'password'"
+                    :error-messages="confirmPasswordErrors"
                     name="input-10-1"
-                    label="تکرار پسورد"
-                    hint="At least 8 characters"
+                    label="تکرار رمز عبور"
+                    @input="$v.confirmPassword.$touch()"
+                    @blur="$v.confirmPassword.$touch()"
                     counter
                     @click:append="show1 = !show1"
+                    required
                   ></v-text-field>
+                  <div class="pa-3"></div>
                   <v-textarea
                     class="pt-lg-4 pt-xl-4 pt-md-3 pt-2"
                     v-model="user.biography"
@@ -116,7 +169,9 @@
                   ></v-textarea>
                   <div class="pa-1 pa-lg-5 pa-xl-5 pa-md-3"></div>
 
-                  <v-btn class="mr-4" type="submit"> submit </v-btn>
+                  <v-btn class="mr-4 blue" type="submit" :disabled="!isValid">
+                    submit
+                  </v-btn>
                   <v-btn @click="clear" class="mr-4"> clear </v-btn>
 
                   <input
@@ -126,7 +181,7 @@
                     accept="image/*"
                     @change="onFilePicked"
                   />
-                </form>
+                </v-form>
               </div>
             </base-material-card>
           </v-col>
@@ -142,100 +197,139 @@ import {
   required,
   email,
   minLength,
+  maxLength,
   sameAs,
   numeric,
 } from "vuelidate/lib/validators";
+const touchMap = new WeakMap();
 
 export default {
   mixins: [validationMixin],
-
-  data(){
-      return{
-    user: this.$store.getters.user(this.$route.params.id),
-    bio: "",
-    span1: true,
-    span2: false,
-    image: null,
-    imageUrl: null,
-    show1: false,
-    rules: {
-      required: (value) => !!value || "Required.",
-      min: (v) => v.length >= 8 || "Min 8 characters",
-      email: (v) => !!(v || "").match(/@/) || "Please enter a valid email",
-      password: (v) =>
-        !!(v || "").match(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/
-        ) ||
-        "Password must contain an upper case letter, a numeric character, and a special character",
+  validations: {
+    name: { required, minLength: minLength(2) },
+    // username: { required, minLength: minLength(4) },
+    phone: {
+      required,
+      numeric,
+      minLength: minLength(11),
+      maxLength: maxLength(11),
     },
-    isEditing: true,
-    model: null,
-    person: {
-      name: "",
-      password: "Password",
+    email: { required, email },
+    password: { required, minLength: minLength(8) },
+    confirmPassword: { sameAsPassword: sameAs("password") },
+  },
+
+  data() {
+    return {
+      isValid: true,
+      filter: null,
+      bio: "",
+      span1: true,
+      span2: false,
+      image: null,
+      imageUrl: null,
+      show1: false,
+      isEditing: true,
+      model: null,
+      Submitstatus: null,
+      submitted: false,
+      username: "",
+      name:"",
+      password: "",
       confirmPassword: "",
       email: "",
-      phone: null,
-    },
-
-    Submitstatus: null,
-
-    submitted: false,
-  }},
-
-  // etbar sanji
-  validations: {
-    person: {
-      name: { required },
-      phone: { required, numeric, minLength: minLength(12) },
-      email: { required, email },
-      password: { required, minLength: minLength(6) },
-      confirmPassword: { required, sameAsPassword: sameAs("password") },
-    },
+      phone: "",
+    };
   },
 
   computed: {
-    nameErrors() {
-      const errors = [];
-      if (!this.$v.person.name.$dirty) return errors;
-      !this.$v.person.name.maxLength &&
-        errors.push("Name must be at most 10 characters long");
-      !this.$v.person.name.required && errors.push("Name is required.");
-      return errors;
+    user() {
+      return this.$store.getters.user(this.$route.params.id);
     },
-    // emailErrors() {
+    // etbar sanji
+    // usernameErrorsErrors() {
     //   const errors = [];
-    //   if (!this.$v.person.email.$dirty) return errors;
-    //   !this.$v.person.email.email && errors.push("Must be valid e-mail");
-    //   !this.$v.person.email.required && errors.push("E-mail is required");
+    //   if (!this.$v.username.$dirty) return errors;
+    //   !this.$v.username.minLength && errors.push("نام کاربری باید حداقل 4 حرفی باشد .");
+    //   !this.$v.username.required && errors.push("لطفا نام خود را وارد کنید");
     //   return errors;
     // },
-    phoneErrors() {
+    nameErrors() {
       const errors = [];
-      if (!this.$v.person.phone.$dirty) return errors;
-      !this.$v.person.phone.minLength &&
-        errors.push("phone must be at most 10 characters long");
-      !this.$v.person.phone.required && errors.push("phone is required.");
+      if (!this.$v.name.$dirty) return errors;
+      !this.$v.name.minLength && errors.push("نام باید حداقل 2 حرفی باشد .");
+      !this.$v.name.required && errors.push("لطفا نام خود را وارد کنید");
       return errors;
     },
+    emailErrors() {
+      const errors = [];
+      if (!this.$v.email.$dirty) return errors;
+      !this.$v.email.email && errors.push("ایمیل خودرا بطور صحیح وارد کنید");
+      !this.$v.email.required && errors.push("لطفا ایمیل خود را وارد کنید");
+      return errors;
+    },
+    phoneErrors() {
+      const errors = [];
+      if (!this.$v.phone.$dirty) return errors;
+      !this.$v.phone.minLength &&
+        errors.push("شماره تلفن کامل وارد کنید :*********09");
+      !this.$v.phone.maxLength &&
+        errors.push("شماره بطور صحیح وارد کنید:*********09");
+      !this.$v.phone.required &&
+        errors.push("لطفا شماره موبایل خود را وارد کنید");
+      return errors;
+    },
+    passwordErrors() {
+      const errors = [];
+      if (!this.$v.password.$dirty) return errors;
+      !this.$v.password.minLength &&
+        errors.push("رمز عبور باید حداقل 8 کاراکتر داشته باشد");
+      !this.$v.password.required && errors.push("لطفا رمز خود را وارد کنید");
+      return errors;
+    },
+    confirmPasswordErrors() {
+      const errors = [];
+      if (!this.$v.confirmPassword.$dirty) return errors;
+      !this.$v.confirmPassword.sameAsPassword &&
+        errors.push("رمز عبور یکسان نیست");
+      return errors;
+    },
+    //
   },
 
   methods: {
-    SubmitForm() {
-      this.submitted = true;
-      // stop here if form is invalid
-      this.$v.$touch();
-      //   if (this.$v.$invalid) {
-
-      //   }
-      //   else{
-
-      //   }
-
-      var x = JSON.stringify(this.person);
-
-      console.log(x);
+    ////
+    delayTouch($v) {
+      $v.$reset();
+      if (touchMap.has($v)) {
+        clearTimeout(touchMap.get($v));
+      }
+      touchMap.set($v, setTimeout($v.$touch, 1000));
     },
+
+    async updateuser(id) {
+      this.$v.$touch();
+      this.$store
+        .dispatch("updateuser", {
+          name: this.name,
+          email: this.email,
+          phone: this.phone,
+          password: this.password,
+          confirmPassword: this.confirmPassword,
+         id
+        })
+        .then(() => {
+        alert("اطلاعات کاربر به روز رسانی شد");
+          this.$router.push({ name: "Edituser" });
+
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    ///
+
     clear() {
       this.$v.$reset();
       this.name = "";
@@ -256,18 +350,16 @@ export default {
       this.image = files[0];
     },
   },
-  watch: {
-    "$route.params.id": function (id) {
-      this.user = this.$store.getters.user(id);
-      this.imgs = this.product.images;
-      for (let i = 0; i < this.imgs.length; i++) {
-        this.bigURL = this.imgs[0].url;
-      }
-    },
-  },
-  created(){
-      console.log(this.user);
-  }
+  // watch: {
+  //   // "$route.params.id": function (id) {
+  //   //   this.user = this.$store.getters.user(id);
+  //   //   // this.imgs = this.product.images;
+  //   //   // for (let i = 0; i < this.imgs.length; i++) {
+  //   //   //   this.bigURL = this.imgs[0].url;
+  //   //   // }
+  //   // },
+  // },
+  
 };
 </script>
 

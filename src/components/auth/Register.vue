@@ -153,12 +153,13 @@ export default {
       !this.$v.email.required && errors.push("لطفا ایمیل خود را وارد کنید");
       return errors;
     },
-    phoneErrors() {
+   phoneErrors() {
       const errors = [];
       if (!this.$v.phone.$dirty) return errors;
-      !this.$v.phone.minLength && errors.push("شماره تلفن کامل وارد کنید");
-      !this.$v.phone.maxLength && errors.push("شماره بطور صحیح وارد کنید");
-      !this.$v.phone.required && errors.push("لطفا شماره موبایل خود را وارد کنید");
+      !this.$v.phone.minLength && errors.push("شماره تلفن کامل وارد کنید :*********09");
+      !this.$v.phone.maxLength && errors.push("شماره بطور صحیح وارد کنید:*********09");
+      !this.$v.phone.required &&
+        errors.push("لطفا شماره موبایل خود را وارد کنید");
       return errors;
     },
     passwordErrors() {

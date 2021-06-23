@@ -87,11 +87,11 @@ export default {
         title: "داشبورد",
         to: "/admin",
       },
-      {
-        icon: "mdi-account",
-        title: "کاربر",
-        to: "/pages/user",
-      },
+      // {
+      //   icon: "mdi-account",
+      //   title: "کاربر",
+      //   to: "/pages/user",
+      // },
       {
         icon: "mdi-account",
         title: "کاربران",
@@ -117,6 +117,11 @@ export default {
         to: "/products/addProduct",
         group: "/products",
         children: [
+              {
+        icon: "mdi-buffer",
+        title: "دسته بندی",
+        to: "categorized",
+      },
           {
             icon: "mdi-plus-box",
             title: "ایجاد محصول",
@@ -127,39 +132,23 @@ export default {
             title: "ویرایش و حذف محصول",
             to: "editProduct",
           },
+       
         ],
       },
 
-      {
-        icon: "mdi-buffer",
-        title: "دسته بندی",
-        to: "/products/categorized",
-      },
-      {
-        icon: "mdi-file-replace-outline",
-        title: "زیر دسته",
-        to: "/products/subcategory",
-      },
-      {
-        title: "جداول",
-        icon: "mdi-clipboard-list-outline",
-        to: "/tables/regular-tables",
-      },
+     
+     
+      // {
+      //   title: "جداول",
+      //   icon: "mdi-clipboard-list-outline",
+      //   to: "/tables/regular-tables",
+      // },
       {
         title: "نظرات",
         icon: "mdi-comment-multiple-outline",
         to: "/Comments/comments",
       },
-      {
-        title: "typography",
-        icon: "mdi-format-font",
-        to: "/components/typography",
-      },
-      {
-        title: "icons",
-        icon: "mdi-chart-bubble",
-        to: "/components/icons",
-      },
+     
       {
         title: "google",
         icon: "mdi-map-marker",

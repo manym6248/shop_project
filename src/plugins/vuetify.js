@@ -12,28 +12,31 @@ const theme = {
   accent: '#9C27b0',
   info: '#00CAE3',
   success: '#2196F3',
-  cartheader:'#faebd7',
-  colorheader:'#f8d4db'
+  cartheader: '#faebd7',
+  colorheader: '#f8d4db',
+  colormenu: '#b7dbce',
+ 
+  colorheader2: '#f3f7fa',
 }
 
 
 Vue.use(Vuetify);
 
 export default new Vuetify({
-    rtl: true,
-   
+  rtl: true,
 
-    icons: {
-     iconfont: 'mdiSvg', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4' || 'faSvg'
-      },
-     
-      theme: {
-        themes: {
-          dark: theme,
-          light: theme,
-        },
-      },
 
-   
+  icons: {
+    iconfont: 'mdiSvg', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4' || 'faSvg'
+  },
+
+  theme: {
+    themes: {
+      dark: theme,
+      light: theme,
+    },
+  },
+
+
 });
 
