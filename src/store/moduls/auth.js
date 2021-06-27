@@ -69,10 +69,7 @@ const state = {
               const token = response.data.token;
               localStorage.setItem('token', token);
               context.commit('retrieveToken', token);
-           
               resolve(response)
-         
-
 
             })
             .catch(error => {
@@ -99,13 +96,13 @@ const state = {
           })
           .catch(error => {
             reject(error)
-            console.log(data);
          
           })
       })
     },
 
     //
+    
     
   };
   export default {

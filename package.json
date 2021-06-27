@@ -17,6 +17,7 @@
     "es6-promise": "^4.2.8",
     "flickity": "^2.2.2",
     "vue": "^2.6.11",
+    "vue-disable-autocomplete": "0.0.4",
     "vue-flickity": "^1.2.1",
     "vue-inner-image-zoom": "^1.1.0",
     "vue-product-zoomer": "^3.0.1",

@@ -5,6 +5,7 @@ import Vuex from 'vuex'
 import admin from './moduls/admin'
 import products from './moduls/products'
 import user from './moduls/user'
+import category from './moduls/category'
 import auth from './moduls/auth'
 
 
@@ -38,7 +39,8 @@ export default new Vuex.Store({
     admin,
     products,
     user,
-    auth
+    auth,
+    category
 
   }
 })

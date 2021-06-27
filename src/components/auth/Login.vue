@@ -1,19 +1,28 @@
 <template>
   <div class="body-lgin2">
+    <v-progress-circular v-if="loading"
+      :active="loading"
+      :indeterminate="loading"
+      :size="200"
+      :width="20"
+       value="20"
+       background-color="colormenu"
+       color="colorheader"
+     
+      style="position: absolute;
+    right: 50%;
+    top: 30%;
+    z-index: 7000;"
+    ></v-progress-circular>
     <v-container tag="section" class="at-16">
       <v-container
         tag="section"
         class="mt-0 px-xl-16 px-lg-16 px-md-8 px-sm-4 pt-0"
       >
-         
-    <v-alert
-    v-if="error"
-      outlined
-      type="error"
-      text
-    >
-    ایمیل و یا رمز عبور وارد شده صحیح نیست !
-    </v-alert>
+        <v-alert v-if="error" outlined type="error" text>
+          ایمیل و یا رمز عبور وارد شده صحیح نیست !
+        </v-alert>
+
         <v-row class="mt-0 px-xl-8 px-lg-8 px-md-2 px-sm-1" justify="center">
           <v-col cols="12" md="7" sm="6" class="px-5">
             <div class="login-card2">
@@ -26,16 +35,17 @@
                   <v-spacer></v-spacer>
                 </v-toolbar>
                 <v-card-text>
-                  <v-form @submit.prevent="loginSubmit">
+                  <v-form @submit.prevent="loginSubmit" >
                     <v-text-field
                       :disabled="!isEditing"
                       v-model="email"
                       label="ایمیل"
+                       autocomplete="off"
+                      
                     ></v-text-field>
                     <v-text-field
                       v-model="password"
                       :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                  
                       :type="show1 ? 'text' : 'password'"
                       name="input-10-1"
                       label="کلمه عبور"
@@ -44,9 +54,7 @@
                       @click:append="show1 = !show1"
                     ></v-text-field>
                     <div class="py-3" />
-                    <v-btn  color="success" type="submit">
-                      ورورد
-                    </v-btn>
+                    <v-btn color="success" type="submit"> ورورد </v-btn>
                     <div class="gotopage">
                       <router-link to="/register" tag="li" class="item"
                         ><a class="link"> ثبت نام</a>
@@ -65,51 +73,48 @@
             </div>
           </v-col>
         </v-row>
-
-
       </v-container>
     </v-container>
   </div>
-  
 </template>
 
 <script>
-
-
 export default {
   data() {
     return {
-      error:false,
+      loading: false,
+      error: false,
       show1: false,
 
       password: "",
       email: "",
 
-    
       isEditing: true,
       model: null,
     };
   },
   ///////////////////
   methods: {
-     loginSubmit() {
-      this.$store.dispatch('retrieveToken', {
-        email: this.email,
-        password: this.password,
-      })
-        .then(() => {
-          // console.log(response);
-          this.$router.push({ name:'user' })
+    loginSubmit() {
+      this.$store
+        .dispatch("retrieveToken", {
+          email: this.email,
+          password: this.password,
         })
-        .catch(
-          this.error = true
-        )
-    }
+        .then(() => {
+          this.loading = true;
+          setTimeout(() => {
+            this.loading = false;
+            this.$router.push({ name: "user" });
+          }, 3000);
+        })
+        .catch(() => {
+          this.error = true;
+        });
+    },
   },
   ////////////////////////
-  computed: {
- 
-  },
+  computed: {},
 };
 </script>
 
@@ -126,10 +131,10 @@ export default {
   bottom: 10px;
   left: 20px;
   padding: 10px;
-  .item{
+  .item {
     list-style: none;
 
-    .link{
+    .link {
       font-size: 1.2em;
     }
   }
@@ -171,22 +176,19 @@ export default {
   }
   .login-card2 {
     height: 380px;
-}
-
+  }
 
   .body-lgin2 {
     padding: 10px;
-   
   }
 }
 @media #{$bp-sm} {
   .body-lgin {
     padding-top: 10px;
-   
   }
 
-    .login-card2 {
+  .login-card2 {
     height: 395px;
-}
+  }
 }
 </style>

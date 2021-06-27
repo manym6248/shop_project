@@ -178,7 +178,7 @@ const routes = [
         },
         {
           name: 'Subcategory',
-          path: '/products/subcategory',
+          path: '/products/subcategory/:id',
           component: Subcategory,
         },
         {

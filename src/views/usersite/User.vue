@@ -25,7 +25,7 @@
             <v-divider></v-divider>
             <div class="items-profile pa-4">
               <ul class="items">
-                <router-link to="/" tag="li" class="item"
+                <!-- <router-link to="/" tag="li" class="item"
                   ><a class="link"
                     ><span></span>
 
@@ -45,7 +45,7 @@
 
                     ویرایش حساب کاربری</a
                   >
-                </router-link>
+                </router-link> -->
                 <li class="item">
                   <a class="link">خروج</a>
                 </li>
@@ -92,7 +92,7 @@
                 <v-col cols="6">
                   <label>
                     <v-icon small>mdi-clipboard-outline</v-icon>
-                    بیوگرافی :
+                    آدرس : {{user.address}}
                   </label>
                 </v-col>
               </v-row>
@@ -271,6 +271,7 @@ export default {
         name: "",
         email: "",
         phone: "",
+        address: ""
         
       },
     };
@@ -326,8 +327,15 @@ export default {
     },
   },
   ////
+beforeCreate(){
+           this.$store.dispatch("me").then(() => {
+    // console.log("This would be printed after dispatch!!")
+   
+  });
+},
 
   created() {
+ 
     this.$http
       .get("/me", {
         headers: {
@@ -335,21 +343,17 @@ export default {
         },
       })
       .then((res) => {
-       
           this.user.name= res.data.user.name;
           this.user.email= res.data.user.email;
           this.user.phone= res.data.user.phone;
-          
-       
-       
-
-        // console.log(res.data);
-
+          this.user.address= res.data.user.address;
       })
       .catch((error) => {
         console.error(error);
       });
   },
+
+  
 
   //
 };

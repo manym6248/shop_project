@@ -57,23 +57,95 @@
                           @click="drawer = !drawer"
                         ></v-app-bar-nav-icon>
                         <v-spacer class="space"></v-spacer>
-                        
-                     
 
-                        
-                      
+                        <v-menu
+                          bottom
+                          left
+                          offset-y
+                          origin="top right"
+                          transition="scale-transition"
+                          v-if="loggedIn"
+                        >
+                          <template v-slot:activator="{ attrs, on }">
+                            <li class="userme" v-bind="attrs"
+                              v-on="on">
+                              <v-icon >mdi-account</v-icon>
+                              <a
+                              class=" ma-0 font-weight-regular "
+                              min-width="0"
+                         
+                              
+                            >
+                             
+                              {{ me.name }}
+                            </a> 
+                            </li>
+                            
+                          </template>
 
-                     
+                          <v-list :tile="false" nav color="pa-0">
+                            <div>
+                              <v-list-item active-class="axtive-888"
+                                to="/user"
+                                tag="li"
+                                class="item py-0 mx-0 font-weight-medium"
+                              >
+                                <a class="link"
+                                  ><span></span>
 
+                                  داشبورد</a
+                                >
+                              </v-list-item>
+                              <v-list-item active-class="axtive-888"
+                                 to=""
+                                tag="li"
+                                class="item py-0 mx-0 font-weight-medium"
+                              >
+                                <a class="link"
+                                  ><span></span>
+
+                                  ویرایش حساب کاربری</a
+                                >
+                              </v-list-item>
+                              <v-list-item active-class="axtive-888"
+                              
+                               to=""
+                                tag="li"
+                                class="item py-0 mx-0 font-weight-medium"
+                              >
+                                <a class="link"
+                                  ><span></span>
+
+                                  فاکتور</a
+                                >
+                              </v-list-item>
+                              <v-list-item
+                               
+                                @click.native="logout()"
+                                tag="li"
+                                class="item py-0 pb-1 mx-0 font-weight-medium"
+                              >
+                                <a class="link"> خروج </a>
+                              </v-list-item>
+                            </div>
+                          </v-list>
+                        </v-menu>
+
+                        <router-link
+                          v-if="loggedIn && me.role === 'admin'"
+                          to="admin"
+                          class="item"
+                        >
+                          <a href="" class="link">
+                            <v-icon class="mr-2"> mdi-hexagon-multiple </v-icon
+                            >پنل ادمین
+                          </a>
+                        </router-link>
                         <router-link v-if="!loggedIn" to="/login" class="item">
                           <a href="" class="link">
-                            <v-icon> mdi-login-variant </v-icon>ورود </a
-                          >
-                        </router-link>
-                        <router-link v-if="loggedIn" to=""  @click.native="logout()" class="item">
-                          <a href="" class="link">
-                            <v-icon> mdi-login-variant </v-icon>خروج </a
-                          >
+                            <v-icon class="mr-2"> mdi-login-variant </v-icon
+                            >ورود
+                          </a>
                         </router-link>
                       </ul>
                     </v-col>
@@ -82,9 +154,13 @@
                         <li class="item">
                           <a href="#" class="link">
                             <span class="pt-1"> 09100000000 </span>
-                             :
-                            <v-icon class="ma-0" 
-                            style="transform:rotate(24deg)"> mdi-phone </v-icon>
+                            :
+                            <v-icon
+                              class="ma-0"
+                              style="transform: rotate(24deg)"
+                            >
+                              mdi-phone
+                            </v-icon>
                           </a>
                         </li>
                       </div>
@@ -190,12 +266,11 @@
                         </div>
 
                         <ul class="items">
-                          <router-link tag="li" class="item" to="cart" >
-                          
+                          <router-link tag="li" class="item" to="cart">
                             <a class="link">سبد من</a>
                           </router-link>
-                          <router-link tag="li" class="item" to="cart" >
-                            <a  class="link">{{cartCount}} محصول </a>
+                          <router-link tag="li" class="item" to="cart">
+                            <a class="link">{{ cartCount }} محصول </a>
                           </router-link>
                         </ul>
                       </div>
@@ -234,6 +309,8 @@ export default {
   },
 
   data: () => ({
+    username: "",
+
     drawer: false,
     itemsGategory: [
       {
@@ -273,28 +350,37 @@ export default {
       },
     ],
   }),
-   computed: {
+  computed: {
     cartCount() {
-      return this.$store.getters.cartItems.length
+      return this.$store.getters.cartItems.length;
     },
-    loggedIn(){
-       return this.$store.getters.loggedIn
-    }
+    loggedIn() {
+      return this.$store.getters.loggedIn;
+    },
+    me() {
+      return this.$store.getters.me;
+    },
   },
   methods: {
     ok() {
       alert("hiiiii");
     },
-    gotocart(){
-      this.$router.push('cart')
+    gotocart() {
+      this.$router.push("cart");
     },
-    logout(){
-       
-    this.$store.dispatch('destroyToken')
-      .then(response => {
-        this.$router.push({ name:'Home' })
-        console.log(response);
-      })
+    logout() {
+      this.$store.dispatch("destroyToken").then(() => {
+        this.$router.push({ name: "Home" });
+      });
+    },
+  },
+
+
+  created() {
+    if (this.loggedIn) {
+      this.$store.dispatch("me").then(() => {
+        // console.log("This would be printed after dispatch!!")
+      });
     }
   },
 };
@@ -305,8 +391,41 @@ export default {
 @import "../src/assets/css/normalize.css";
 @import "../node_modules/flickity/css/flickity.css";
 
+.userme {
+  *{color: $color-dark !important;}
+ 
+  &:hover{
+    *{color: $color-menu !important;}
+   
+  }
+}
+
+.v-menu__content {
+  top: 39px !important ;
+
+  list-style: none;
+  font-size: 1em;
+
+  .item {
+     .link{
+       color:$color-dark;
+       font-size: 0.9em;
+     }
+    &:hover {
+      background-color: $color-menu;
+      
+    }
+
+    &.axtive-888{
+      background-color: white;
+      
+      color: $color-header;
+    }
+  }
+}
+
 .gallery:after {
-  content: 'flickity';
+  content: "flickity";
   display: none; /* hide :after */
 }
 

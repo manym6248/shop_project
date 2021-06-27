@@ -128,7 +128,7 @@
                   <v-text-field label=" کلمات کلیدی" required></v-text-field>
                 </v-col>
                 <v-col cols="12" class="my-10">
-                  <v-btn x-large color="green" @click="add()">ثبت</v-btn>
+                  <v-btn x-large color="green" @click="newProduct()">ثبت</v-btn>
                 </v-col>
               </v-row>
             </v-container>
@@ -187,7 +187,7 @@ export default {
 
     add() {
       var pr = {
-        imageUrl: this.product.imageUrl,
+        image: this.product,
         name: this.product.name,
         price: this.product.price,
         description: this.product.description,
@@ -197,6 +197,25 @@ export default {
 
       this.$http.post("/.json", pr).then(() => alert("با موفقیت اضافه شد"));
     },
+
+     async newProduct() {
+      this.$store
+        .dispatch("newProduct", {
+        image: this.images,
+        name: this.product.name,
+        price: this.product.price,
+        description: this.product.description,
+        brand: this.product.brand,
+        categgory: this.product.categgory,
+        })
+        .then(() => {
+        alert("با موفقیت اضافه شد")
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+
   },
 
   filters: {

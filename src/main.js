@@ -6,7 +6,8 @@ import VueResource from 'vue-resource'
 import Vuelidate from 'vuelidate'
 import Flickity from "vue-flickity";
 import InnerImageZoom from "vue-inner-image-zoom";
-import VueLazyload from 'vue-lazyload'
+import VueLazyload from 'vue-lazyload';
+import DisableAutocomplete from 'vue-disable-autocomplete'
 import 'vue-inner-image-zoom/lib/vue-inner-image-zoom.css';
 import 'core-js';
 import 'core-js/features/array/from';
@@ -66,5 +67,6 @@ new Vue({
   InnerImageZoom,
   VueLazyload,
   VueResource,
+  DisableAutocomplete,
   render: h => h(App)
 }).$mount('#app')

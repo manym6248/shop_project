@@ -2,7 +2,8 @@ import axios from '../../../axios.config'
 const state = {
   "oneUser": null,
   "cart2": [],
-  "users": null
+  "users": null,
+  "me":{},
 };
 const getters = {
   ////1
@@ -10,6 +11,10 @@ const getters = {
   user: (state) => (id) => {
     return state.users.filter(u => u.id === Number(id))[0]
   },
+
+  me(state){
+    return state.me
+  }
 
 
 
@@ -37,6 +42,10 @@ const mutations = {
   },
   getusers(state, users) {
     state.users = users
+  },
+  /////
+  me1(state, user){
+    state.me = user
   }
 };
 
@@ -91,6 +100,36 @@ const actions = {
   },
 
   //
+  me({commit, getters}){
+   
+   if( getters.loggedIn ){
+    return new Promise((resolve, reject) => {
+      axios.get("me",
+      {
+            headers: {
+              Authorization: `Bearer ${getters.token}`,
+            },
+          })
+        .then((response) => {
+          commit("me1", response.data.user);
+          resolve();
+          
+        })
+        .catch((error) => {
+          console.log(error.statusText);
+          reject(error)
+        });
+    });
+
+   }
+
+
+   
+      
+    }
+  
+
+  
 
 
 };

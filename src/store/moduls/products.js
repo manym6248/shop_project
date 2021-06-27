@@ -1,7 +1,8 @@
 
-
+import axios from '../../../axios.config'
 
 const state = {
+  "products1":[],
   "cart": [],
   "interestscart": [],
   "products": [
@@ -265,7 +266,31 @@ const actions = {
   },
   minus({ commit }, payload) {
     commit('decrementProductInventory', payload)
-  }
+  },
+
+
+  ////
+    
+
+    newProduct(context, data) {
+      return new Promise((resolve, reject) => {
+        axios.post('/product', {
+          
+          
+        })
+          .then(response => {
+            resolve(response)
+          })
+          .catch(error => {
+            reject(error)
+            console.log(data);
+         
+          })
+      })
+    },
+
+
+
 
 };
 export default {

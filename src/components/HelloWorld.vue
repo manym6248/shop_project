@@ -3,7 +3,7 @@
     <div class="carsul-1">
       <v-container class="pa-0" style="height: 100%">
         <v-row class="ma-0 pa-0" style="height: 100%">
-          <v-col cols="12" md="3" class="px-1 pl-4 py-0 delet">
+          <!-- <v-col cols="12" md="3" class="px-1 pl-4 py-0 delet">
             <v-col cols="12" md="12" class="hrd1" style="height: 100%"
               ><div class="hon1">
                 <v-card
@@ -39,11 +39,11 @@
                 </v-card>
               </div></v-col
             >
-          </v-col>
+          </v-col> -->
           <v-col
             cols="12"
-            md="9"
-            class="carousel-col px-xl-1 pr-xl-3 px-lg-1 pr-lg-3 py-0 pa-0"
+            md="12"
+            class="carousel-col px-xl-0 pr-xl-0 px-lg-1 pr-lg-0 py-0 pa-0"
             style="height: 100%"
           >
             <v-carousel

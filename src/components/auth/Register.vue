@@ -5,6 +5,14 @@
         tag="section"
         class="mt-0 px-xl-16 px-lg-16 px-md-8 px-sm-4 pt-0"
       >
+      <v-alert
+      v-if="error2"
+      outlined
+      type="error"
+      text
+    >
+     ایمیل یا شماره تلفن قبلا ثبت شده است !
+    </v-alert>
         <v-row class="mt-0 px-xl-8 px-lg-8 px-md-2 px-sm-1" justify="center">
           <v-col cols="12" md="7" sm="8" class="px-5">
             <div class="login-card">
@@ -17,11 +25,11 @@
                   <v-spacer></v-spacer>
                 </v-toolbar>
                 <v-card-text>
-                  <v-form v-model="isValid"  @submit.prevent="register">
+                  <v-form v-model="isValid"  @submit.prevent="register" >
                     <v-text-field
                       v-model="name"
                       :error-messages="nameErrors"
-                   
+                      autocomplete="off"
                       label="نام "
                       required
                       @input="$v.name.$touch()"
@@ -32,6 +40,7 @@
                     <v-text-field
                       v-model="email"
                       :error-messages="emailErrors"
+                       autocomplete="off"
                       label="ایمیل"
                       required
                       @input="$v.email.$touch()"
@@ -40,15 +49,17 @@
                     <v-text-field
                       v-model="phone"
                       :error-messages="phoneErrors"
+                       autocomplete="off"
                       label="شماره موبایل"
                       required
                       @input="$v.phone.$touch()"
                       @blur="$v.phone.$touch()"
                     ></v-text-field>
                     <v-text-field
+                      
                       v-model="password"
                       :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                      
+                      pattern="[0-9]"
                       required
                       :type="show1 ? 'text' : 'password'"
                        :error-messages="passwordErrors"
@@ -124,6 +135,8 @@ export default {
 
   data()  {
     return{
+      
+      error2:false,
      isValid:true,
     show1: false,
     isEditing: true,
@@ -132,7 +145,7 @@ export default {
     password: "",
     confirmPassword: "",
     email: "",
-    phone: "",
+    phone: "09",
     Submitstatus: null,
     submitted: false,}
   },
@@ -206,7 +219,10 @@ export default {
           this.$router.push({ name: "Login" });
         })
         .catch(err => {
-          console.log(err);
+          
+          if( err.response.status === 422 ){
+            this.error2 = true;
+          }
         });
     },
 
@@ -221,11 +237,11 @@ export default {
   },
 
   created(){
-    this.$http.get('/user', { headers:{
-    'Authorization': 'Bearer $2y$10$MhGprMSqcnijC9DYfehIKu9jvpSjyFFZyBuxSmuG..N8HEGC5AiI.'
-  }}).then(
-      res=> {console.log(res);}
-    )
+  //   this.$http.get('/user', { headers:{
+  //   'Authorization': 'Bearer $2y$10$MhGprMSqcnijC9DYfehIKu9jvpSjyFFZyBuxSmuG..N8HEGC5AiI.'
+  // }}).then(
+  //     res=> {console.log(res);}
+  //   )
   
   }
 };
@@ -240,7 +256,7 @@ export default {
 .body-lgin {
   padding: 0px;
   margin: 0px;
-  height: 630px;
+  height: 700px;
   width: 100%;
   background-color: $color-header2;
   padding-top: 23px;
@@ -274,13 +290,13 @@ export default {
 
   .body-lgin {
     padding: 10px;
-    height: 600px;
+    height: 680px;
   }
 }
 @media #{$bp-sm} {
   .body-lgin {
     padding-top: 10px;
-    height: 600px;
+    height: 680px;
   }
 }
 </style>
