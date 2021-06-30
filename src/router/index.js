@@ -24,6 +24,7 @@ import AddProduct from '../views/admin/views/dashboard/products/AddProduct.vue'
 import EditProduct from '../views/admin/views/dashboard/products/EditProduct.vue'
 import Categorized from '../views/admin/views/dashboard/products/Categorized.vue'
 import Subcategory from '../views/admin/views/dashboard/products/Subcategory.vue'
+import Editsubcategory from '../views/admin/views/dashboard/products/editsubcategory.vue'
 import Edituser from '../views/admin/views/dashboard/usersite/Edituser.vue'
 import Newuser from '../views/admin/views/dashboard/usersite/Newuser.vue'
 import Comments from '../views/admin/views/dashboard/Comments/Comments.vue'
@@ -180,6 +181,11 @@ const routes = [
           name: 'Subcategory',
           path: '/products/subcategory/:id',
           component: Subcategory,
+        },
+        {
+          name: 'Editsubcategory',
+          path: '/products/editsubcategory/:id',
+          component: Editsubcategory,
         },
         {
           name: 'Newuser',

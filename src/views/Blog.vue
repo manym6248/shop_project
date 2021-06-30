@@ -4,7 +4,17 @@
       <h3>وبلاگ</h3>
       <v-breadcrumbs large :items="items" divider="/"></v-breadcrumbs>
     </div>
-
+   <v-col cols="12">
+          <v-autocomplete
+      
+      
+        :items="states"
+      
+        color="white"
+        item-text="name"
+        label="State"
+      ></v-autocomplete>
+        </v-col>
   <Edituserinformation />
    
  
@@ -18,17 +28,20 @@ export default {
   components:{
     Edituserinformation
   },
+
+    data () {
+      return {
    
-    
-   
-
-  data() {
-
-
-    return {
-      products : this.$store.state.products.products,
-     
-      items: [
+      
+        model: null,
+        states: [
+          { name: 'Florida', abbr: 'FL', id: 1 },
+          { name: 'Georgia', abbr: 'GA', id: 2 },
+          { name: 'Nebraska', abbr: 'NE', id: 3 },
+          { name: 'California', abbr: 'CA', id: 4 },
+          { name: 'New York', abbr: 'NY', id: 5 },
+        ],
+        items: [
         {
           text: "صفحه اصلی",
           disabled: false,
@@ -39,12 +52,22 @@ export default {
           disabled: true,
         },
       ],
-    };
-  },
+      }
+    },
 
-  created(){
+    methods: {
+     
+     
+    },
   
-  }
+   
+      
+ 
+   
+
+
+
+  
 };
 </script>
 

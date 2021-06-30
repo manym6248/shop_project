@@ -1,51 +1,12 @@
 <template>
-  <div class="body-lgin444 mt-xl-0 mt-gl-0 mt-md-0">
+  <div class="body-lgin444  mt-15 mt-xl-0 mt-gl-0 mt-md-0">
     <v-container tag="section" class="at-16">
       <v-container
         tag="section"
         class="mt-0 px-xl-16 px-lg-16 px-md-8 px-sm-4 pt-0"
       >
-        <v-row justify="center" class="ma-0">
-          <v-col cols="12" md="12">
-            <v-card class="mt-0">
-              <v-card-title class="blue white--text"
-                >اطلاعات حساب کاربری</v-card-title
-              >
-              <v-divider></v-divider>
-              <v-card-text>
-                <form>
-                  <v-row class="ma-0">
-                    <v-col cols="6">
-                      <label>
-                        <v-icon small>mdi-account </v-icon>
-                        نام و نام خانوادگی یا نام کاربری : {{ user.name }}
-                      </label>
-                    </v-col>
-                    <v-col cols="6">
-                      <label>
-                        <v-icon small>mdi-phone</v-icon>
-                        شماره تماس : {{ user.phone }}
-                      </label>
-                    </v-col>
-                    <v-col cols="6">
-                      <label>
-                        <v-icon small>mdi-email</v-icon>
-                        ایمیل : {{ user.email }}
-                      </label>
-                    </v-col>
-                    <v-col cols="6">
-                      <label>
-                        <v-icon small>mdi-clipboard-outline</v-icon>
-                        بیوگرافی :
-                      </label>
-                    </v-col>
-                  </v-row>
-                </form>
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-        <div class="pa-3"></div>
+      
+       
 
         <v-row justify="center" class="ma-0">
           <v-col cols="12" md="12">
@@ -98,10 +59,7 @@
                         @input="$v.username.$touch()"
                         @blur="$v.username.$touch()"
                       ></v-text-field> -->
-                      <v-text-field
-                        v-model="username"
-                        label=" نام کاربری جدید"
-                      ></v-text-field>
+                     
                       <v-text-field
                         v-model="name"
                         :error-messages="nameErrors"
@@ -110,10 +68,7 @@
                         @input="$v.name.$touch()"
                         @blur="$v.name.$touch()"
                       ></v-text-field>
-                    </v-col>
-                  </v-row>
-
-                  <v-text-field
+                      <v-text-field
                     v-model="email"
                     label="ایمیل"
                     :error-messages="emailErrors"
@@ -121,6 +76,10 @@
                     @input="$v.email.$touch()"
                     @blur="$v.email.$touch()"
                   ></v-text-field>
+                    </v-col>
+                  </v-row>
+
+                  
                   <v-text-field
                     class="pt-lg-3 pt-xl-3 pt-md-1 pt-1"
                     v-model="phone"
@@ -138,7 +97,7 @@
                     :type="show1 ? 'text' : 'password'"
                     :error-messages="passwordErrors"
                     name="input-10-1"
-                    label="رمز عبور"
+                    label=" رمز عبور جدید"
                     @input="$v.password.$touch()"
                     @blur="$v.password.$touch()"
                     counter
@@ -164,7 +123,7 @@
                     auto-grow
                     filled
                     color="deep-purple"
-                    label="بیوگرافی"
+                    label="آدرس"
                     rows="1"
                   ></v-textarea>
                   <div class="pa-1 pa-lg-5 pa-xl-5 pa-md-3"></div>
@@ -239,6 +198,7 @@ export default {
       confirmPassword: "",
       email: "",
       phone: "",
+      
     };
   },
 
@@ -359,6 +319,27 @@ export default {
   //   //   // }
   //   // },
   // },
+
+  beforeCreate(){
+
+    this.$http
+      .get("user/"+ this.$route.params.id)
+      .then((res) => {
+          
+          
+           console.log(res.data.data);
+     this.name = res.data.data.name,
+    this.email = res.data.data.email,
+    this.phone =  res.data.data.phone,
+    this.password = res.data.data.password,
+    this.confirmPassword =  res.data.data.confirmPassword
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  
+ 
+  }
   
 };
 </script>

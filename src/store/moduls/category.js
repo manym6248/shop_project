@@ -3,7 +3,7 @@ import axios from '../../../axios.config'
 const state = {
   "oneUser": null,
   "cart2": [],
-  "categories": null
+  "categories": []
 };
 const getters = {
   ////1
@@ -11,21 +11,23 @@ const getters = {
   category: (state) => (id) => {
     return state.categories.filter(u => u.id === Number(id))[0]
   },
+  categories(state) {
+    return state.categories
+  },
+  categories1(state) {
+    var category = []
+    for (const item of state.categories) {
+      if (item.parent_id === 0) {
 
-
-
-
-
+        category.push(item)
+      }
+    }
+    return category
+  }
 };
-
-////////////////
 const mutations = {
-
-
-
-  //////
   fetchcategory(state, categories) {
-    state.categories  = categories 
+    state.categories = categories
   },
   ///اضافه کردن به لیست کاربران
   addToCart2(state, payload) {
@@ -42,30 +44,42 @@ const mutations = {
   },
   getusers(state, users) {
     state.users = users
-  }
+  },
 };
-
-//////////////////////////
-
 const actions = {
   addToCart2({ commit }, payload) {
     commit('addToCart2', payload)
   },
-
-
   newCategoy(context, data) {
     return new Promise((resolve, reject) => {
-      axios.post('/category/create',{
-        name: data.name, 
+      axios.post('/category', {
+        name: data.name,
       })
         .then(response => {
           resolve(response)
-          console.log(response, data.name);
+
+
         })
         .catch(error => {
           reject(error)
           console.log(data);
-       
+
+        })
+    })
+  },
+  newSUBCategoy(context, data) {
+    return new Promise((resolve, reject) => {
+      axios.post('/category', {
+        name: data.name,
+        parent_id: data.id
+      })
+        .then(response => {
+          resolve(response)
+        })
+        .catch(error => {
+          reject(error)
+          console.log(data);
+
         })
     })
   },
@@ -85,8 +99,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.put('/category/' + data.itemId, {
         name: data.name,
-    
-
       })
         .then(response => {
           resolve(response)
@@ -98,10 +110,6 @@ const actions = {
         })
     })
   },
-
-  //
-
-
 };
 export default {
   state, mutations, actions, getters

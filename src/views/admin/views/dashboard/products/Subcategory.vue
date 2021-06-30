@@ -5,7 +5,7 @@
                           <v-card-title
                             class="text-h3 white--text primary py-3"
                           >
-                            ویرایش دسته بندی
+                          ویرایش دسته بندی
                           </v-card-title>
 
                           <v-card-text class="py-0">
@@ -14,7 +14,7 @@
                                 <v-row>
                                   <v-col cols="12" md="8" class="my-5">
                                     <v-text-field
-                                      label=" ویرایش دسته بندی"
+                                      label=" نام جدید دسته بندی"
                                       required
                                       v-model="categgoryname"
                                     ></v-text-field>
@@ -37,7 +37,7 @@
 
                           <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn color="primary" text @click="dialog =false">
+                            <v-btn color="primary" text @click="gotoback()">
                               لغو
                             </v-btn>
                           </v-card-actions>
@@ -76,6 +76,25 @@ export default {
           console.log(err);
         });
     },
+    ///
+    gotoback(){
+  this.$router.push({ name: "Categorized" });
+    }
+  },
+
+  created() {
+ 
+    this.$http
+      .get("category/"+ this.$route.params.id)
+      .then((res) => {
+          
+          for (const item of res.data.data) {
+              this.categgoryname = item.name;
+          }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   },
 };
 </script>

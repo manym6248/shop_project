@@ -151,16 +151,34 @@
             <v-form>
               <v-container class="py-0">
                 <v-row>
+                  <v-col cols="12" class="mt-5">
+                    <v-select
+                      v-model="Creationcateggory"
+                      :items="categories1"
+                      label="انتخاب دسته"
+                      item-value="id"
+                      item-text="name"
+                    ></v-select>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-form>
+            <div class="py-3" />
+            <v-form>
+              <v-container class="py-0">
+                <v-row>
                   <v-col cols="12" md="8" class="my-5">
                     <v-text-field
-                      label="نام ریر دسته"
+                      label="ایجاد زیر دسته جدید  برای دسته انتخابی"
                       required
-                      v-model="product.name"
+                      v-model="newSubcCategoy"
                     ></v-text-field>
                   </v-col>
 
                   <v-col cols="12" md="4" class="my-7">
-                    <v-btn large color="blue" @click="add()"> ثبت</v-btn>
+                    <v-btn large color="blue" @click="newSubCategoy1()">
+                      ثبت</v-btn
+                    >
                   </v-col>
                 </v-row>
               </v-container>
@@ -174,10 +192,10 @@
                 <v-col cols="12" class="mt-5">
                   <v-select
                     v-model="categgory"
-                    :items="categgory.name"
-                    color="pink"
+                    :items="categories1"
                     label="انتخاب دسته"
-                    required
+                    item-value="id"
+                    item-text="name"
                   ></v-select>
                 </v-col>
               </v-row>
@@ -193,7 +211,9 @@
             <v-simple-table>
               <thead>
                 <tr>
-                  <th class="primary--text text-right">ID</th>
+                  <th class="primary--text text-right" style="width: 1%">
+                    شناسه
+                  </th>
                   <th class="primary--text text-right">نام</th>
 
                   <th class="primary--text text-left pl-4">عملیات</th>
@@ -201,9 +221,9 @@
               </thead>
 
               <tbody>
-                <tr>
-                  <td text-right>{{ product.id }}</td>
-                  <td class="text-right">{{ product.name }}</td>
+                <tr v-for="item in subcategory" :key="item.id">
+                  <td text-right>{{ item.id }}</td>
+                  <td class="text-right">{{ item.name }}</td>
 
                   <td class="text-center">
                     <v-btn
@@ -213,6 +233,7 @@
                       min-width="0"
                       text
                       large
+                      @click="removesubcategory(item.id)"
                     >
                       <v-icon large> mdi-delete-empty</v-icon>
                     </v-btn>
@@ -223,6 +244,7 @@
                       min-width="0"
                       text
                       large
+                      @click.capture="goeditsubcategory(item.id)"
                     >
                       <v-icon large> mdi-pencil-outline </v-icon>
                     </v-btn>
@@ -236,39 +258,6 @@
     </v-row>
 
     <div class="py-3" />
-
-    <!-- <v-row justify="center">
-      <v-col cols="12">
-        <base-material-card>
-          <template v-slot:heading>
-            <div class="display-2 font-weight-light">ویرایش زیر دسته </div>
-
-            <div class="subtitle-1 font-weight-light"></div>
-          </template>
-
-          <v-form>
-            <v-container class="py-0">
-              <v-row>
-                <v-col cols="12" md="8" class="my-5">
-                  <v-text-field
-                    label=" ویرایش زیر دسته "
-                    required
-                    v-model="product.name"
-                  ></v-text-field>
-                </v-col>
-
-                <v-col cols="12" md="4" class="my-7">
-                  <v-btn large color="oreng" @click="add()"
-                    >ثبت </v-btn
-                  >
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-form>
-        </base-material-card>
-      </v-col>
-    </v-row>
-   -->
   </v-container>
 </template>
 
@@ -276,12 +265,21 @@
 <script>
 //import axios from 'axios'
 export default {
+  props: {
+    headers: {
+      //Expects compulsory Array
+      type: Array,
+    },
+  },
   data() {
     return {
       dialog: false,
-      categgory: ["Dog", "Cat", "Rabbit", "Turtle", "Snake"],
-      categorized: [],
+      categgory: {},
+      Creationcateggory: {},
+      subcategory: [],
+
       newCategoyname: null,
+      newSubcCategoy: null,
       product: {
         name: "",
         price: "",
@@ -304,6 +302,20 @@ export default {
           console.log(err);
         });
     },
+    async newSubCategoy1() {
+      this.$store
+        .dispatch("newSUBCategoy", {
+          name: this.newSubcCategoy,
+          id: this.Creationcateggory,
+        })
+        .then(() => {
+          alert("با موفقیت اضافه شد");
+          this.newSubcCategoy = "";
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
 
     ////
     toggle(id) {
@@ -318,9 +330,23 @@ export default {
     removecategory(itemId) {
       this.$store.dispatch("removecategory", itemId);
     },
+    removesubcategory(itemId) {
+      this.$store.dispatch("removecategory", itemId);
+
+      for (const item of this.subcategory) {
+        if (item.id === itemId) {
+          this.subcategory = this.subcategory.filter((n) => {
+            return n != item;
+          });
+        }
+      }
+    },
 
     goedit(id) {
       this.$router.push("/products/subcategory/" + id);
+    },
+    goeditsubcategory(id) {
+      this.$router.push("/products/editsubcategory/" + id);
     },
   },
   ////////////
@@ -328,16 +354,25 @@ export default {
     categories() {
       return this.$store.state.category.categories;
     },
+    categories1() {
+      return this.$store.getters.categories1;
+    },
   },
   ///////
   created() {
     this.$http.get("/category").then((res) => {
       this.$store.dispatch("fetchcategory", res.data.data);
-      console.log(res);
     });
   },
-  updated() {
-    console.log(this.categories);
+  watch: {
+    categgory: function (val) {
+      this.subcategory = [];
+      for (const item of this.categories) {
+        if (item.parent_id === val) {
+          this.subcategory.push(item);
+        }
+      }
+    },
   },
 };
 </script>

@@ -19,7 +19,7 @@
               <thead>
                 <tr>
                   <th class="primary--text text-center">شناسه</th>
-                  <th class="primary--text text-center my-4 mx-auto ">عکس</th>
+                  <!-- <th class="primary--text text-center my-4 mx-auto ">عکس</th> -->
                   <th class="primary--text text-center">نام کاربری</th>
                   <th class="primary--text text-center ">ایمیل</th>
                   <th class="primary--text text-center ">موبایل</th>
@@ -36,9 +36,10 @@
                 <tr v-for="(item, i) in apidata" :key="i">
                   <td class="text-center">{{ item.id }}</td>
                 
-                  <td class="text-center">
+                  <!-- <td class="text-center"> -->
                                          <!-- :src="getImage(item.img)" -->
-                       <v-img
+
+                       <!-- <v-img
                       class="rounded-circle my-2 mx-auto"
                       max-height="80px"
  
@@ -47,10 +48,10 @@
 
                       width="55px"
                       height="55px"
-                    ></v-img>
+                    ></v-img> -->
                           
                      
-                  </td>
+                  <!-- </td> -->
                   
                   <td class="text-center">{{ item.name }}</td>
                   <td class="text-center px-6">{{item. email}}</td>

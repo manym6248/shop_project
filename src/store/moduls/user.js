@@ -6,23 +6,13 @@ const state = {
   "me":{},
 };
 const getters = {
-  ////1
-
   user: (state) => (id) => {
     return state.users.filter(u => u.id === Number(id))[0]
   },
-
   me(state){
     return state.me
   }
-
-
-
-
-
 };
-
-////////////////
 const mutations = {
   FETCH_USERS(state, users) {
     state.users = users
@@ -43,14 +33,10 @@ const mutations = {
   getusers(state, users) {
     state.users = users
   },
-  /////
   me1(state, user){
     state.me = user
   }
 };
-
-//////////////////////////
-
 const actions = {
   addToCart2({ commit }, payload) {
     commit('addToCart2', payload)
@@ -94,12 +80,9 @@ const actions = {
         .catch(error => {
           reject(error)
           console.log(data);
-
         })
     })
   },
-
-  //
   me({commit, getters}){
    
    if( getters.loggedIn ){
@@ -120,18 +103,7 @@ const actions = {
           reject(error)
         });
     });
-
-   }
-
-
-   
-      
-    }
-  
-
-  
-
-
+ }}
 };
 export default {
   state, mutations, actions, getters

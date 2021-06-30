@@ -401,8 +401,7 @@ export default {
 }
 
 .v-menu__content {
-  top: 39px !important ;
-
+ 
   list-style: none;
   font-size: 1em;
 
