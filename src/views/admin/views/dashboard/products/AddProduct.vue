@@ -204,7 +204,7 @@ async add() {
           console.log(err);
         });
     },
-
+// ojkfodsjfg
       newProduct() {
            return new Promise((resolve, reject) => {
       this.$store
