@@ -128,7 +128,7 @@
                   <v-text-field label=" کلمات کلیدی" required></v-text-field>
                 </v-col>
                 <v-col cols="12" class="my-10">
-                  <v-btn x-large color="green" @click="newProduct()">ثبت</v-btn>
+                  <v-btn x-large color="green" @click="add()">ثبت</v-btn>
                 </v-col>
               </v-row>
             </v-container>
@@ -169,6 +169,8 @@ export default {
   methods: {
     uploadImageSuccess(formData, index, fileList) {
       console.log("data", formData, index, fileList);
+      this.images = fileList
+      console.log(this.images);
       // Upload image api
       // axios.post('http://your-url-upload', formData).then(response => {
       //   console.log(response)
@@ -185,35 +187,43 @@ export default {
       console.log("edit data", formData, index, fileList);
     },
 
-    add() {
-      var pr = {
-        image: this.product,
-        name: this.product.name,
+async add() {
+    
+
+     this.$http.post("/product", {
+        title: this.product.name,
+        images: this.images,
         price: this.product.price,
         description: this.product.description,
-        brand: this.product.brand,
-        categgory: this.product.categgory,
-      };
+        category: this.product.categgory,
+        status:"hghjgj",
+        score:"hvhjj",
+        discount:"22"
 
-      this.$http.post("/.json", pr).then(() => alert("با موفقیت اضافه شد"));
-    },
-
-     async newProduct() {
-      this.$store
-        .dispatch("newProduct", {
-        image: this.images,
-        name: this.product.name,
-        price: this.product.price,
-        description: this.product.description,
-        brand: this.product.brand,
-        categgory: this.product.categgory,
-        })
-        .then(() => {
-        alert("با موفقیت اضافه شد")
-        })
-        .catch(err => {
+      }).then(() => alert("با موفقیت اضافه شد")) .catch(err => {
           console.log(err);
         });
+    },
+
+      newProduct() {
+           return new Promise((resolve, reject) => {
+      this.$store
+        .dispatch("newProduct", {
+        images: this.images,
+        title: this.product.name,
+        price: this.product.price,
+        description: this.product.description,
+        // brand: this.product.brand,
+        categgory: this.product.categgory,
+        })
+        .then((response) => {
+        alert("با موفقیت اضافه شد")
+         resolve(response)
+        })
+        .catch(err => {
+            reject(err)
+          console.log(err);
+        });})
     },
 
   },
@@ -230,6 +240,10 @@ export default {
       //new Intl.NumberFormat('fa', { style: 'currency', currency: 'IRR' }).format()
     },
   },
+
+  created(){
+
+  }
 };
 </script>
 <style lang="scss" >
