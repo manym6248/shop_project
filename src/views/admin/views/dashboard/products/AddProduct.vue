@@ -205,8 +205,7 @@ async add() {
         });
     },
 // ojkfodsjfg
-// jpo;ryjreodjg;rdo;r
-// ......
+//dkfjdkf
       newProduct() {
            return new Promise((resolve, reject) => {
       this.$store
