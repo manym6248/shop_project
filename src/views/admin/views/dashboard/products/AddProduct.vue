@@ -222,7 +222,7 @@ async add() {
         })
         .catch(err => {
             reject(err)
-          console.log(err);
+          // console.log(err);
         });})
     },
 
