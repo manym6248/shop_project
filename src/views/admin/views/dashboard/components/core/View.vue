@@ -1,7 +1,7 @@
 <template>
   <v-main>
-    <router-view />
-    <dashboard-core-footer />
+    <router-view class="vmainwrap" />
+    <!-- <dashboard-core-footer  /> -->
   </v-main>
 </template>
 
@@ -12,8 +12,21 @@ import { VCard } from 'vuetify/lib'
     name: 'DashboardCoreView',
     extends: VCard,
     components: {
-      DashboardCoreFooter: () => import('./Footer'),
+      // DashboardCoreFooter: () => import('./Footer'),
      
     },
   }
 </script>
+<style lang="scss" scoped>
+
+.v-main{
+ background-color: #fafcff;
+.vmainwrap{
+  padding: 40px 180px !important;
+ 
+  height: 100%;
+}}
+
+
+
+</style>

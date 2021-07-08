@@ -295,8 +295,11 @@ export default {
         .dispatch("newCategoy", {
           name: this.newCategoyname,
         })
-        .then(() => {
+        .then((res) => {
           alert("با موفقیت اضافه شد");
+          // ادرس گرفتن دسته بندی هارو اینجا صداد بز ن 
+          this.categories.push(res.data.data);
+           this.newCategoyname = '';
         })
         .catch((err) => {
           console.log(err);

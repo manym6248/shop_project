@@ -67,25 +67,18 @@
                           v-if="loggedIn"
                         >
                           <template v-slot:activator="{ attrs, on }">
-                            <li class="userme" v-bind="attrs"
-                              v-on="on">
-                              <v-icon >mdi-account</v-icon>
-                              <a
-                              class=" ma-0 font-weight-regular "
-                              min-width="0"
-                         
-                              
-                            >
-                             
-                              {{ me.name }}
-                            </a> 
+                            <li class="userme" v-bind="attrs" v-on="on">
+                              <v-icon>mdi-account</v-icon>
+                              <a class="ma-0 font-weight-regular" min-width="0">
+                                {{ me.name }}
+                              </a>
                             </li>
-                            
                           </template>
 
                           <v-list :tile="false" nav color="pa-0">
                             <div>
-                              <v-list-item active-class="axtive-888"
+                              <v-list-item
+                                active-class="axtive-888"
                                 to="/user"
                                 tag="li"
                                 class="item py-0 mx-0 font-weight-medium"
@@ -96,8 +89,9 @@
                                   داشبورد</a
                                 >
                               </v-list-item>
-                              <v-list-item active-class="axtive-888"
-                                 to=""
+                              <v-list-item
+                                active-class="axtive-888"
+                                to=""
                                 tag="li"
                                 class="item py-0 mx-0 font-weight-medium"
                               >
@@ -107,9 +101,9 @@
                                   ویرایش حساب کاربری</a
                                 >
                               </v-list-item>
-                              <v-list-item active-class="axtive-888"
-                              
-                               to=""
+                              <v-list-item
+                                active-class="axtive-888"
+                                to=""
                                 tag="li"
                                 class="item py-0 mx-0 font-weight-medium"
                               >
@@ -120,7 +114,6 @@
                                 >
                               </v-list-item>
                               <v-list-item
-                               
                                 @click.native="logout()"
                                 tag="li"
                                 class="item py-0 pb-1 mx-0 font-weight-medium"
@@ -261,16 +254,24 @@
                             width="95%"
                             @click="gotocart()"
                           >
-                            <v-icon dark> mdi-cart-outline </v-icon>
+                           
+                            <v-badge color="red" >
+                              <template v-slot:badge>
+                                <span>{{ cartCount }}</span>
+                              </template>
+
+                              <v-icon dark> mdi-cart-outline </v-icon>
+                            </v-badge>
                           </v-btn>
                         </div>
 
-                        <ul class="items">
+                        <ul class="items" style="
+    justify-content: center;
+">
+
                           <router-link tag="li" class="item" to="cart">
                             <a class="link">سبد من</a>
-                          </router-link>
-                          <router-link tag="li" class="item" to="cart">
-                            <a class="link">{{ cartCount }} محصول </a>
+                            
                           </router-link>
                         </ul>
                       </div>
@@ -375,7 +376,6 @@ export default {
     },
   },
 
-
   created() {
     if (this.loggedIn) {
       this.$store.dispatch("me").then(() => {
@@ -391,33 +391,41 @@ export default {
 @import "../src/assets/css/normalize.css";
 @import "../node_modules/flickity/css/flickity.css";
 
+.v-badge__wrapper {
+  span {
+    inset: auto calc(100% - 10px) calc(100% - 10px) auto;
+    padding: 5px 6px !important;
+  }
+}
+
 .userme {
-  *{color: $color-dark !important;}
- 
-  &:hover{
-    *{color: $color-menu !important;}
-   
+  * {
+    color: $color-dark !important;
+  }
+
+  &:hover {
+    * {
+      color: $color-menu !important;
+    }
   }
 }
 
 .v-menu__content {
- 
   list-style: none;
   font-size: 1em;
 
   .item {
-     .link{
-       color:$color-dark;
-       font-size: 0.9em;
-     }
+    .link {
+      color: $color-dark;
+      font-size: 0.9em;
+    }
     &:hover {
       background-color: $color-menu;
-      
     }
 
-    &.axtive-888{
+    &.axtive-888 {
       background-color: white;
-      
+
       color: $color-header;
     }
   }

@@ -1,12 +1,12 @@
 <template>
   <div class="body-lgin1 mt-15 mt-xl-0 mt-gl-0 mt-md-0">
-    <v-container tag="section" class="at-16">
+    <v-container tag="section" class="at-16 px-0">
       <v-container
         tag="section"
-        class="mt-0 px-xl-16 px-lg-16 px-md-8 px-sm-4 pt-0"
+        class="mt-0 px-0 pt-0"
       >
-        <v-row justify="center">
-          <v-col cols="12" md="12">
+        <v-row justify="center" >
+          <v-col cols="12" md="12" class="px-0">
             <base-material-card class="px-0 pb-0">
               <template v-slot:heading>
                 <div class="display-2 font-weight-light">همه کاربران</div>
@@ -20,21 +20,21 @@
                 <tr>
                   <th class="primary--text text-center">شناسه</th>
                   <!-- <th class="primary--text text-center my-4 mx-auto ">عکس</th> -->
-                  <th class="primary--text text-center">نام کاربری</th>
-                  <th class="primary--text text-center ">ایمیل</th>
-                  <th class="primary--text text-center ">موبایل</th>
-                  <th class="primary--text text-center ">سطح کاربری</th>
+                  <th class="primary--text text-center px-0">نام کاربری</th>
+                  <th class="primary--text text-center px-0">ایمیل</th>
+                  <th class="primary--text text-center px-0">موبایل</th>
+                  <th class="primary--text text-center  px-0">سطح کاربری</th>
                   
 
                   <!-- <th class="primary--text text-center ">تاریخ عضویت</th> -->
-                  <th class="primary--text text-center ">عملیات</th>
+                  <th class="primary--text text-center px-0">عملیات</th>
                 </tr>
               </thead>
 
               <tbody>
                 
                 <tr v-for="(item, i) in apidata" :key="i">
-                  <td class="text-center">{{ item.id }}</td>
+                  <td class="text-center  pl-0">{{ item.id }}</td>
                 
                   <!-- <td class="text-center"> -->
                                          <!-- :src="getImage(item.img)" -->
@@ -53,17 +53,17 @@
                      
                   <!-- </td> -->
                   
-                  <td class="text-center">{{ item.name }}</td>
-                  <td class="text-center px-6">{{item. email}}</td>
-                  <td class="text-center px-6">{{item.phone}}</td>
-                  <td class="text-center px-6">{{item.role}}</td>
+                  <td class="text-center  pl-0">{{ item.name }}</td>
+                  <td class="text-center px-6  pl-0">{{item. email}}</td>
+                  <td class="text-center px-6  pl-0">{{item.phone}}</td>
+                  <td class="text-center px-6  pl-0">{{item.role}}</td>
                 
                  
 <!--                 
                   <td class="text-center">
                    200/06/29
                   </td> -->
-                  <td class="text-center">
+                  <td class="text-center  px-0">
                     
                     <v-btn
                       class=" removebtn-h float-left"

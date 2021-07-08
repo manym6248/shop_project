@@ -15,7 +15,7 @@
               </template>
 
               <div class="login-card">
-                <form @submit.prevent="SubmitForm">
+                <form @submit.prevent="SubmitForm" enctype="multipart/form-data">
                   <v-row
                     class="mt-3"
                     style="
@@ -210,6 +210,23 @@ export default {
       var x = JSON.stringify(this.person);
 
       console.log(x);
+
+      this.$http
+        .post(
+          "/product",
+          {
+            title: this.person.name,
+            images: this.imageUrl,
+        
+           
+           
+          },
+          { headers: { Authorization: `Bearer ${this.$store.getters.token}` } }
+        )
+        .then(() => alert("با موفقیت اضافه شد"))
+        .catch((err) => {
+          console.log(err);
+        });
     },
     clear() {
       this.$v.$reset();
@@ -254,7 +271,7 @@ export default {
 .body-lgin1 {
   padding: 0px;
   margin: 0px;
-  height: 100vh;
+  
   width: 100%;
   //   background-color: $color-header2;
   padding-top: 20px;

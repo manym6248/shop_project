@@ -1,11 +1,23 @@
 <template>
-  <v-app-bar
+<div>
+   <v-app-bar
+    id="app-bar"
+    absolute
+    app
+   
+    flat
+    height="42"
+  >
+  <Headermenu />
+   </v-app-bar>
+ <v-app-bar
     id="app-bar"
     absolute
     app
     color="transparent"
     flat
     height="75"
+    class="mt-11"
   >
     <v-btn
       class="ml-3"
@@ -117,6 +129,23 @@
       <v-icon>mdi-account</v-icon>
     </v-btn>
   </v-app-bar>
+  <v-app-bar
+    id="app-bar"
+    absolute
+    app
+    color="transparent"
+    flat
+    height="75"
+    class="mt16"
+    
+  >
+  <Menu  />
+  </v-app-bar>
+</div>
+ 
+ 
+  
+
 </template>
 
 <script>
@@ -125,11 +154,15 @@
 
   // Utilities
   import { mapState, mapMutations } from 'vuex'
+  import Menu from '../../../../../../views/Menu.vue'
+  import Headermenu from '../../../../../../components/Headermenu'
 
   export default {
     name: 'DashboardCoreAppBar',
 
     components: {
+      Menu,
+      Headermenu,
       AppBarItem: {
         render (h) {
           return h(VHover, {
@@ -185,6 +218,13 @@
 </script>
 <style lang="scss">
 
+.mt16{
+  margin-top:117px !important ; 
+  .v-toolbar__content{
+     border: none !important;
+  }
+ 
+}
 
 
 .v-badge__wrapper{
@@ -193,5 +233,66 @@
     padding: 7px 4px !important;
 }
 }
+
+.menue{
+  .box-category{
+    display: none;
+  }
+.mainmanue12{
+  .items{
+    .item{
+      
+       transition:0.5s;
+       .link{
+         padding: 20px 24px !important; 
+       }
+      &.active1{
+        .link{
+            border-bottom: 2px solid;
+        }
+       
+      }
+      &:hover{
+       transition:0.5s;
+        .link{
+          border-bottom: 2px solid ;
+           
+
+        }
+        
+      }
+    }
+  }
+}
+ .main-items-card{
+        right: 0;
+        display: none;
+        position: absolute;
+        top: 40px;
+        width: 100%;
+        z-index: 20000  !important;
+        height: 300px;
+        .items2{
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+        }
+        .items3{
+          display: flex;
+          flex-direction: column;
+          .itemm{
+            display: flex;
+            flex-direction: row;
+          
+          }
+        }
+        
+      }
+
+     
+
+
+}
+
 
 </style>

@@ -15,13 +15,14 @@
             <v-simple-table>
               <thead>
                 <tr>
-                  <th class="primary--text" style="width: 10px">شناسه</th>
+                  
                   <th class="primary--text text-center">نام</th>
-                  <th class="primary--text text-center" style="width: 150px">
+                  <th class="primary--text text-center" style="width: 200px">
                     قیمت
                   </th>
                   <th class="primary--text text-center">عکس</th>
-                  <th class="primary--text text-center">تعداد</th>
+                  <th class="primary--text text-center" style="width: 300px">تعداد</th>
+                  <th class="primary--text text-center" ></th>
                   <th class="primary--text text-center" style="width: 10px">
                     حذف
                   </th>
@@ -30,7 +31,7 @@
 
               <tbody>
                 <tr v-for="item in cartItems" :key="item.id">
-                  <td style="width: 30px">{{ item.id }}</td>
+                  
                   <td class="text-center">{{ item.name }}</td>
                   <td class="text-center" id="loop">
                     {{ (item.price * item.quantity) | currency }}
@@ -71,6 +72,7 @@
                       </v-btn>
                     </v-row>
                   </td>
+                  <td></td>
 
                   <td class="text-center">
                     <v-btn
@@ -90,8 +92,9 @@
                   <th class="text-center">
                     <h3>جمع کل: {{ total | currency }}</h3>
                   </th>
+                  
                   <td class="text-center"></td>
-                  <td class="text-center"></td>
+                  <td class="text-center">
                   <td class="text-center">
                     <v-btn color="primary" style="letter-spacing: 0"
                       >تکمیل خرید</v-btn

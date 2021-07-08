@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <dashboard-core-app-bar />
+    <dashboard-core-app-bar class="mb16" />
 
     <dashboard-core-drawer />
 
@@ -32,5 +32,16 @@
 @import "../../../../assets/admin/sass/overrides.sass";
 @import "../../../../assets/admin/sass/variables.scss";
 @import "~vuetify/src/styles/main.sass";
+
+.mb16{
+  margin-bottom: 120px !important;
+}
+.v-main {
+  padding: 72px 260px 0px 0px !important;
+  height: 100%;
+   .main__wrap{
+    height: 100%;
+  }
+}
 
 </style>
