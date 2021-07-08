@@ -173,6 +173,7 @@
 export default {
   components: {
     // VueUploadMultipleImage,
+    //
   },
   data() {
     return {
