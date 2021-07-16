@@ -7,14 +7,14 @@
             id="my-strictly-unique-vue-upload-multiple-image"
             style="display: flex; justify-content: center; height: 100%"
           >
-            <!-- <vue-upload-multiple-image
+            <vue-upload-multiple-image
               @upload-success="uploadImageSuccess"
               @before-remove="beforeRemove"
               @edit-image="editImage"
               :data-images="images"
               idUpload="myIdUpload"
               editUpload="myIdEdit"
-            ></vue-upload-multiple-image> -->
+            ></vue-upload-multiple-image>
           </div>
         </div>
       </v-col>
@@ -168,11 +168,11 @@
 
 
 <script>
-// import VueUploadMultipleImage from "vue-upload-multiple-image";
+import VueUploadMultipleImage from "vue-upload-multiple-image";
 //import axios from 'axios'
 export default {
   components: {
-    // VueUploadMultipleImage,
+    VueUploadMultipleImage,
     //
   },
   data() {
@@ -182,7 +182,8 @@ export default {
     span2: false,
     image: null,
     imageUrl: null,
-      images: [],
+      images:[],
+      images22:null,
 
       rating: 4,
 
@@ -230,16 +231,17 @@ export default {
 
     uploadImageSuccess(formData, index, fileList) {
       console.log("data", formData, index, fileList);
-      this.images = fileList;
+      this.images22 = formData;
       // for (const item of fileList) {
       //   console.log(item);
       //   this.images.push(item);
       // }
 
       // Upload image api
-      // axios.post('http://your-url-upload', formData).then(response => {
-      //   console.log(response)
-      // })
+      
+      this.$http.post('/product', formData).then(response => {
+        console.log(response)
+      })
     },
     beforeRemove(index, done, fileList) {
       console.log("index", index, fileList);
@@ -252,20 +254,23 @@ export default {
       console.log("edit data", formData, index, fileList);
     },
 
-    async SubmitForm() {
+     SubmitForm() {
+      
+     this.images22.append('title', this.product.name)
+     this.images22.append('status', 'status')
+     this.images22.append('score', 100)
+     this.images22.append('discount', 300)
+     this.images22.append('price', this.product.price)
+     this.images22.append('description', this.product.description)
+     this.images22.append('category', this.product.categgory)
+     console.log(this.images22);
       this.$http
         .post(
           "/product",
-          {
-            title: this.product.name,
-            images: [{path:this.imageUrl}],
-            price: this.product.price,
-            description: this.product.description,
-            category: this.product.categgory,
-          },
-          { headers: { Authorization: `Bearer ${this.$store.getters.token}` } }
+          this.images22,
+          { headers: { 'Content-Type': 'multipart/form-data'  } }
         )
-        .then(() => alert("با موفقیت اضافه شد"))
+        .then((res) => {console.log(res);})
         .catch((err) => {
           console.log(err);
         });
