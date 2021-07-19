@@ -274,10 +274,7 @@ const actions = {
 
     newProduct(context, data) {
       return new Promise((resolve, reject) => {
-        axios.post('/product', {
-          
-          
-        })
+        axios.post('/product', data,  { headers: { 'Content-Type': 'multipart/form-data'  } })
           .then(response => {
             resolve(response)
           })

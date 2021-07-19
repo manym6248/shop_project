@@ -13,13 +13,13 @@
           <v-container class="py-0">
             <v-row>
               <v-col cols="12" sm="6" class="mt-5">
-                <v-select
-                  v-model="categgory"
-                  :items="categgory.name"
-                  color="pink"
-                  label="انتخاب دسته"
-                  required
-                ></v-select>
+               <v-select
+                      v-model="Creationcateggory"
+                      :items="categories1"
+                      label="انتخاب دسته"
+                      item-value="name"
+                      item-text="name"
+                    ></v-select>
               </v-col>
               <v-col cols="12" sm="6" class="mt-5">
                 <v-select
@@ -233,23 +233,12 @@ export default {
   components: { VueUploadMultipleImage },
   data() {
     return {
+       Creationcateggory: {},
       images: [],
       rating: 4,
       animals: [],
       categgory: ["Dog", "Cat", "Rabbit", "Turtle", "Snake"],
       apidata: [
-        {
-          id: 1,
-          name: "شامپو",
-          price: "20000",
-          Url: require("../../../../../assets/img/dev/بستنی/240306.jpg"),
-        },
-        {
-          id: 2,
-          name: "صابون",
-          price: "20000",
-          Url: require("../../../../../assets/img/dev/بستنی/240447.jpg"),
-        },
       ],
       product: {
         id: 1,
@@ -310,13 +299,6 @@ export default {
       console.log("edit data", formData, index, fileList);
     },
   },
-  created() {
-    // this.$http.get("/photos").then((res) => {
-    //   var data = res.data;
-    //   var x = JSON.stringify(data);
-    //   this.apidata = x;
-    // });
-  },
 
  filters: {
     currency(value) {
@@ -328,6 +310,48 @@ export default {
         "تومن"
       );
       //new Intl.NumberFormat('fa', { style: 'currency', currency: 'IRR' }).format()
+    },
+  },
+  beforeCreate(){
+      this.$http.get("/product").then((res)=>{
+      
+      console.log(res.data);
+      
+    })
+  },
+
+  
+   created() {
+      // this.$http.get("/photos").then((res) => {
+    //   var data = res.data;
+    //   var x = JSON.stringify(data);
+    //   this.apidata = x;
+    // });
+    this.$http.get("/category").then((res) => {
+      this.$store.dispatch("fetchcategory", res.data.data);
+    });
+    this.$http.get("/product").then((res)=>{
+      
+      console.log(res.data);
+      
+    })
+  },
+  computed:{
+      categories() {
+      return this.$store.state.category.categories;
+    },
+    categories1() {
+      return this.$store.getters.categories1;
+    },
+  },
+  watch: {
+    categgory: function (val) {
+      this.subcategory = [];
+      for (const item of this.categories) {
+        if (item.parent_id === val) {
+          this.subcategory.push(item);
+        }
+      }
     },
   },
 };

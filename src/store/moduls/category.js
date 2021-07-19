@@ -3,7 +3,7 @@ import axios from '../../../axios.config'
 const state = {
   "oneUser": null,
   "cart2": [],
-  "categories": []
+  "categories": [],
 };
 const getters = {
   ////1
@@ -15,11 +15,11 @@ const getters = {
     return state.categories
   },
   categories1(state) {
-    var category = []
+    var category = [{id: 0,
+      name: "دسته اصلی"},]
     for (const item of state.categories) {
       if (item.parent_id === 0) {
-
-        category.push(item)
+          category.push(item)  
       }
     }
     return category
@@ -27,7 +27,8 @@ const getters = {
 };
 const mutations = {
   fetchcategory(state, categories) {
-    state.categories = categories
+    state.categories = categories;
+    
   },
   ///اضافه کردن به لیست کاربران
   addToCart2(state, payload) {

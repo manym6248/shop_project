@@ -1,6 +1,6 @@
 import axios from '../../../axios.config'
 const state = {
-    token: localStorage.getItem('access_token') || null,
+    token: sessionStorage.getItem('access_token') || null,
     " oneUser":null,
     loginuser:null
    
@@ -41,14 +41,14 @@ const state = {
         return new Promise((resolve, reject) => {
           axios.get('/logout')
             .then(response => {
-              localStorage.removeItem('access_token')
+              sessionStorage.removeItem('access_token')
               context.commit('destroyToken')
               resolve(response)
               // console.log(response);
               // context.commit('addTodo', response.data)
             })
             .catch(error => {
-              localStorage.removeItem('token')
+              sessionStorage.removeItem('token')
               context.commit('destroyToken')
               reject(error)
             })
@@ -67,7 +67,7 @@ const state = {
           })
             .then(response => {
               const token = response.data.token;
-              localStorage.setItem('access_token', token);
+              sessionStorage.setItem('access_token', token);
               context.commit('retrieveToken', token);
               resolve(response)
 

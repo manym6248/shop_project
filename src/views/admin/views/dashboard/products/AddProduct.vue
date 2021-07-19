@@ -3,19 +3,17 @@
     <v-row class="ma-12 ma-xl-0 ma-lg-0 ma-md-0">
       <v-col cols="12" sm="12" lg="4" xl="4" md="4" class="py-0 px-0">
         <div class="blue1">
-          <div
-            id="my-strictly-unique-vue-upload-multiple-image"
-            style="display: flex; justify-content: center; height: 100%"
-          >
-            <vue-upload-multiple-image
-              @upload-success="uploadImageSuccess"
-              @before-remove="beforeRemove"
-              @edit-image="editImage"
-              :data-images="images"
-              idUpload="myIdUpload"
-              editUpload="myIdEdit"
-            ></vue-upload-multiple-image>
-          </div>
+  
+        <div id="my-strictly-unique-vue-upload-multiple-image" style="display: flex; justify-content: center; height: 100%">
+    <vue-upload-multiple-image
+      @upload-success="uploadImageSuccess"
+      @before-remove="beforeRemove"
+      @edit-image="editImage"
+      :data-images="images"
+      idUpload="myIdUpload"
+      editUpload="myIdEdit"
+      ></vue-upload-multiple-image>
+  </div>
         </div>
       </v-col>
       <v-col
@@ -83,35 +81,8 @@
             <div class="subtitle-1 font-weight-light"></div>
           </template>
 
-          <v-form  @submit.prevent="SubmitForm" enctype="multipart/form-data">
+          <v-form @submit.prevent="newProduct" enctype="multipart/form-data">
             <v-container class="py-0">
-              <v-row>
-                 <v-col cols="4" md="4" lg="3" xl="3"
-                      ><v-avatar size="128" color="indigo" alt="عکس پروفایل">
-                        
-                        <v-icon dark x-large v-if="span1"> mdi-account-circle </v-icon>
-
-                        <v-btn
-                          width="100%"
-                          height="32%"
-                          class="ma-0 pa-0 img-btn"
-                          color="#999999b8"
-                          @click="onPickFile"
-                          style="position: absolute; bottom: -1px"
-                        >
-                          <v-icon dark>mdi-camera-plus-outline</v-icon></v-btn
-                        >
-                        <img :src="imageUrl" v-if="span2" />
-                      </v-avatar>
-                    </v-col>
-                <input
-                    type="file"
-                    style="display: none"
-                    ref="fileInput"
-                    accept="image/*"
-                    @change="onFilePicked"
-                  />
-              </v-row>
               <v-row>
                 <v-col cols="6" class="mt-5">
                   <v-text-field
@@ -127,12 +98,15 @@
                     required
                   ></v-text-field>
                 </v-col>
+              
                 <v-col cols="6">
-                  <v-text-field
-                    label=" دسته بندی محصول"
-                    required
-                    v-model="product.categgory"
-                  ></v-text-field>
+                    <v-select
+                      v-model="Creationcateggory"
+                      :items="categories1"
+                      label="انتخاب دسته"
+                      item-value="name"
+                      item-text="name"
+                    ></v-select>
                 </v-col>
 
                 <v-col cols="6">
@@ -145,7 +119,7 @@
 
                 <v-col cols="12">
                   <v-textarea
-                    class="purple-input pa-10"
+                    class="purple-input px-0"
                     label="  توصیف محصول"
                     v-model="product.description"
                   />
@@ -154,7 +128,7 @@
                 <v-col cols="12">
                   <v-text-field label=" کلمات کلیدی" required></v-text-field>
                 </v-col>
-                <v-col cols="12" class="my-10">
+                <v-col cols="12" class="mt-5 mb-10">
                   <v-btn x-large color="green" type="submit">ثبت</v-btn>
                 </v-col>
               </v-row>
@@ -169,26 +143,18 @@
 
 <script>
 import VueUploadMultipleImage from "vue-upload-multiple-image";
-//import axios from 'axios'
 export default {
   components: {
     VueUploadMultipleImage,
-    //
   },
   data() {
     return {
-
-     span1: true,
-    span2: false,
-    image: null,
-    imageUrl: null,
-      images:[],
-      images22:null,
-
+      Creationcateggory: {},
+      image: null,
+      images: [],
+      images22: null,
       rating: 4,
-
       bigURL: "",
-
       product: {
         imageUrl: null,
         image: null,
@@ -201,47 +167,17 @@ export default {
     };
   },
   methods: {
-
-///
-
-   onPickFile() {
-      this.$refs.fileInput.click();
-      this.span1 =false;
-      this.span2=true;
-    },
-    onFilePicked(event) {
-      const files = event.target.files;
-      const fileReader = new FileReader();
-      fileReader.addEventListener("load", () => {
-        this.imageUrl = fileReader.result;
-      });
-      fileReader.readAsDataURL(files[0]);
-      this.image = files[0];
-    },
-    /////
-
-
-
-
-
-
-
-
-
-
+ 
+  
     uploadImageSuccess(formData, index, fileList) {
       console.log("data", formData, index, fileList);
       this.images22 = formData;
-      // for (const item of fileList) {
-      //   console.log(item);
-      //   this.images.push(item);
-      // }
-
+      console.log(fileList);
+      console.log(formData);
       // Upload image api
-      
-      this.$http.post('/product', formData).then(response => {
-        console.log(response)
-      })
+      // this.$http.post('/product', formData).then(response => {
+      //   console.log(response)
+      // })
     },
     beforeRemove(index, done, fileList) {
       console.log("index", index, fileList);
@@ -254,42 +190,17 @@ export default {
       console.log("edit data", formData, index, fileList);
     },
 
-     SubmitForm() {
-      
-     this.images22.append('title', this.product.name)
-     this.images22.append('status', 'status')
-     this.images22.append('score', 100)
-     this.images22.append('discount', 300)
-     this.images22.append('price', this.product.price)
-     this.images22.append('description', this.product.description)
-     this.images22.append('category', this.product.categgory)
-     console.log(this.images22);
-      this.$http
-        .post(
-          "/product",
-          this.images22,
-          { headers: { 'Content-Type': 'multipart/form-data'  } }
-        )
-        .then((res) => {console.log(res);})
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    // ojkfodsjfg
-    //dkfjdkf
     newProduct() {
+      this.images22.append("title", this.product.name);
+      this.images22.append("status", "status");
+      this.images22.append("score", 100);
+      this.images22.append("discount", 300);
+      this.images22.append("price", this.product.price);
+      this.images22.append("description", this.product.description);
+      this.images22.append("category", this.Creationcateggory);
       return new Promise((resolve, reject) => {
         this.$store
-          .dispatch("newProduct", {
-            title: this.product.name,
-            images: this.images,
-            price: this.product.price,
-            description: this.product.description,
-            category: this.product.categgory,
-            status: "hghjgj",
-            score: "hvhjj",
-            discount: "22",
-          })
+          .dispatch("newProduct", this.images22)
           .then((response) => {
             alert("با موفقیت اضافه شد");
             resolve(response);
@@ -315,7 +226,29 @@ export default {
     },
   },
 
-  created() {},
+   created() {
+    this.$http.get("/category").then((res) => {
+      this.$store.dispatch("fetchcategory", res.data.data);
+    });
+  },
+  computed:{
+      categories() {
+      return this.$store.state.category.categories;
+    },
+    categories1() {
+      return this.$store.getters.categories1;
+    },
+  },
+  watch: {
+    categgory: function (val) {
+      this.subcategory = [];
+      for (const item of this.categories) {
+        if (item.parent_id === val) {
+          this.subcategory.push(item);
+        }
+      }
+    },
+  },
 };
 </script>
 <style lang="scss" >
