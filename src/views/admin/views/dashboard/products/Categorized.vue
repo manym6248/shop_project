@@ -9,7 +9,7 @@
       <v-col cols="12">
         <base-material-card class="colorheader2">
           <template v-slot:heading>
-            <div class="display-2 font-weight-light">زیر دسته</div>
+            <div class="display-2 font-weight-light">ایجاد دسته</div>
 
             <div class="subtitle-1 font-weight-light"></div>
           </template>
