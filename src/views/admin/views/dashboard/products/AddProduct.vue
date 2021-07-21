@@ -171,6 +171,7 @@ export default {
   
     uploadImageSuccess(formData, index, fileList) {
       console.log("data", formData, index, fileList);
+      console.log(fileList);
       this.images22 = formData;
       console.log(fileList);
       console.log(formData);
@@ -227,9 +228,9 @@ export default {
   },
 
    created() {
-    this.$http.get("/category").then((res) => {
-      this.$store.dispatch("fetchcategory", res.data.data);
-    });
+  
+      this.$store.dispatch("fetchcategory");
+    
   },
   computed:{
       categories() {

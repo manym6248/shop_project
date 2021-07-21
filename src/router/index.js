@@ -60,7 +60,7 @@ const routes = [
         component: Home
       },
       {
-        path: 'productpage',
+        path: 'productpage/:id',
         name: 'ProductPage',
         component:ProductPage,
       },

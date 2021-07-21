@@ -238,8 +238,7 @@ export default {
       rating: 4,
       animals: [],
       categgory: ["Dog", "Cat", "Rabbit", "Turtle", "Snake"],
-      apidata: [
-      ],
+      apidata: [],
       product: {
         id: 1,
         imageUrl: null,
@@ -312,14 +311,6 @@ export default {
       //new Intl.NumberFormat('fa', { style: 'currency', currency: 'IRR' }).format()
     },
   },
-  beforeCreate(){
-      this.$http.get("/product").then((res)=>{
-      
-      console.log(res.data);
-      
-    })
-  },
-
   
    created() {
       // this.$http.get("/photos").then((res) => {
@@ -327,14 +318,11 @@ export default {
     //   var x = JSON.stringify(data);
     //   this.apidata = x;
     // });
-    this.$http.get("/category").then((res) => {
-      this.$store.dispatch("fetchcategory", res.data.data);
-    });
-    this.$http.get("/product").then((res)=>{
-      
-      console.log(res.data);
-      
-    })
+    
+      this.$store.dispatch("fetchcategory");
+      this.$http.get("/product").then((res)=>{
+        console.log(res.data.data);
+      })
   },
   computed:{
       categories() {

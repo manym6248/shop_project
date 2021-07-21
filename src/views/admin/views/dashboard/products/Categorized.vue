@@ -1,7 +1,5 @@
 <template>
   <v-container id="user-profile" fluid tag="section" class="my-5">
- 
-
     <div class="py-8 py-lg-0 py-xl-0 py-md-0"></div>
 
     <v-row justify="center">
@@ -75,8 +73,6 @@
                     item-value="id"
                     item-text="name"
                     @input="changedLabel"
-
-                    
                   ></v-select>
                 </v-col>
               </v-row>
@@ -154,7 +150,7 @@ export default {
   },
   data() {
     return {
-      toggleinput:true,
+      toggleinput: true,
       dialog: false,
       categgory: {},
       Creationcateggory: {},
@@ -172,22 +168,17 @@ export default {
     };
   },
   methods: {
-     changedLabel(event) {
-      
-      this.$http.get("/category").then((res) => {
-      this.$store.dispatch("fetchcategory", res.data.data);
-            this.subcategory = [];
-      for (const item of this.categories) {
-        if (item.parent_id === event) {
-          this.subcategory.push(item);
+    changedLabel(event) {
+      this.$store.dispatch("fetchcategory").then(() => {
+        this.subcategory = [];
+        for (const item of this.categories) {
+          if (item.parent_id === event) {
+            this.subcategory.push(item);
+          }
         }
-      }
-    });
-   
-      
+      });
     },
 
-    
     async newSubCategoy1() {
       this.$store
         .dispatch("newSUBCategoy", {
@@ -195,20 +186,12 @@ export default {
           id: this.Creationcateggory,
         })
         .then(() => {
-          
           this.newSubcCategoy = "";
-          this.$http.get("/category").then((res) => {
-            
-          this.$store.dispatch("fetchcategory", res.data.data);
-          
-    });
-          
-          
+          this.$store.dispatch("fetchcategory");
         })
         .catch((err) => {
           console.log(err);
         });
-   
     },
 
     ////
@@ -254,9 +237,7 @@ export default {
   },
   ///////
   created() {
-    this.$http.get("/category").then((res) => {
-      this.$store.dispatch("fetchcategory", res.data.data);
-    });
+    this.$store.dispatch("fetchcategory");
   },
   watch: {
     categgory: function (val) {
@@ -267,13 +248,13 @@ export default {
         }
       }
     },
-    Creationcateggory: function(val){
-      if(val === 0){
-        this.toggleinput = true
-      }else{
-         this.toggleinput = false
+    Creationcateggory: function (val) {
+      if (val === 0) {
+        this.toggleinput = true;
+      } else {
+        this.toggleinput = false;
       }
-    }
+    },
   },
 };
 </script>

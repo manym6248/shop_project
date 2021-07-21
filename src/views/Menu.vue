@@ -147,44 +147,45 @@
                   }}</v-icon
                   >{{ item.text }}</a
                 >
-                <v-card
-    class="mx-auto pa-5 main-items-card"
-    v-if="item.cart"
-    
-  >
-   <ul class="items2">
-            
-              
-                  <div class="pl-3" v-for="(item2, i) in item.category" :key="i">
-                    <h4 >{{item2.name}}</h4>
-                    <ul class="items3 mt-3">
-                      
+                <v-card class="mx-auto pa-5 main-items-card" v-if="item.cart">
+                  <ul class="items2">
+                    <div
+                      class="pl-3"
+                      v-for="(item2, i) in categories"
+                      :key="i"
+                      v-show="item2.parent_id === 0"
+                    >
+                      <h4 v-if="item2.parent_id === 0">{{ item2.name }}</h4>
+                      <ul class="items3 mt-3">
                         <router-link
-                v-for="(item3, i) in item2.subcategory"
-                :key="i"
-               
-                to="/"
-             
-                tag="li"
-                class="itemm"
-                active-class="active1"
-                >
-                 <v-icon class="ml-0 mt-0" color="red">mdi-chevron-left</v-icon>
-                <a class="linkk px-3 py-1 pr-0" 
-                  >
-                  {{item3.name}}
-                  </a>
-                  </router-link>
-                  
-                  
-
-                    </ul>
-                    
-                  </div>
-               
-   </ul>
-    
-  </v-card>
+                          v-for="(item3, i) in subcategories"
+                          :key="i"
+                          :to="{
+                            name: 'ProductPage',
+                            params: { id: item3.name },
+                          }"
+                          tag="li"
+                          class="itemm"
+                          active-class="active1"
+                          v-show="item2.id === item3.parent_id"
+                        >
+                          <v-icon
+                            v-if="item2.id === item3.parent_id"
+                            class="ml-0 mt-0"
+                            color="red"
+                            >mdi-chevron-left</v-icon
+                          >
+                          <a
+                            v-if="item2.id === item3.parent_id"
+                            class="linkk px-3 py-1 pr-0"
+                          >
+                            {{ item3.name }}
+                          </a>
+                        </router-link>
+                      </ul>
+                    </div>
+                  </ul>
+                </v-card>
               </router-link>
             </ul>
           </v-col>
@@ -218,27 +219,21 @@ export default {
           classicon: false,
           icon: "",
           id: 2,
-          cart:true,
-           category:[
-               {name:'نوشیدنی', 
-                 subcategory:[
-                 {name:'گرم'},
-                 {name:'سرد'},
-                             ]
-               },
-               {name:'شیرینی', 
-               subcategory:[
-                 {name:'تر'},
-                 {name:'خشک'},
-                           ],
-                },
-               {name:'بستنی', 
-               subcategory:[
-                 {name:'بستنی میوه ای'},
-                 {name:'بستنی شکلاتی'},
-                 {name:'بستنی ویژه'},
-                           ],
-                },
+          cart: true,
+          category: [
+            {
+              name: "نوشیدنی",
+              subcategory: [{ name: "گرم" }, { name: "سرد" }],
+            },
+            { name: "شیرینی", subcategory: [{ name: "تر" }, { name: "خشک" }] },
+            {
+              name: "بستنی",
+              subcategory: [
+                { name: "بستنی میوه ای" },
+                { name: "بستنی شکلاتی" },
+                { name: "بستنی ویژه" },
+              ],
+            },
           ],
         },
         {
@@ -272,7 +267,7 @@ export default {
           classicon: false,
           icon: "",
           id: 7,
-         }
+        },
       ],
       items2: [
         {
@@ -361,7 +356,24 @@ export default {
     count() {
       return this.$store.state.displayN;
     },
+    categories() {
+      return this.$store.state.category.categories;
+    },
+
+    categories1() {
+      return this.$store.getters.categories1;
+    },
+    subcategories() {
+      return this.$store.getters.subcategories;
+    },
   },
+
+  beforeCreate() {
+    this.$store.dispatch("fetchcategory");
+
+    console.log(this.subcategory);
+  },
+
   created() {
     if (this.$route.path === "/") {
       this.btntoggle = false;
@@ -403,19 +415,17 @@ export default {
     flex-direction: row;
     height: 100%;
     align-items: center;
-    
-       
 
     .item {
       display: inline-block;
-     
+
       .link {
         padding: 20px 24px;
         color: $color-dark;
         font-size: 1em;
       }
 
-      .main-items-card{
+      .main-items-card {
         right: 0;
         display: none;
         position: absolute;
@@ -423,36 +433,34 @@ export default {
         width: 100%;
         z-index: 20000;
         height: 300px;
-        .items2{
+        .items2 {
           display: flex;
           flex-direction: row;
           justify-content: center;
         }
-        .items3{
+        .items3 {
           display: flex;
           flex-direction: column;
-          .itemm{
+          .itemm {
             display: flex;
             flex-direction: row;
             .linkk {
-            color: $color-dark;
-          }
+              color: $color-dark;
+            }
           }
         }
-        
       }
 
-      &:hover{
-        .link{
+      &:hover {
+        .link {
           color: brown;
         }
-         .main-items-card{
-        display: block;
-      }
+        .main-items-card {
+          display: block;
+        }
       }
     }
   }
-  
 }
 .abslut {
   display: none;
@@ -492,24 +500,20 @@ export default {
   }
 }
 
-.mainmanue12{
-  .items{
-    .item{
-       transition:0.5s;
-      &.active1{
-        .link{
-            border-bottom: 2px solid;
+.mainmanue12 {
+  .items {
+    .item {
+      transition: 0.5s;
+      &.active1 {
+        .link {
+          border-bottom: 2px solid;
         }
-       
       }
-      &:hover{
-       transition:0.5s;
-        .link{
-          border-bottom: 2px solid ;
-           
-
+      &:hover {
+        transition: 0.5s;
+        .link {
+          border-bottom: 2px solid;
         }
-        
       }
     }
   }

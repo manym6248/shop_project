@@ -1,5 +1,6 @@
 import axios from '../../../axios.config'
 
+
 const state = {
   "oneUser": null,
   "cart2": [],
@@ -14,12 +15,24 @@ const getters = {
   categories(state) {
     return state.categories
   },
+ 
+  subcategories(state) {
+    var category = []
+    for (const item of state.categories) {
+      if (item.parent_id != 0) {
+        category.push(item)
+      }
+    }
+    return category
+  },
   categories1(state) {
-    var category = [{id: 0,
-      name: "دسته اصلی"},]
+    var category = [{
+      id: 0,
+      name: "دسته اصلی"
+    },]
     for (const item of state.categories) {
       if (item.parent_id === 0) {
-          category.push(item)  
+        category.push(item)
       }
     }
     return category
@@ -28,7 +41,7 @@ const getters = {
 const mutations = {
   fetchcategory(state, categories) {
     state.categories = categories;
-    
+
   },
   ///اضافه کردن به لیست کاربران
   addToCart2(state, payload) {
@@ -85,8 +98,10 @@ const actions = {
     })
   },
   ////برای گرفتن همه دسته بندی ها
-  fetchcategory({ commit }, payload) {
-    commit('fetchcategory', payload)
+  fetchcategory({ commit }) {
+    axios.get("/category").then((res) => {
+      commit('fetchcategory', res.data.data)
+    });
   },
   /// برای حدف دسته بندی
   removecategory({ commit }, id) {
